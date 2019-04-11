@@ -1,0 +1,324 @@
+USE [db_sms]
+GO
+/****** Object:  Table [dbo].[Attendence]    Script Date: 4/11/2019 11:50:33 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Attendence](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Date] [datetime] NULL,
+ CONSTRAINT [PK_Attendence] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Class]    Script Date: 4/11/2019 11:50:33 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Class](
+	[classid] [int] IDENTITY(1,1) NOT NULL,
+	[classname] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Class] PRIMARY KEY CLUSTERED 
+(
+	[classid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[ClassCourse]    Script Date: 4/11/2019 11:50:33 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ClassCourse](
+	[CourseID] [int] NULL,
+	[ClassID] [int] NULL
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[ClassCourseTeacher]    Script Date: 4/11/2019 11:50:33 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ClassCourseTeacher](
+	[CourseID] [int] NULL,
+	[TeacherID] [int] NULL,
+	[ClassID] [int] NULL
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[ClassStudent]    Script Date: 4/11/2019 11:50:33 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ClassStudent](
+	[StudentId] [int] NULL,
+	[ClassId] [int] NULL,
+	[status] [int] NULL
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Course]    Script Date: 4/11/2019 11:50:33 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Course](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[title] [nvarchar](max) NULL,
+ CONSTRAINT [PK_Course] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Evaluation]    Script Date: 4/11/2019 11:50:33 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Evaluation](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[name] [nvarchar](max) NULL,
+	[Totalmarks] [int] NULL,
+ CONSTRAINT [PK_Evaluation] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Lookup]    Script Date: 4/11/2019 11:50:33 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Lookup](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[value] [nvarchar](max) NULL,
+	[category] [nvarchar](max) NULL,
+ CONSTRAINT [PK_Lookup] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Person]    Script Date: 4/11/2019 11:50:33 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Person](
+	[PersonId] [int] IDENTITY(1,1) NOT NULL,
+	[FirstName] [nvarchar](max) NULL,
+	[LastName] [nvarchar](max) NULL,
+	[Address] [nvarchar](max) NULL,
+	[Contact] [int] NULL,
+	[Email] [nvarchar](max) NOT NULL,
+	[Gender] [int] NULL,
+	[DateOfBirth] [datetime] NULL,
+ CONSTRAINT [PK_Person] PRIMARY KEY CLUSTERED 
+(
+	[PersonId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Student]    Script Date: 4/11/2019 11:50:33 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Student](
+	[Id] [int] NOT NULL,
+	[Fee] [int] NULL,
+	[Rollno] [nvarchar](max) NULL,
+	[Enrollmentdate] [datetime] NULL,
+ CONSTRAINT [PK_Student] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Studentattendence]    Script Date: 4/11/2019 11:50:33 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Studentattendence](
+	[AttendenceID] [int] NULL,
+	[StudentId] [int] NULL,
+	[Status] [int] NULL
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[StudentEvaluation]    Script Date: 4/11/2019 11:50:33 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[StudentEvaluation](
+	[evalid] [int] NULL,
+	[courseid] [int] NULL,
+	[studentid] [int] NULL,
+	[obtainmarks] [int] NULL,
+	[grade] [int] NULL
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Teacher]    Script Date: 4/11/2019 11:50:33 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Teacher](
+	[Id] [int] NOT NULL,
+	[salary] [int] NULL,
+	[Emrollmentdate] [datetime] NULL,
+ CONSTRAINT [PK_Teacher] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Teacherattendence]    Script Date: 4/11/2019 11:50:33 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Teacherattendence](
+	[AttendenceID] [int] NULL,
+	[TeacherId] [int] NULL,
+	[status] [int] NULL
+) ON [PRIMARY]
+
+GO
+SET IDENTITY_INSERT [dbo].[Lookup] ON 
+
+GO
+INSERT [dbo].[Lookup] ([id], [value], [category]) VALUES (1, N'MALE', N'GENDER')
+GO
+INSERT [dbo].[Lookup] ([id], [value], [category]) VALUES (2, N'FEMALE', N'GENDER')
+GO
+INSERT [dbo].[Lookup] ([id], [value], [category]) VALUES (3, N'PRESENT', N'ATTENDENCE')
+GO
+INSERT [dbo].[Lookup] ([id], [value], [category]) VALUES (4, N'ABSENT', N'ATTENDENCE')
+GO
+INSERT [dbo].[Lookup] ([id], [value], [category]) VALUES (5, N'ACTIVE', N'STATUS')
+GO
+INSERT [dbo].[Lookup] ([id], [value], [category]) VALUES (6, N'UNACTIVE', N'STATUS')
+
+GO
+SET IDENTITY_INSERT [dbo].[Lookup] OFF
+GO
+ALTER TABLE [dbo].[ClassCourse]  WITH CHECK ADD  CONSTRAINT [FK_ClassCourse_Class] FOREIGN KEY([ClassID])
+REFERENCES [dbo].[Class] ([classid])
+GO
+ALTER TABLE [dbo].[ClassCourse] CHECK CONSTRAINT [FK_ClassCourse_Class]
+GO
+ALTER TABLE [dbo].[ClassCourse]  WITH CHECK ADD  CONSTRAINT [FK_ClassCourse_Course] FOREIGN KEY([CourseID])
+REFERENCES [dbo].[Course] ([Id])
+GO
+ALTER TABLE [dbo].[ClassCourse] CHECK CONSTRAINT [FK_ClassCourse_Course]
+GO
+ALTER TABLE [dbo].[ClassCourseTeacher]  WITH CHECK ADD  CONSTRAINT [FK_ClassCourseTeacher_Class] FOREIGN KEY([ClassID])
+REFERENCES [dbo].[Class] ([classid])
+GO
+ALTER TABLE [dbo].[ClassCourseTeacher] CHECK CONSTRAINT [FK_ClassCourseTeacher_Class]
+GO
+ALTER TABLE [dbo].[ClassCourseTeacher]  WITH CHECK ADD  CONSTRAINT [FK_ClassCourseTeacher_Course] FOREIGN KEY([CourseID])
+REFERENCES [dbo].[Course] ([Id])
+GO
+ALTER TABLE [dbo].[ClassCourseTeacher] CHECK CONSTRAINT [FK_ClassCourseTeacher_Course]
+GO
+ALTER TABLE [dbo].[ClassCourseTeacher]  WITH CHECK ADD  CONSTRAINT [FK_ClassCourseTeacher_Teacher] FOREIGN KEY([TeacherID])
+REFERENCES [dbo].[Teacher] ([Id])
+GO
+ALTER TABLE [dbo].[ClassCourseTeacher] CHECK CONSTRAINT [FK_ClassCourseTeacher_Teacher]
+GO
+ALTER TABLE [dbo].[ClassStudent]  WITH CHECK ADD  CONSTRAINT [FK_ClassStudent_Class] FOREIGN KEY([ClassId])
+REFERENCES [dbo].[Class] ([classid])
+GO
+ALTER TABLE [dbo].[ClassStudent] CHECK CONSTRAINT [FK_ClassStudent_Class]
+GO
+ALTER TABLE [dbo].[ClassStudent]  WITH CHECK ADD  CONSTRAINT [FK_ClassStudent_Lookup] FOREIGN KEY([status])
+REFERENCES [dbo].[Lookup] ([id])
+GO
+ALTER TABLE [dbo].[ClassStudent] CHECK CONSTRAINT [FK_ClassStudent_Lookup]
+GO
+ALTER TABLE [dbo].[ClassStudent]  WITH CHECK ADD  CONSTRAINT [FK_ClassStudent_Student] FOREIGN KEY([StudentId])
+REFERENCES [dbo].[Student] ([Id])
+GO
+ALTER TABLE [dbo].[ClassStudent] CHECK CONSTRAINT [FK_ClassStudent_Student]
+GO
+ALTER TABLE [dbo].[Student]  WITH CHECK ADD  CONSTRAINT [FK_Student_Person] FOREIGN KEY([Id])
+REFERENCES [dbo].[Person] ([PersonId])
+GO
+ALTER TABLE [dbo].[Student] CHECK CONSTRAINT [FK_Student_Person]
+GO
+ALTER TABLE [dbo].[Studentattendence]  WITH CHECK ADD  CONSTRAINT [FK_Studentattendence_Attendence] FOREIGN KEY([AttendenceID])
+REFERENCES [dbo].[Attendence] ([Id])
+GO
+ALTER TABLE [dbo].[Studentattendence] CHECK CONSTRAINT [FK_Studentattendence_Attendence]
+GO
+ALTER TABLE [dbo].[Studentattendence]  WITH CHECK ADD  CONSTRAINT [FK_Studentattendence_Lookup1] FOREIGN KEY([Status])
+REFERENCES [dbo].[Lookup] ([id])
+GO
+ALTER TABLE [dbo].[Studentattendence] CHECK CONSTRAINT [FK_Studentattendence_Lookup1]
+GO
+ALTER TABLE [dbo].[Studentattendence]  WITH CHECK ADD  CONSTRAINT [FK_Studentattendence_Student] FOREIGN KEY([StudentId])
+REFERENCES [dbo].[Student] ([Id])
+GO
+ALTER TABLE [dbo].[Studentattendence] CHECK CONSTRAINT [FK_Studentattendence_Student]
+GO
+ALTER TABLE [dbo].[StudentEvaluation]  WITH CHECK ADD  CONSTRAINT [FK_StudentEvaluation_Course] FOREIGN KEY([courseid])
+REFERENCES [dbo].[Course] ([Id])
+GO
+ALTER TABLE [dbo].[StudentEvaluation] CHECK CONSTRAINT [FK_StudentEvaluation_Course]
+GO
+ALTER TABLE [dbo].[StudentEvaluation]  WITH CHECK ADD  CONSTRAINT [FK_StudentEvaluation_Evaluation] FOREIGN KEY([evalid])
+REFERENCES [dbo].[Evaluation] ([id])
+GO
+ALTER TABLE [dbo].[StudentEvaluation] CHECK CONSTRAINT [FK_StudentEvaluation_Evaluation]
+GO
+ALTER TABLE [dbo].[StudentEvaluation]  WITH CHECK ADD  CONSTRAINT [FK_StudentEvaluation_Lookup] FOREIGN KEY([grade])
+REFERENCES [dbo].[Lookup] ([id])
+GO
+ALTER TABLE [dbo].[StudentEvaluation] CHECK CONSTRAINT [FK_StudentEvaluation_Lookup]
+GO
+ALTER TABLE [dbo].[StudentEvaluation]  WITH CHECK ADD  CONSTRAINT [FK_StudentEvaluation_Student] FOREIGN KEY([courseid])
+REFERENCES [dbo].[Student] ([Id])
+GO
+ALTER TABLE [dbo].[StudentEvaluation] CHECK CONSTRAINT [FK_StudentEvaluation_Student]
+GO
+ALTER TABLE [dbo].[Teacher]  WITH CHECK ADD  CONSTRAINT [FK_Teacher_Person] FOREIGN KEY([Id])
+REFERENCES [dbo].[Person] ([PersonId])
+GO
+ALTER TABLE [dbo].[Teacher] CHECK CONSTRAINT [FK_Teacher_Person]
+GO
+ALTER TABLE [dbo].[Teacherattendence]  WITH CHECK ADD  CONSTRAINT [FK_Teacherattendence_Attendence] FOREIGN KEY([AttendenceID])
+REFERENCES [dbo].[Attendence] ([Id])
+GO
+ALTER TABLE [dbo].[Teacherattendence] CHECK CONSTRAINT [FK_Teacherattendence_Attendence]
+GO
+ALTER TABLE [dbo].[Teacherattendence]  WITH CHECK ADD  CONSTRAINT [FK_Teacherattendence_Lookup] FOREIGN KEY([status])
+REFERENCES [dbo].[Lookup] ([id])
+GO
+ALTER TABLE [dbo].[Teacherattendence] CHECK CONSTRAINT [FK_Teacherattendence_Lookup]
+GO
+ALTER TABLE [dbo].[Teacherattendence]  WITH CHECK ADD  CONSTRAINT [FK_Teacherattendence_Teacher] FOREIGN KEY([TeacherId])
+REFERENCES [dbo].[Teacher] ([Id])
+GO
+ALTER TABLE [dbo].[Teacherattendence] CHECK CONSTRAINT [FK_Teacherattendence_Teacher]
+GO
