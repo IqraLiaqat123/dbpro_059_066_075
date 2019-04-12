@@ -1,6 +1,6 @@
-USE [db_sms]
+USE [DB32]
 GO
-/****** Object:  Table [dbo].[Attendence]    Script Date: 4/11/2019 11:50:33 PM ******/
+/****** Object:  Table [dbo].[Attendence]    Script Date: 4/12/2019 9:10:59 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -15,7 +15,7 @@ CREATE TABLE [dbo].[Attendence](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Class]    Script Date: 4/11/2019 11:50:33 PM ******/
+/****** Object:  Table [dbo].[Class]    Script Date: 4/12/2019 9:10:59 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -30,7 +30,7 @@ CREATE TABLE [dbo].[Class](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[ClassCourse]    Script Date: 4/11/2019 11:50:33 PM ******/
+/****** Object:  Table [dbo].[ClassCourse]    Script Date: 4/12/2019 9:10:59 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -41,7 +41,7 @@ CREATE TABLE [dbo].[ClassCourse](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[ClassCourseTeacher]    Script Date: 4/11/2019 11:50:33 PM ******/
+/****** Object:  Table [dbo].[ClassCourseTeacher]    Script Date: 4/12/2019 9:10:59 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -53,7 +53,7 @@ CREATE TABLE [dbo].[ClassCourseTeacher](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[ClassStudent]    Script Date: 4/11/2019 11:50:33 PM ******/
+/****** Object:  Table [dbo].[ClassStudent]    Script Date: 4/12/2019 9:10:59 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -65,7 +65,7 @@ CREATE TABLE [dbo].[ClassStudent](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Course]    Script Date: 4/11/2019 11:50:33 PM ******/
+/****** Object:  Table [dbo].[Course]    Script Date: 4/12/2019 9:10:59 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -80,7 +80,7 @@ CREATE TABLE [dbo].[Course](
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Evaluation]    Script Date: 4/11/2019 11:50:33 PM ******/
+/****** Object:  Table [dbo].[Evaluation]    Script Date: 4/12/2019 9:10:59 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -96,7 +96,7 @@ CREATE TABLE [dbo].[Evaluation](
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Lookup]    Script Date: 4/11/2019 11:50:33 PM ******/
+/****** Object:  Table [dbo].[Lookup]    Script Date: 4/12/2019 9:10:59 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -112,7 +112,7 @@ CREATE TABLE [dbo].[Lookup](
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Person]    Script Date: 4/11/2019 11:50:33 PM ******/
+/****** Object:  Table [dbo].[Person]    Script Date: 4/12/2019 9:10:59 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -133,7 +133,7 @@ CREATE TABLE [dbo].[Person](
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Student]    Script Date: 4/11/2019 11:50:33 PM ******/
+/****** Object:  Table [dbo].[Student]    Script Date: 4/12/2019 9:10:59 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -150,7 +150,7 @@ CREATE TABLE [dbo].[Student](
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Studentattendence]    Script Date: 4/11/2019 11:50:33 PM ******/
+/****** Object:  Table [dbo].[Studentattendence]    Script Date: 4/12/2019 9:10:59 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -162,7 +162,7 @@ CREATE TABLE [dbo].[Studentattendence](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[StudentEvaluation]    Script Date: 4/11/2019 11:50:33 PM ******/
+/****** Object:  Table [dbo].[StudentEvaluation]    Script Date: 4/12/2019 9:10:59 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -176,7 +176,7 @@ CREATE TABLE [dbo].[StudentEvaluation](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Teacher]    Script Date: 4/11/2019 11:50:33 PM ******/
+/****** Object:  Table [dbo].[Teacher]    Script Date: 4/12/2019 9:10:59 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -192,7 +192,7 @@ CREATE TABLE [dbo].[Teacher](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Teacherattendence]    Script Date: 4/11/2019 11:50:33 PM ******/
+/****** Object:  Table [dbo].[Teacherattendence]    Script Date: 4/12/2019 9:10:59 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -218,7 +218,8 @@ GO
 INSERT [dbo].[Lookup] ([id], [value], [category]) VALUES (5, N'ACTIVE', N'STATUS')
 GO
 INSERT [dbo].[Lookup] ([id], [value], [category]) VALUES (6, N'UNACTIVE', N'STATUS')
-
+GO
+INSERT [dbo].[Lookup] ([id], [value], [category]) VALUES (7, NULL, N'')
 GO
 SET IDENTITY_INSERT [dbo].[Lookup] OFF
 GO
