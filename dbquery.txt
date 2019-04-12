@@ -225,6 +225,27 @@ CREATE TABLE [dbo].[Section](
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
+
+/****** Object:  Table [dbo].[Assignments]    Script Date: 4/12/2019 10:42:16 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Assignments](
+	[Id] [int] NOT NULL,
+	[Ttile] [nchar](128) NULL,
+	[Description] [nchar](128) NULL,
+	[T_Id] [int] NOT NULL,
+ CONSTRAINT [PK_Assignments] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
 SET IDENTITY_INSERT [dbo].[Lookup] ON 
 
 GO
@@ -240,10 +261,52 @@ INSERT [dbo].[Lookup] ([id], [value], [category]) VALUES (5, N'ACTIVE', N'STATUS
 GO
 INSERT [dbo].[Lookup] ([id], [value], [category]) VALUES (6, N'UNACTIVE', N'STATUS')
 GO
-INSERT [dbo].[Lookup] ([id], [value], [category]) VALUES (7, NULL, N'')
+INSERT [dbo].[Lookup] ([id], [value], [category]) VALUES (7, N'VICEPRINCIPAL', N'DESIGNATION')
 GO
+INSERT [dbo].[Lookup] ([id], [value], [category]) VALUES (8, N'PRINCIPAL', N'DESIGNATION')
+GO
+INSERT [dbo].[Lookup] ([id], [value], [category]) VALUES (9, N'JUNIORCOORDINATOR', N'DESIGNATION')
+GO
+INSERT [dbo].[Lookup] ([id], [value], [category]) VALUES (10, N'SENIORCOORDINATOR', N'DESIGNATION')
+GO
+INSERT [dbo].[Lookup] ([id], [value], [category]) VALUES (11, N'TEACHER', N'DESIGNATION')
+GO
+INSERT [dbo].[Lookup] ([id], [value], [category]) VALUES (12, N'ADMINISTRATOR', N'DESIGNATION')
+GO
+INSERT [dbo].[Lookup] ([id], [value], [category]) VALUES (13, N'A+', N'GRADE')
+GO
+INSERT [dbo].[Lookup] ([id], [value], [category]) VALUES (14, N'A', N'GRADE')
+GO
+INSERT [dbo].[Lookup] ([id], [value], [category]) VALUES (15, N'A-', N'GRADE')
+GO
+INSERT [dbo].[Lookup] ([id], [value], [category]) VALUES (16, N'B+', N'GRADE')
+GO
+INSERT [dbo].[Lookup] ([id], [value], [category]) VALUES (17, N'B', N'GRADE')
+GO
+INSERT [dbo].[Lookup] ([id], [value], [category]) VALUES (18, N'B-', N'GRADE')
+GO
+INSERT [dbo].[Lookup] ([id], [value], [category]) VALUES (19, N'C+', N'GRADE')
+GO
+INSERT [dbo].[Lookup] ([id], [value], [category]) VALUES (20, N'C', N'GRADE')
+GO
+INSERT [dbo].[Lookup] ([id], [value], [category]) VALUES (21, N'C-', N'GRADE')
+GO
+INSERT [dbo].[Lookup] ([id], [value], [category]) VALUES (22, N'D+', N'GRADE')
+GO
+INSERT [dbo].[Lookup] ([id], [value], [category]) VALUES (23, N'D', N'GRADE')
+GO
+INSERT [dbo].[Lookup] ([id], [value], [category]) VALUES (24, N'F', N'GRADE')
+GO
+
 SET IDENTITY_INSERT [dbo].[Lookup] OFF
 GO
+ALTER TABLE [dbo].[Assignments]  WITH CHECK ADD  CONSTRAINT [FK_Assignments_Teacher] FOREIGN KEY([T_Id])
+REFERENCES [dbo].[Teacher] ([Id])
+GO
+
+ALTER TABLE [dbo].[Assignments] CHECK CONSTRAINT [FK_Assignments_Teacher]
+GO
+
 ALTER TABLE [dbo].[ClassCourse]  WITH CHECK ADD  CONSTRAINT [FK_ClassCourse_Class] FOREIGN KEY([ClassID])
 REFERENCES [dbo].[Class] ([classid])
 GO
