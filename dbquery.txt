@@ -23,6 +23,7 @@ GO
 CREATE TABLE [dbo].[Class](
 	[classid] [int] IDENTITY(1,1) NOT NULL,
 	[classname] [nvarchar](50) NULL,
+	[sectionid] [int] NULL,
  CONSTRAINT [PK_Class] PRIMARY KEY CLUSTERED 
 (
 	[classid] ASC
@@ -53,14 +54,14 @@ CREATE TABLE [dbo].[ClassCourseTeacher](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[ClassStudent]    Script Date: 4/12/2019 9:10:59 AM ******/
+/****** Object:  Table [dbo].[SectionStudent]    Script Date: 4/12/2019 9:10:59 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[ClassStudent](
+CREATE TABLE [dbo].[SectionStudent](
 	[StudentId] [int] NULL,
-	[ClassId] [int] NULL,
+	[SectionId] [int] NULL,
 	[status] [int] NULL
 ) ON [PRIMARY]
 
@@ -207,6 +208,23 @@ CREATE TABLE [dbo].[Teacherattendence](
 ) ON [PRIMARY]
 
 GO
+/****** Object:  Table [dbo].[Section]    Script Date: 4/12/2019 9:23:06 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Section](
+	[SectionID] [int] IDENTITY(1,1) NOT NULL,
+	[name] [nvarchar](max) NULL,
+ CONSTRAINT [PK_Section] PRIMARY KEY CLUSTERED 
+(
+	[SectionID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
 SET IDENTITY_INSERT [dbo].[Lookup] ON 
 
 GO
@@ -251,21 +269,28 @@ REFERENCES [dbo].[Teacher] ([Id])
 GO
 ALTER TABLE [dbo].[ClassCourseTeacher] CHECK CONSTRAINT [FK_ClassCourseTeacher_Teacher]
 GO
-ALTER TABLE [dbo].[ClassStudent]  WITH CHECK ADD  CONSTRAINT [FK_ClassStudent_Class] FOREIGN KEY([ClassId])
-REFERENCES [dbo].[Class] ([classid])
-GO
-ALTER TABLE [dbo].[ClassStudent] CHECK CONSTRAINT [FK_ClassStudent_Class]
-GO
-ALTER TABLE [dbo].[ClassStudent]  WITH CHECK ADD  CONSTRAINT [FK_ClassStudent_Lookup] FOREIGN KEY([status])
+ALTER TABLE [dbo].[SectionStudent]  WITH CHECK ADD  CONSTRAINT [FK_ClassStudent_Lookup] FOREIGN KEY([status])
 REFERENCES [dbo].[Lookup] ([id])
 GO
-ALTER TABLE [dbo].[ClassStudent] CHECK CONSTRAINT [FK_ClassStudent_Lookup]
+
+ALTER TABLE [dbo].[SectionStudent] CHECK CONSTRAINT [FK_ClassStudent_Lookup]
 GO
-ALTER TABLE [dbo].[ClassStudent]  WITH CHECK ADD  CONSTRAINT [FK_ClassStudent_Student] FOREIGN KEY([StudentId])
+
+ALTER TABLE [dbo].[SectionStudent]  WITH CHECK ADD  CONSTRAINT [FK_ClassStudent_Student] FOREIGN KEY([StudentId])
 REFERENCES [dbo].[Student] ([Id])
 GO
-ALTER TABLE [dbo].[ClassStudent] CHECK CONSTRAINT [FK_ClassStudent_Student]
+
+ALTER TABLE [dbo].[SectionStudent] CHECK CONSTRAINT [FK_ClassStudent_Student]
 GO
+
+ALTER TABLE [dbo].[SectionStudent]  WITH CHECK ADD  CONSTRAINT [FK_SectionStudent_Section] FOREIGN KEY([SectionId])
+REFERENCES [dbo].[Section] ([SectionID])
+GO
+
+ALTER TABLE [dbo].[SectionStudent] CHECK CONSTRAINT [FK_SectionStudent_Section]
+GO
+
+
 ALTER TABLE [dbo].[Student]  WITH CHECK ADD  CONSTRAINT [FK_Student_Person] FOREIGN KEY([Id])
 REFERENCES [dbo].[Person] ([PersonId])
 GO
@@ -306,6 +331,12 @@ REFERENCES [dbo].[Student] ([Id])
 GO
 ALTER TABLE [dbo].[StudentEvaluation] CHECK CONSTRAINT [FK_StudentEvaluation_Student]
 GO
+ALTER TABLE [dbo].[Teacher]  WITH CHECK ADD  CONSTRAINT [FK_Teacher_Lookup] FOREIGN KEY([Designation])
+REFERENCES [dbo].[Lookup] ([id])
+GO
+
+ALTER TABLE [dbo].[Teacher] CHECK CONSTRAINT [FK_Teacher_Lookup]
+GO
 ALTER TABLE [dbo].[Teacher]  WITH CHECK ADD  CONSTRAINT [FK_Teacher_Person] FOREIGN KEY([Id])
 REFERENCES [dbo].[Person] ([PersonId])
 GO
@@ -325,6 +356,12 @@ ALTER TABLE [dbo].[Teacherattendence]  WITH CHECK ADD  CONSTRAINT [FK_Teacheratt
 REFERENCES [dbo].[Teacher] ([Id])
 GO
 ALTER TABLE [dbo].[Teacherattendence] CHECK CONSTRAINT [FK_Teacherattendence_Teacher]
+GO
+ALTER TABLE [dbo].[Class]  WITH CHECK ADD  CONSTRAINT [FK_Class_Section] FOREIGN KEY([sectionid])
+REFERENCES [dbo].[Section] ([SectionID])
+GO
+
+ALTER TABLE [dbo].[Class] CHECK CONSTRAINT [FK_Class_Section]
 GO
 SET ANSI_NULLS ON
 GO
