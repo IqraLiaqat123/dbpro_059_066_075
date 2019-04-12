@@ -184,7 +184,10 @@ GO
 CREATE TABLE [dbo].[Teacher](
 	[Id] [int] NOT NULL,
 	[salary] [int] NULL,
-	[Emrollmentdate] [datetime] NULL,
+	[Enrollmentdate] [datetime] NULL,
+        [Qualification] [nvarchar](max) NULL,
+
+	[Designation] [int] NULL,
  CONSTRAINT [PK_Teacher] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -335,6 +338,7 @@ CREATE TABLE [dbo].[AspNetRoles](
  CONSTRAINT [PK_dbo.AspNetRoles] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
 GO
