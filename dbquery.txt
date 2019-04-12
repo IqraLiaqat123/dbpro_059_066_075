@@ -246,49 +246,6 @@ CREATE TABLE [dbo].[Assignments](
 
 GO
 
-
-/****** Object:  Table [dbo].[Timetable]    Script Date: 4/13/2019 12:21:46 AM ******/
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE TABLE [dbo].[Timetable](
-	[Id] [int] NOT NULL,
-	[Date] [datetime] NULL,
-	[ClassId] [int] NULL,
-	[CourseId] [int] NULL,
-	[Time] [time](7) NULL,
- CONSTRAINT [PK_Timetable] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-
-GO
-
-/****** Object:  Table [dbo].[Datesheet]    Script Date: 4/13/2019 12:24:14 AM ******/
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE TABLE [dbo].[Datesheet](
-	[id] [int] NOT NULL,
-	[Date] [datetime] NULL,
-	[CouseId] [int] NULL,
-	[ClassId] [int] NULL,
- CONSTRAINT [PK_Datesheet] PRIMARY KEY CLUSTERED 
-(
-	[id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-
-GO
-
-
 SET IDENTITY_INSERT [dbo].[Lookup] ON 
 
 GO
@@ -342,35 +299,6 @@ INSERT [dbo].[Lookup] ([id], [value], [category]) VALUES (24, N'F', N'GRADE')
 GO
 
 SET IDENTITY_INSERT [dbo].[Lookup] OFF
-GO
-ALTER TABLE [dbo].[Datesheet]  WITH CHECK ADD  CONSTRAINT [FK_Datesheet_Class] FOREIGN KEY([ClassId])
-REFERENCES [dbo].[Class] ([classid])
-GO
-
-ALTER TABLE [dbo].[Datesheet] CHECK CONSTRAINT [FK_Datesheet_Class]
-GO
-
-ALTER TABLE [dbo].[Datesheet]  WITH CHECK ADD  CONSTRAINT [FK_Datesheet_Course] FOREIGN KEY([CouseId])
-REFERENCES [dbo].[Course] ([Id])
-GO
-
-ALTER TABLE [dbo].[Datesheet] CHECK CONSTRAINT [FK_Datesheet_Course]
-GO
-
-
-
-ALTER TABLE [dbo].[Timetable]  WITH CHECK ADD  CONSTRAINT [FK_Timetable_Class] FOREIGN KEY([ClassId])
-REFERENCES [dbo].[Class] ([classid])
-GO
-
-ALTER TABLE [dbo].[Timetable] CHECK CONSTRAINT [FK_Timetable_Class]
-GO
-
-ALTER TABLE [dbo].[Timetable]  WITH CHECK ADD  CONSTRAINT [FK_Timetable_Course1] FOREIGN KEY([CourseId])
-REFERENCES [dbo].[Course] ([Id])
-GO
-
-ALTER TABLE [dbo].[Timetable] CHECK CONSTRAINT [FK_Timetable_Course1]
 GO
 
 
