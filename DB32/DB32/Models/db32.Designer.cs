@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\HIBA\Desktop\DB32\DB32\Models\db32.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\HIBA\Desktop\dbpro_059_066_075\DB32\DB32\Models\db32.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

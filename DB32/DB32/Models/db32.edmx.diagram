@@ -20,7 +20,7 @@
         <EntityTypeShape EntityType="DB32Model.Section" Width="1.5" PointX="2.75" PointY="10.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DB32Model.Student" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="DB32Model.sysdiagram" Width="1.5" PointX="0.75" PointY="13" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB32Model.Teacher" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB32Model.Teacher" Width="1.5" PointX="4.125" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DB32Model.Timetable" Width="1.5" PointX="7.25" PointY="12.875" IsExpanded="true" />
         <AssociationConnector Association="DB32Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="DB32Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
