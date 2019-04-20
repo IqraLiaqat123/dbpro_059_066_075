@@ -969,6 +969,9 @@ ul.dropdown-content > .dropdown-trigger:hover > ul.dropdown-content > li:hover >
     content: "";
     padding: 0;
 }
+.li{
+    color:white !important;
+}
 .pricing-table-style-tow .pricing-content {
     padding: 0;
 }
