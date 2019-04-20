@@ -30,13 +30,7 @@
 </div>
 <!--sidebar-menu-->
 <!--main-container-part-->
-<div id="content">
-    <!--breadcrumbs-->
-    <div id="content-header">
-        <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
-    </div>
-    <!--End-breadcrumbs-->
-</div>
+
 @{
     ViewBag.Title = "Dashboard";
 }
@@ -82,20 +76,39 @@
 
 
 <div class="col-lg-8">
-    <ul class="list-unstyled popular-filter-nav text-center">
-        <li><a class="filter" href="http://bdevs.net/edulab/edulab/index.html#" data-filter="*">All</a></li>
-        <li><a class="filter" href="http://bdevs.net/edulab/edulab/index.html#" data-filter=".design">Design</a></li>
-        <li><a href="http://bdevs.net/edulab/edulab/index.html#" class="filter" data-filter=".development">Development</a></li>
-        <li><a href="http://bdevs.net/edulab/edulab/index.html#" class="filter" data-filter=".business">Business</a></li>
-        <li><a href="http://bdevs.net/edulab/edulab/index.html#" class="filter" data-filter=".photography">Photography</a></li>
-    </ul><!--/.popular-filter-nav-->
-</div><!--/.col-lg-12-->
+    <div class="row">
+        <div class="col-lg-offset-1 col-lg-2">
+            <span class="badge" style="padding-right: 35px;
+    padding-left: 35px; color:white"><a class="filter" href="http://bdevs.net/edulab/edulab/index.html#" data-filter="*"><span style="color:white">All</span> </a></span>
+        </div>
+        <div class="col-lg-2">
+            <span class="badge" style="padding-right: 26px;
+    padding-left: 26px;"><a class="filter" href="http://bdevs.net/edulab/edulab/index.html#" data-filter=".design"><span style="color:white">Design</span></a></span>
+        </div>
+
+        <div class="col-lg-2">
+            <span class="badge" style="padding-right: 13px;
+    padding-left: 13px;"><a href="http://bdevs.net/edulab/edulab/index.html#" class="filter" data-filter=".development"><span style="color:white">Development</span></a></span>
+        </div>
+
+        <div class="col-lg-2">
+            <span class="badge"style="padding-right: 23px;
+    padding-left: 23px;"><a href="http://bdevs.net/edulab/edulab/index.html#" class="filter" data-filter=".business"><span style="color:white">Business</span></a></span>
+        </div>
+
+        <div class="col-lg-2">
+            <span class="badge"style="padding-right: 20px;
+    padding-left: 20px;"><a href="http://bdevs.net/edulab/edulab/index.html#" class="filter" data-filter=".photography"><span style="color:white">Photography</span></a></span>
+            </div>
+            <!--/.popular-filter-nav-->
+        </div>
+    </div><!--/.col-lg-12-->
 <div class="col-lg-8">
-    <div class="col-lg-4 col-sm-6 design photography" style="position: absolute; left: 0px; top: 0px;">
+    <div class="col-lg-3 col-sm-6 design photography" style="position: absolute; left: 0px; top: 10px;">
         <!--Single Course Item Start-->
         <div class="single-course-item border-radius">
             <div class="course-thumb-area">
-                <img class="img-fluid" src="../images/course1.jpg" alt="img">
+                <img class="img-fluid" src="../images/course1.jpg" alt="img" style="width:250px">
                 <div class="course-meta">
                     <a href="http://bdevs.net/edulab/edulab/index.html#"><i class="fa fa-heart-o"></i></a>
                     <a href="http://bdevs.net/edulab/edulab/index.html#"><i class="fa fa-share-alt"></i></a>
@@ -114,7 +127,7 @@
                     <span class="total-reviews">(105 reviews)</span>
                 </div><!--/.course-reviews-->
                 <div class="trainer-profile clearfix">
-                    <img class="rounded-circle" src="../images/author-1.jpg" alt="img">
+                    <img class="rounded-circle" src="../images/author-1.jpg" alt="img" >
                     <div class="trainer-info">
                         <h3>Kelium Smith</h3>
                         <p>24 april 2017</p>
@@ -125,11 +138,11 @@
         </div><!--/.single-course-item-end-->
     </div><!--/.col-lg-4-->
 
-    <div class="col-lg-4 col-sm-6 business" style="position: absolute; left: 380px; top: 0px;">
+    <div class="col-lg-3 col-sm-6 business" style="position: absolute; left: 288px; top: 10px;">
         <!--Single Course Item Start-->
         <div class="single-course-item border-radius">
             <div class="course-thumb-area">
-                <img class="img-fluid" src="../images/course2.jpg" alt="img">
+                <img class="img-fluid" src="../images/course2.jpg" alt="img" style="width:250px">
                 <div class="course-meta">
                     <a href="http://bdevs.net/edulab/edulab/index.html#"><i class="fa fa-heart-o"></i></a>
                     <a href="http://bdevs.net/edulab/edulab/index.html#"><i class="fa fa-share-alt"></i></a>
@@ -158,11 +171,11 @@
             </div><!--/.course-content-->
         </div><!--/.single-course-item-end-->
     </div><!--/.col-lg-4-->
-    <div class="col-lg-4 col-sm-6 design photography" style="position: absolute; left: 760px; top: 0px;">
+    <div class="col-lg-4 col-sm-6 design photography" style="position: absolute; left: 574px; top: 10px;">
         <!--Single Course Item Start-->
         <div class="single-course-item border-radius">
             <div class="course-thumb-area">
-                <img class="img-fluid" src="../images/course3.jpg" alt="img">
+                <img class="img-fluid" src="../images/course3.jpg" alt="img" style="width:250px">
                 <div class="course-meta">
                     <a href="http://bdevs.net/edulab/edulab/index.html#"><i class="fa fa-heart-o"></i></a>
                     <a href="http://bdevs.net/edulab/edulab/index.html#"><i class="fa fa-share-alt"></i></a>
@@ -191,11 +204,11 @@
             </div><!--/.course-content-->
         </div><!--/.single-course-item-end-->
     </div><!--/.col-lg-4-->
-    <div class="col-lg-4 col-sm-6 development business" style="position: absolute; left: 0px; top: 505px;">
+    <div class="col-lg-3 col-sm-6 development business" style="position: absolute; left: 0px; top: 600px;">
         <!--Single Course Item Start-->
         <div class="single-course-item border-radius">
             <div class="course-thumb-area">
-                <img class="img-fluid" src="../images/course4.jpg" alt="img">
+                <img class="img-fluid" src="../images/course4.jpg" alt="img" style="width:250px">
                 <div class="course-meta">
                     <a href="http://bdevs.net/edulab/edulab/index.html#"><i class="fa fa-heart-o"></i></a>
                     <a href="http://bdevs.net/edulab/edulab/index.html#"><i class="fa fa-share-alt"></i></a>
@@ -225,11 +238,11 @@
         </div><!--/.single-course-item-end-->
     </div><!--/.col-lg-4-->
 
-    <div class="col-lg-4 col-sm-6 design" style="position: absolute; left: 380px; top: 505px;">
+    <div class="col-lg-3 col-sm-6 design" style="position: absolute; left: 288px; top: 600px;">
         <!--Single Course Item Start-->
         <div class="single-course-item border-radius">
             <div class="course-thumb-area">
-                <img class="img-fluid" src="../images/course5.jpg" alt="img">
+                <img class="img-fluid" src="../images/course5.jpg" alt="img" style="width:250px">
                 <div class="course-meta">
                     <a href="http://bdevs.net/edulab/edulab/index.html#"><i class="fa fa-heart-o"></i></a>
                     <a href="http://bdevs.net/edulab/edulab/index.html#"><i class="fa fa-share-alt"></i></a>
@@ -258,11 +271,11 @@
             </div><!--/.course-content-->
         </div><!--/.single-course-item-end-->
     </div><!--/.col-lg-4-->
-    <div class="col-lg-4 col-sm-6 development photography" style="position: absolute; left: 760px; top: 505px;">
+    <div class="col-lg-3 col-sm-6 development photography" style="position: absolute; left: 574px; top: 600px;">
         <!--Single Course Item Start-->
         <div class="single-course-item border-radius">
             <div class="course-thumb-area">
-                <img class="img-fluid" src="../images/course6.jpg" alt="img">
+                <img class="img-fluid" src="../images/course6.jpg" alt="img" style="width:250px">
                 <div class="course-meta">
                     <a href="http://bdevs.net/edulab/edulab/index.html#"><i class="fa fa-heart-o"></i></a>
                     <a href="http://bdevs.net/edulab/edulab/index.html#"><i class="fa fa-share-alt"></i></a>
