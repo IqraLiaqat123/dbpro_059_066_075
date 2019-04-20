@@ -1,8 +1,17 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Scripts/bootstrap.min.css" />
+    <link rel="stylesheet" href="Scripts/bootstrap-responsive.min.css" />
+    <link rel="stylesheet" href="Scripts/fullcalendar.css" />
+    <link rel="stylesheet" href="Scripts/matrix-style.css" />
+    <link rel="stylesheet" href="css/matrix-media.css" />
+    <link href="Scripts/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" href="Scripts/jquery.gritter.css" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -17,7 +26,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("School Mangement System", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -32,10 +41,60 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+        </div>
+       
+        <footer id="footer" class="site-footer" style="background-color:gray">
+            <div class="footer-top-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <h2>Become A Part of EduLab Community Today</h2>
+                        </div><!--/.col-lg-9-->
+                       
+                    </div><!--/.row-->
+                </div><!--/.container-->
+            </div><!--/.footer-top-area-->
+            <!-- Start footer widgets area -->
+            <div class="footer-widgets-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-sm-6 col-6">
+                            <div class="footer-widget">
+                                <h4 class="footer-title">Quick Links</h4>
+                                <ul class="footer-widget-list list-unstyled">
+                                    <li> @Html.ActionLink("Home", "Index", "Home")</li>
+                                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                                    <li> @Html.ActionLink("Home", "Index", "Home")</li>
+                                    <li> @Html.ActionLink("Home", "Index", "Home")</li>
+                                </ul>
+                            </div><!--/.footer-widget-->
+                        </div><!--/.col-lg-3-->
+                        <div class="col-lg-3 col-sm-6 col-6">
+                            <div class="footer-widget">
+                                <h4 class="footer-title">Navigation</h4>
+                                <ul class="footer-widget-list list-unstyled">
+                                    <li>@Html.ActionLink("Features", "Index", "Home")</li>
+                                    <li><a @Html.ActionLink("Contact", "Index", "Home")</li>
+                                </ul>
+                            </div><!--/.footer-widget-->
+                        </div><!--/.col-lg-3-->
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="footer-newsletter footer-widget">
+                                <h4 class="footer-title">Newsletter</h4>
+                                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur sint occaecat.</p>
+                                
+                            </div><!--/.footer-newsletter-->
+                        </div><!--/.col-lg-6-->
+                    </div><!--/.row-->
+                </div><!--/.container-->
+            </div><!-- End footer widgets area -->
+            <!-- Start footer copyright area -->
+           
+        </footer><!--End footer area -->
+
+
+ 
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
