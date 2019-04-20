@@ -1,8 +1,17 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Scripts/bootstrap.min.css" />
+    <link rel="stylesheet" href="Scripts/bootstrap-responsive.min.css" />
+    <link rel="stylesheet" href="Scripts/fullcalendar.css" />
+    <link rel="stylesheet" href="Scripts/matrix-style.css" />
+    <link rel="stylesheet" href="Scripts/matrix-media.css" />
+    <link rel="stylesheet" href="Scripts/style1.css" />
+    <link rel="stylesheet" href="Scripts/jquery.gritter.css" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -17,7 +26,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("School Mangement System", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -29,13 +38,72 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container ">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
+
+        
+        <!-- Start footer widgets area -->
+        <div class="footer-widgets-area" style="background-color:#33363c; padding-top:100px; padding-bottom:100px">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6 col-6">
+                        <div class="footer-widget">
+                            <h4 class="footer-title" style="color:white"><b style="    font-size: 29px;">Quick Links</b></h4>
+                            <ul class="footer-widget-list list-unstyled" style="color:white">
+                                <li style="color:white"> @Html.ActionLink("Home", "Index", "Home")</li>
+                                <li style="color:white">@Html.ActionLink("Home", "Index", "Home")</li>
+                                <li style="color:white">@Html.ActionLink("Home", "Index", "Home")</li>
+                                <li style="color:white"> @Html.ActionLink("Home", "Index", "Home")</li>
+                                <li style="color:white"> @Html.ActionLink("Home", "Index", "Home")</li>
+                            </ul>
+                        </div><!--/.footer-widget-->
+                    </div><!--/.col-lg-3-->
+                    <div class="col-lg-3 col-sm-6 col-6">
+                        <div class="footer-widget">
+                            <h4 class="footer-title" style="color:white"><b style="    font-size: 29px;">Navigation</b></h4>
+                            <ul class="footer-widget-list list-unstyled">
+                                <li style="color:white">@Html.ActionLink("Features", "Index", "Home")</li>
+                                <li style="color:white">@Html.ActionLink("Contact", "Index", "Home")</li>
+                            </ul>
+                        </div><!--/.footer-widget-->
+                    </div><!--/.col-lg-3-->
+                    <div class="col-lg-6 col-sm-12">
+                        <div class="footer-newsletter footer-widget">
+                            <h4 class="footer-title" style="color:white"><b style="    font-size: 29px;">Newsletter</b></h4>
+                            <p style="color:white">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur sint occaecat.</p>
+
+                        </div><!--/.footer-newsletter-->
+                    </div><!--/.col-lg-6-->
+                </div><!--/.row-->
+            </div><!--/.container-->
+        </div><!-- End footer widgets area -->
+        <!-- Start footer copyright area -->
+
+    
+    <script src="js/excanvas.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.ui.custom.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.flot.min.js"></script>
+    <script src="js/jquery.flot.resize.min.js"></script>
+    <script src="js/jquery.peity.min.js"></script>
+    <script src="js/fullcalendar.min.js"></script>
+    <script src="js/matrix.js"></script>
+    <script src="js/matrix.dashboard.js"></script>
+    <script src="js/jquery.gritter.min.js"></script>
+    <script src="js/matrix.interface.js"></script>
+    <script src="js/matrix.chat.js"></script>
+    <script src="js/jquery.validate.js"></script>
+    <script src="js/matrix.form_validation.js"></script>
+    <script src="js/jquery.wizard.js"></script>
+    <script src="js/jquery.uniform.js"></script>
+    <script src="js/select2.min.js"></script>
+    <script src="js/matrix.popover.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/matrix.tables.js"></script>
+
+    <script type="text/javascript"></script>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
