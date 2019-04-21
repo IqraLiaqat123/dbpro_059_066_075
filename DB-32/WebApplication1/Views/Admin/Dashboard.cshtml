@@ -4,31 +4,25 @@
 <!--sidebar-menu-->
 
 <div id="sidebar" style="background-color:#808080;    height: 1700px;" class="col-md-3 ">
-    <a href="#" class="visible-phone"><i class="icon icon-home"></i> <span style="color:white">Dashboard</span></a>
+     <span style="color:white;font-size:50px">Dashboard</span>
     <ul>
-        <li class="active"><a href="index.html"><i class="icon icon-home"></i> <span style="color:white">Dashboard</span></a> </li>
-        <li> <a href="charts.html"><i class="icon icon-signal"></i> <span style="color:white">Charts &amp; graphs</span></a> </li>
-        <li> <a href="widgets.html"><i class="icon icon-inbox"></i> <span style="color:white">Widgets</span></a> </li>
-        <li><a href="tables.html"><i class="icon icon-th"></i> <span style="color:white">Tables</span></a></li>
-        <li><a href="grid.html"><i class="icon icon-fullscreen"></i> <span style="color:white">Full width</span></a></li>
+        <li class="active">@Html.ActionLink("Dashboard", "Dashboard", "Admin", new { @style = "color:white;font-size:20px" }) </li>
+        <li> @Html.ActionLink("Manage classes and Section", "class_section", "Admin", new { @style = "color:white;font-size:20px" }) </li>
+        <li>@Html.ActionLink("Manage Teachers", "Dashboard", "Admin", new { @style = "color:white;font-size:20px" }) </li>
+        <li>@Html.ActionLink("Manage Students", "Dashboard", "Admin", new { @style = "color:white;font-size:20px" })</li>
+        <li>@Html.ActionLink("View Ateendence Report", "Dashboard", "Admin", new { @style = "color:white;font-size:20px" })</li>
         <li class="submenu">
-            <a href="#"><i class="icon icon-th-list"></i> <span style="color:white">Forms</span> <span class="label label-important">3</span></a>
-
+            @Html.ActionLink("Manage Courses", "Dashboard", "Admin", new { @style = "color:white;font-size:20px" })
         </li>
-        <li><a href="buttons.html"><i class="icon icon-tint"></i> <span style="color:white">Buttons &amp; icons</span></a></li>
-        <li><a href="interface.html"><i class="icon icon-pencil"></i> <span style="color:white">Eelements</span></a></li>
+        <li>@Html.ActionLink("Time Table", "Dashboard", "Admin", new { @style = "color:white;font-size:20px" })</li>
+        <li>@Html.ActionLink("Acounts", "Dashboard", "Admin", new { @style = "color:white;font-size:20px" })</li>
         <li class="submenu">
-            <a href="#"><i class="icon icon-file"></i> <span style="color:white">Addons</span> </a>
-
+            @Html.ActionLink("DateSheets", "Dashboard", "Admin", new { @style = "color:white;font-size:20px" })
         </li>
-        <li class="submenu">
-            <a href="#"><i class="icon icon-info-sign"></i> <span style="color:white">Error</span> <span class="label label-important">4</span></a>
 
-        </li>
 
     </ul>
 </div>
-<!--sidebar-menu-->
 <!--main-container-part-->
 
 @{
@@ -79,26 +73,26 @@
     <div class="row">
         <div class="col-lg-offset-1 col-lg-2">
             <span class="badge" style="padding-right: 35px;
-    padding-left: 35px; color:white"><a class="filter" href="http://bdevs.net/edulab/edulab/index.html#" data-filter="*"><span style="color:white">All</span> </a></span>
+    padding-left: 35px; color:white"><a class="filter" href="http://bdevs.net/edulab/edulab/index.html#" data-filter="*"><span style="color:white;    font-size: 15px">All</span> </a></span>
         </div>
         <div class="col-lg-2">
             <span class="badge" style="padding-right: 26px;
-    padding-left: 26px;"><a class="filter" href="http://bdevs.net/edulab/edulab/index.html#" data-filter=".design"><span style="color:white">Design</span></a></span>
+    padding-left: 26px;"><a class="filter" href="http://bdevs.net/edulab/edulab/index.html#" data-filter=".design"><span style="color:white;    font-size: 15px">Design</span></a></span>
         </div>
 
         <div class="col-lg-2">
             <span class="badge" style="padding-right: 13px;
-    padding-left: 13px;"><a href="http://bdevs.net/edulab/edulab/index.html#" class="filter" data-filter=".development"><span style="color:white">Development</span></a></span>
+    padding-left: 13px;"><a href="http://bdevs.net/edulab/edulab/index.html#" class="filter" data-filter=".development"><span style="color:white;    font-size: 15px">Development</span></a></span>
         </div>
 
         <div class="col-lg-2">
             <span class="badge"style="padding-right: 23px;
-    padding-left: 23px;"><a href="http://bdevs.net/edulab/edulab/index.html#" class="filter" data-filter=".business"><span style="color:white">Business</span></a></span>
+    padding-left: 23px;"><a href="http://bdevs.net/edulab/edulab/index.html#" class="filter" data-filter=".business"><span style="color:white;    font-size: 15px">Business</span></a></span>
         </div>
 
         <div class="col-lg-2">
             <span class="badge"style="padding-right: 20px;
-    padding-left: 20px;"><a href="http://bdevs.net/edulab/edulab/index.html#" class="filter" data-filter=".photography"><span style="color:white">Photography</span></a></span>
+    padding-left: 20px;"><a href="http://bdevs.net/edulab/edulab/index.html#" class="filter" data-filter=".photography"><span style="color:white;    font-size: 15px">Photography</span></a></span>
             </div>
             <!--/.popular-filter-nav-->
         </div>

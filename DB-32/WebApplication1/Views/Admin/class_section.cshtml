@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Manage Classes and Section";
+}
+<div id="sidebar" style="background-color:#808080;    height: 1700px;" class="col-md-3 ">
+    <span style="color:white;font-size:50px">Dashboard</span>
+    <ul>
+        <li class="active">@Html.ActionLink("Dashboard", "Dashboard", "Admin", new { @style = "color:white;font-size:20px" }) </li>
+        <li> @Html.ActionLink("Manage classes and Section", "class_section", "Admin", new { @style = "color:white;font-size:20px" }) </li>
+        <li>@Html.ActionLink("Manage Teachers", "Dashboard", "Admin", new { @style = "color:white;font-size:20px" }) </li>
+        <li>@Html.ActionLink("Manage Students", "Dashboard", "Admin", new { @style = "color:white;font-size:20px" })</li>
+        <li>@Html.ActionLink("View Ateendence Report", "Dashboard", "Admin", new { @style = "color:white;font-size:20px" })</li>
+        <li class="submenu">
+            @Html.ActionLink("Manage Courses", "Dashboard", "Admin", new { @style = "color:white;font-size:20px" })
+        </li>
+        <li>@Html.ActionLink("Time Table", "Dashboard", "Admin", new { @style = "color:white;font-size:20px" })</li>
+        <li>@Html.ActionLink("Acounts", "Dashboard", "Admin", new { @style = "color:white;font-size:20px" })</li>
+        <li class="submenu">
+            @Html.ActionLink("DateSheets", "Dashboard", "Admin", new { @style = "color:white;font-size:20px" })
+        </li>
+
+
+    </ul>
+</div>
+<!--sidebar-menu-->
+<h2>class_section</h2>
+

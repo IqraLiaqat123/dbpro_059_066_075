@@ -13,5 +13,9 @@ namespace WebApplication1.Controllers
         {
             return View();
         }
+        public ActionResult class_section()
+        {
+            return View();
+        }
     }
 }
