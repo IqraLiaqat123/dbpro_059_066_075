@@ -348,6 +348,7 @@
     <Content Include="Views\Admin\teachers.cshtml" />
     <Content Include="Views\Admin\students.cshtml" />
     <Content Include="Views\Admin\View.cshtml" />
+    <Content Include="Views\Student\login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
