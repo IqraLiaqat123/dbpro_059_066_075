@@ -348,7 +348,11 @@
     <Content Include="Views\Admin\teachers.cshtml" />
     <Content Include="Views\Admin\students.cshtml" />
     <Content Include="Views\Admin\View.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Student\login.cshtml" />
+=======
+    <Content Include="Views\Teacher\Teacher.cshtml" />
+>>>>>>> ca69bb9a3f5ac773389f587173ec772eb58a9170
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
