@@ -18,16 +18,17 @@ namespace WebApplication1.Models
         public Class()
         {
             this.Datesheets = new HashSet<Datesheet>();
+            this.Sections = new HashSet<Section>();
             this.Timetables = new HashSet<Timetable>();
         }
     
         public int classid { get; set; }
         public string classname { get; set; }
-        public Nullable<int> sectionid { get; set; }
     
-        public virtual Section Section { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Datesheet> Datesheets { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Section> Sections { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Timetable> Timetables { get; set; }
     }
