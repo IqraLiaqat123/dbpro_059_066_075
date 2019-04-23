@@ -1,6 +1,112 @@
 USE [DB32]
 GO
-/****** Object:  Table [dbo].[Attendence]    Script Date: 4/12/2019 9:10:59 AM ******/
+/****** Object:  Table [dbo].[AspNetRoles]    Script Date: 4/23/2019 7:17:55 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AspNetRoles](
+	[Id] [nvarchar](128) NOT NULL,
+	[Name] [nvarchar](256) NOT NULL,
+ CONSTRAINT [PK_dbo.AspNetRoles] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[AspNetUserClaims]    Script Date: 4/23/2019 7:17:56 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AspNetUserClaims](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[UserId] [nvarchar](128) NOT NULL,
+	[ClaimType] [nvarchar](max) NULL,
+	[ClaimValue] [nvarchar](max) NULL,
+ CONSTRAINT [PK_dbo.AspNetUserClaims] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[AspNetUserLogins]    Script Date: 4/23/2019 7:17:56 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AspNetUserLogins](
+	[LoginProvider] [nvarchar](128) NOT NULL,
+	[ProviderKey] [nvarchar](128) NOT NULL,
+	[UserId] [nvarchar](128) NOT NULL,
+ CONSTRAINT [PK_AspNetUserLogins] PRIMARY KEY CLUSTERED 
+(
+	[LoginProvider] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[AspNetUserRoles]    Script Date: 4/23/2019 7:17:56 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AspNetUserRoles](
+	[UserId] [nvarchar](128) NOT NULL,
+	[RoleId] [nvarchar](128) NOT NULL,
+ CONSTRAINT [PK_dbo.AspNetUserRoles] PRIMARY KEY CLUSTERED 
+(
+	[UserId] ASC,
+	[RoleId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[AspNetUsers]    Script Date: 4/23/2019 7:17:56 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AspNetUsers](
+	[Id] [nvarchar](128) NOT NULL,
+	[Email] [nvarchar](256) NULL,
+	[EmailConfirmed] [bit] NOT NULL,
+	[PasswordHash] [nvarchar](max) NULL,
+	[SecurityStamp] [nvarchar](max) NULL,
+	[PhoneNumber] [nvarchar](max) NULL,
+	[PhoneNumberConfirmed] [bit] NOT NULL,
+	[TwoFactorEnabled] [bit] NOT NULL,
+	[LockoutEndDateUtc] [datetime] NULL,
+	[LockoutEnabled] [bit] NOT NULL,
+	[AccessFailedCount] [int] NOT NULL,
+	[UserName] [nvarchar](256) NOT NULL,
+ CONSTRAINT [PK_dbo.AspNetUsers] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Assignments]    Script Date: 4/23/2019 7:17:56 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Assignments](
+	[Id] [int] NOT NULL,
+	[Ttile] [nchar](128) NULL,
+	[Description] [nchar](128) NULL,
+	[T_Id] [int] NOT NULL,
+ CONSTRAINT [PK_Assignments] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Attendence]    Script Date: 4/23/2019 7:17:56 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -15,7 +121,7 @@ CREATE TABLE [dbo].[Attendence](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Class]    Script Date: 4/12/2019 9:10:59 AM ******/
+/****** Object:  Table [dbo].[Class]    Script Date: 4/23/2019 7:17:56 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -23,7 +129,6 @@ GO
 CREATE TABLE [dbo].[Class](
 	[classid] [int] IDENTITY(1,1) NOT NULL,
 	[classname] [nvarchar](50) NULL,
-	[sectionid] [int] NULL,
  CONSTRAINT [PK_Class] PRIMARY KEY CLUSTERED 
 (
 	[classid] ASC
@@ -31,7 +136,7 @@ CREATE TABLE [dbo].[Class](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[ClassCourse]    Script Date: 4/12/2019 9:10:59 AM ******/
+/****** Object:  Table [dbo].[ClassCourse]    Script Date: 4/23/2019 7:17:56 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -42,7 +147,7 @@ CREATE TABLE [dbo].[ClassCourse](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[ClassCourseTeacher]    Script Date: 4/12/2019 9:10:59 AM ******/
+/****** Object:  Table [dbo].[ClassCourseTeacher]    Script Date: 4/23/2019 7:17:56 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -54,19 +159,7 @@ CREATE TABLE [dbo].[ClassCourseTeacher](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[SectionStudent]    Script Date: 4/12/2019 9:10:59 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[SectionStudent](
-	[StudentId] [int] NULL,
-	[SectionId] [int] NULL,
-	[status] [int] NULL
-) ON [PRIMARY]
-
-GO
-/****** Object:  Table [dbo].[Course]    Script Date: 4/12/2019 9:10:59 AM ******/
+/****** Object:  Table [dbo].[Course]    Script Date: 4/23/2019 7:17:56 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -81,7 +174,24 @@ CREATE TABLE [dbo].[Course](
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Evaluation]    Script Date: 4/12/2019 9:10:59 AM ******/
+/****** Object:  Table [dbo].[Datesheet]    Script Date: 4/23/2019 7:17:56 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Datesheet](
+	[id] [int] NOT NULL,
+	[Date] [datetime] NULL,
+	[CouseId] [int] NULL,
+	[ClassId] [int] NULL,
+ CONSTRAINT [PK_Datesheet] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Evaluation]    Script Date: 4/23/2019 7:17:56 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -97,7 +207,7 @@ CREATE TABLE [dbo].[Evaluation](
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Lookup]    Script Date: 4/12/2019 9:10:59 AM ******/
+/****** Object:  Table [dbo].[Lookup]    Script Date: 4/23/2019 7:17:56 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -113,7 +223,7 @@ CREATE TABLE [dbo].[Lookup](
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Person]    Script Date: 4/12/2019 9:10:59 AM ******/
+/****** Object:  Table [dbo].[Person]    Script Date: 4/23/2019 7:17:56 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -134,7 +244,35 @@ CREATE TABLE [dbo].[Person](
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Student]    Script Date: 4/12/2019 9:10:59 AM ******/
+/****** Object:  Table [dbo].[Section]    Script Date: 4/23/2019 7:17:56 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Section](
+	[SectionID] [int] IDENTITY(1,1) NOT NULL,
+	[name] [nvarchar](max) NULL,
+	[ClassID] [int] NULL,
+ CONSTRAINT [PK_Section] PRIMARY KEY CLUSTERED 
+(
+	[SectionID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[SectionStudent]    Script Date: 4/23/2019 7:17:56 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[SectionStudent](
+	[StudentId] [int] NULL,
+	[SectionId] [int] NULL,
+	[status] [int] NULL
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Student]    Script Date: 4/23/2019 7:17:56 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -151,7 +289,7 @@ CREATE TABLE [dbo].[Student](
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Studentattendence]    Script Date: 4/12/2019 9:10:59 AM ******/
+/****** Object:  Table [dbo].[Studentattendence]    Script Date: 4/23/2019 7:17:56 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -163,7 +301,7 @@ CREATE TABLE [dbo].[Studentattendence](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[StudentEvaluation]    Script Date: 4/12/2019 9:10:59 AM ******/
+/****** Object:  Table [dbo].[StudentEvaluation]    Script Date: 4/23/2019 7:17:56 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -177,7 +315,7 @@ CREATE TABLE [dbo].[StudentEvaluation](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Teacher]    Script Date: 4/12/2019 9:10:59 AM ******/
+/****** Object:  Table [dbo].[Teacher]    Script Date: 4/23/2019 7:17:56 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -186,17 +324,16 @@ CREATE TABLE [dbo].[Teacher](
 	[Id] [int] NOT NULL,
 	[salary] [int] NULL,
 	[Enrollmentdate] [datetime] NULL,
-        [Qualification] [nvarchar](max) NULL,
-
+	[Qualification] [nvarchar](max) NULL,
 	[Designation] [int] NULL,
  CONSTRAINT [PK_Teacher] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Teacherattendence]    Script Date: 4/12/2019 9:10:59 AM ******/
+/****** Object:  Table [dbo].[Teacherattendence]    Script Date: 4/23/2019 7:17:56 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -208,52 +345,11 @@ CREATE TABLE [dbo].[Teacherattendence](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Section]    Script Date: 4/12/2019 9:23:06 PM ******/
+/****** Object:  Table [dbo].[Timetable]    Script Date: 4/23/2019 7:17:56 PM ******/
 SET ANSI_NULLS ON
 GO
-
 SET QUOTED_IDENTIFIER ON
 GO
-
-CREATE TABLE [dbo].[Section](
-	[SectionID] [int] IDENTITY(1,1) NOT NULL,
-	[name] [nvarchar](max) NULL,
- CONSTRAINT [PK_Section] PRIMARY KEY CLUSTERED 
-(
-	[SectionID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-
-GO
-
-/****** Object:  Table [dbo].[Assignments]    Script Date: 4/12/2019 10:42:16 PM ******/
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE TABLE [dbo].[Assignments](
-	[Id] [int] NOT NULL,
-	[Ttile] [nchar](128) NULL,
-	[Description] [nchar](128) NULL,
-	[T_Id] [int] NOT NULL,
- CONSTRAINT [PK_Assignments] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-
-GO
-
-
-/****** Object:  Table [dbo].[Timetable]    Script Date: 4/13/2019 12:21:46 AM ******/
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
-
 CREATE TABLE [dbo].[Timetable](
 	[Id] [int] NOT NULL,
 	[Date] [datetime] NULL,
@@ -267,28 +363,21 @@ CREATE TABLE [dbo].[Timetable](
 ) ON [PRIMARY]
 
 GO
-
-/****** Object:  Table [dbo].[Datesheet]    Script Date: 4/13/2019 12:24:14 AM ******/
-SET ANSI_NULLS ON
+INSERT [dbo].[AspNetUsers] ([Id], [Email], [EmailConfirmed], [PasswordHash], [SecurityStamp], [PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled], [LockoutEndDateUtc], [LockoutEnabled], [AccessFailedCount], [UserName]) VALUES (N'0c8eca84-0216-4332-9827-4d0f2614ed14', N'hibsazam@gmail.com', 0, N'AGKoq1Le6hUSpT6zLmwigPA/We991U77pHqfufWvURYu0SyNLmQfGiiPZtmYp57leA==', N'a0b4b7bb-3995-4b14-9691-d2f448eb32ad', NULL, 0, 0, NULL, 1, 0, N'hibsazam@gmail.com')
 GO
-
-SET QUOTED_IDENTIFIER ON
+INSERT [dbo].[AspNetUsers] ([Id], [Email], [EmailConfirmed], [PasswordHash], [SecurityStamp], [PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled], [LockoutEndDateUtc], [LockoutEnabled], [AccessFailedCount], [UserName]) VALUES (N'3c787aed-71fd-4d2a-9399-7f3a0341abc2', N'hibaazam7@gmail.com', 0, N'AI5ak3P0w8ynSFpVCndJVrYzg6hWPkl3e154R/vnDbyySthno6LO/XlVKg7EpdC29A==', N'cc4b046a-5426-4e65-9604-87fc8893a8fe', NULL, 0, 0, NULL, 1, 0, N'hibaazam7@gmail.com')
 GO
-
-CREATE TABLE [dbo].[Datesheet](
-	[id] [int] NOT NULL,
-	[Date] [datetime] NULL,
-	[CouseId] [int] NULL,
-	[ClassId] [int] NULL,
- CONSTRAINT [PK_Datesheet] PRIMARY KEY CLUSTERED 
-(
-	[id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
+SET IDENTITY_INSERT [dbo].[Class] ON 
 
 GO
-
-
+INSERT [dbo].[Class] ([classid], [classname]) VALUES (1, N'CE')
+GO
+INSERT [dbo].[Class] ([classid], [classname]) VALUES (2, NULL)
+GO
+INSERT [dbo].[Class] ([classid], [classname]) VALUES (3, N'ce')
+GO
+SET IDENTITY_INSERT [dbo].[Class] OFF
+GO
 SET IDENTITY_INSERT [dbo].[Lookup] ON 
 
 GO
@@ -340,48 +429,37 @@ INSERT [dbo].[Lookup] ([id], [value], [category]) VALUES (23, N'D', N'GRADE')
 GO
 INSERT [dbo].[Lookup] ([id], [value], [category]) VALUES (24, N'F', N'GRADE')
 GO
-
 SET IDENTITY_INSERT [dbo].[Lookup] OFF
 GO
-ALTER TABLE [dbo].[Datesheet]  WITH CHECK ADD  CONSTRAINT [FK_Datesheet_Class] FOREIGN KEY([ClassId])
-REFERENCES [dbo].[Class] ([classid])
+ALTER TABLE [dbo].[AspNetUserClaims]  WITH CHECK ADD  CONSTRAINT [FK_dbo.AspNetUserClaims_dbo.AspNetUsers_UserId] FOREIGN KEY([UserId])
+REFERENCES [dbo].[AspNetUsers] ([Id])
+ON DELETE CASCADE
 GO
-
-ALTER TABLE [dbo].[Datesheet] CHECK CONSTRAINT [FK_Datesheet_Class]
+ALTER TABLE [dbo].[AspNetUserClaims] CHECK CONSTRAINT [FK_dbo.AspNetUserClaims_dbo.AspNetUsers_UserId]
 GO
-
-ALTER TABLE [dbo].[Datesheet]  WITH CHECK ADD  CONSTRAINT [FK_Datesheet_Course] FOREIGN KEY([CouseId])
-REFERENCES [dbo].[Course] ([Id])
+ALTER TABLE [dbo].[AspNetUserLogins]  WITH CHECK ADD  CONSTRAINT [FK_dbo.AspNetUserLogins_dbo.AspNetUsers_UserId] FOREIGN KEY([UserId])
+REFERENCES [dbo].[AspNetUsers] ([Id])
+ON DELETE CASCADE
 GO
-
-ALTER TABLE [dbo].[Datesheet] CHECK CONSTRAINT [FK_Datesheet_Course]
+ALTER TABLE [dbo].[AspNetUserLogins] CHECK CONSTRAINT [FK_dbo.AspNetUserLogins_dbo.AspNetUsers_UserId]
 GO
-
-
-
-ALTER TABLE [dbo].[Timetable]  WITH CHECK ADD  CONSTRAINT [FK_Timetable_Class] FOREIGN KEY([ClassId])
-REFERENCES [dbo].[Class] ([classid])
+ALTER TABLE [dbo].[AspNetUserRoles]  WITH CHECK ADD  CONSTRAINT [FK_dbo.AspNetUserRoles_dbo.AspNetRoles_RoleId] FOREIGN KEY([RoleId])
+REFERENCES [dbo].[AspNetRoles] ([Id])
+ON DELETE CASCADE
 GO
-
-ALTER TABLE [dbo].[Timetable] CHECK CONSTRAINT [FK_Timetable_Class]
+ALTER TABLE [dbo].[AspNetUserRoles] CHECK CONSTRAINT [FK_dbo.AspNetUserRoles_dbo.AspNetRoles_RoleId]
 GO
-
-ALTER TABLE [dbo].[Timetable]  WITH CHECK ADD  CONSTRAINT [FK_Timetable_Course1] FOREIGN KEY([CourseId])
-REFERENCES [dbo].[Course] ([Id])
+ALTER TABLE [dbo].[AspNetUserRoles]  WITH CHECK ADD  CONSTRAINT [FK_dbo.AspNetUserRoles_dbo.AspNetUsers_UserId] FOREIGN KEY([UserId])
+REFERENCES [dbo].[AspNetUsers] ([Id])
+ON DELETE CASCADE
 GO
-
-ALTER TABLE [dbo].[Timetable] CHECK CONSTRAINT [FK_Timetable_Course1]
+ALTER TABLE [dbo].[AspNetUserRoles] CHECK CONSTRAINT [FK_dbo.AspNetUserRoles_dbo.AspNetUsers_UserId]
 GO
-
-
-
 ALTER TABLE [dbo].[Assignments]  WITH CHECK ADD  CONSTRAINT [FK_Assignments_Teacher] FOREIGN KEY([T_Id])
 REFERENCES [dbo].[Teacher] ([Id])
 GO
-
 ALTER TABLE [dbo].[Assignments] CHECK CONSTRAINT [FK_Assignments_Teacher]
 GO
-
 ALTER TABLE [dbo].[ClassCourse]  WITH CHECK ADD  CONSTRAINT [FK_ClassCourse_Class] FOREIGN KEY([ClassID])
 REFERENCES [dbo].[Class] ([classid])
 GO
@@ -407,28 +485,36 @@ REFERENCES [dbo].[Teacher] ([Id])
 GO
 ALTER TABLE [dbo].[ClassCourseTeacher] CHECK CONSTRAINT [FK_ClassCourseTeacher_Teacher]
 GO
+ALTER TABLE [dbo].[Datesheet]  WITH CHECK ADD  CONSTRAINT [FK_Datesheet_Class] FOREIGN KEY([ClassId])
+REFERENCES [dbo].[Class] ([classid])
+GO
+ALTER TABLE [dbo].[Datesheet] CHECK CONSTRAINT [FK_Datesheet_Class]
+GO
+ALTER TABLE [dbo].[Datesheet]  WITH CHECK ADD  CONSTRAINT [FK_Datesheet_Course] FOREIGN KEY([CouseId])
+REFERENCES [dbo].[Course] ([Id])
+GO
+ALTER TABLE [dbo].[Datesheet] CHECK CONSTRAINT [FK_Datesheet_Course]
+GO
+ALTER TABLE [dbo].[Section]  WITH CHECK ADD  CONSTRAINT [FK_Section_Class] FOREIGN KEY([ClassID])
+REFERENCES [dbo].[Class] ([classid])
+GO
+ALTER TABLE [dbo].[Section] CHECK CONSTRAINT [FK_Section_Class]
+GO
 ALTER TABLE [dbo].[SectionStudent]  WITH CHECK ADD  CONSTRAINT [FK_ClassStudent_Lookup] FOREIGN KEY([status])
 REFERENCES [dbo].[Lookup] ([id])
 GO
-
 ALTER TABLE [dbo].[SectionStudent] CHECK CONSTRAINT [FK_ClassStudent_Lookup]
 GO
-
 ALTER TABLE [dbo].[SectionStudent]  WITH CHECK ADD  CONSTRAINT [FK_ClassStudent_Student] FOREIGN KEY([StudentId])
 REFERENCES [dbo].[Student] ([Id])
 GO
-
 ALTER TABLE [dbo].[SectionStudent] CHECK CONSTRAINT [FK_ClassStudent_Student]
 GO
-
 ALTER TABLE [dbo].[SectionStudent]  WITH CHECK ADD  CONSTRAINT [FK_SectionStudent_Section] FOREIGN KEY([SectionId])
 REFERENCES [dbo].[Section] ([SectionID])
 GO
-
 ALTER TABLE [dbo].[SectionStudent] CHECK CONSTRAINT [FK_SectionStudent_Section]
 GO
-
-
 ALTER TABLE [dbo].[Student]  WITH CHECK ADD  CONSTRAINT [FK_Student_Person] FOREIGN KEY([Id])
 REFERENCES [dbo].[Person] ([PersonId])
 GO
@@ -472,7 +558,6 @@ GO
 ALTER TABLE [dbo].[Teacher]  WITH CHECK ADD  CONSTRAINT [FK_Teacher_Lookup] FOREIGN KEY([Designation])
 REFERENCES [dbo].[Lookup] ([id])
 GO
-
 ALTER TABLE [dbo].[Teacher] CHECK CONSTRAINT [FK_Teacher_Lookup]
 GO
 ALTER TABLE [dbo].[Teacher]  WITH CHECK ADD  CONSTRAINT [FK_Teacher_Person] FOREIGN KEY([Id])
@@ -495,140 +580,13 @@ REFERENCES [dbo].[Teacher] ([Id])
 GO
 ALTER TABLE [dbo].[Teacherattendence] CHECK CONSTRAINT [FK_Teacherattendence_Teacher]
 GO
-ALTER TABLE [dbo].[Class]  WITH CHECK ADD  CONSTRAINT [FK_Class_Section] FOREIGN KEY([sectionid])
-REFERENCES [dbo].[Section] ([SectionID])
+ALTER TABLE [dbo].[Timetable]  WITH CHECK ADD  CONSTRAINT [FK_Timetable_Class] FOREIGN KEY([ClassId])
+REFERENCES [dbo].[Class] ([classid])
 GO
-
-ALTER TABLE [dbo].[Class] CHECK CONSTRAINT [FK_Class_Section]
+ALTER TABLE [dbo].[Timetable] CHECK CONSTRAINT [FK_Timetable_Class]
 GO
-SET ANSI_NULLS ON
+ALTER TABLE [dbo].[Timetable]  WITH CHECK ADD  CONSTRAINT [FK_Timetable_Course1] FOREIGN KEY([CourseId])
+REFERENCES [dbo].[Course] ([Id])
 GO
-
-SET QUOTED_IDENTIFIER ON
+ALTER TABLE [dbo].[Timetable] CHECK CONSTRAINT [FK_Timetable_Course1]
 GO
-
-CREATE TABLE [dbo].[AspNetRoles](
-	[Id] [nvarchar](128) NOT NULL,
-	[Name] [nvarchar](256) NOT NULL,
- CONSTRAINT [PK_dbo.AspNetRoles] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-
-GO
-
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE TABLE [dbo].[AspNetUserClaims](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[UserId] [nvarchar](128) NOT NULL,
-	[ClaimType] [nvarchar](max) NULL,
-	[ClaimValue] [nvarchar](max) NULL,
- CONSTRAINT [PK_dbo.AspNetUserClaims] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-
-GO
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE TABLE [dbo].[AspNetUserLogins](
-	[LoginProvider] [nvarchar](128) NOT NULL,
-	[ProviderKey] [nvarchar](128) NOT NULL,
-	[UserId] [nvarchar](128) NOT NULL,
- CONSTRAINT [PK_AspNetUserLogins] PRIMARY KEY CLUSTERED 
-(
-	[LoginProvider] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-
-GO
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE TABLE [dbo].[AspNetUserRoles](
-	[UserId] [nvarchar](128) NOT NULL,
-	[RoleId] [nvarchar](128) NOT NULL,
- CONSTRAINT [PK_dbo.AspNetUserRoles] PRIMARY KEY CLUSTERED 
-(
-	[UserId] ASC,
-	[RoleId] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-
-GO
-
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE TABLE [dbo].[AspNetUsers](
-	[Id] [nvarchar](128) NOT NULL,
-	[Email] [nvarchar](256) NULL,
-	[EmailConfirmed] [bit] NOT NULL,
-	[PasswordHash] [nvarchar](max) NULL,
-	[SecurityStamp] [nvarchar](max) NULL,
-	[PhoneNumber] [nvarchar](max) NULL,
-	[PhoneNumberConfirmed] [bit] NOT NULL,
-	[TwoFactorEnabled] [bit] NOT NULL,
-	[LockoutEndDateUtc] [datetime] NULL,
-	[LockoutEnabled] [bit] NOT NULL,
-	[AccessFailedCount] [int] NOT NULL,
-	[UserName] [nvarchar](256) NOT NULL,
- CONSTRAINT [PK_dbo.AspNetUsers] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-
-GO
-ALTER TABLE [dbo].[AspNetUserRoles]  WITH CHECK ADD  CONSTRAINT [FK_dbo.AspNetUserRoles_dbo.AspNetRoles_RoleId] FOREIGN KEY([RoleId])
-REFERENCES [dbo].[AspNetRoles] ([Id])
-ON DELETE CASCADE
-GO
-
-ALTER TABLE [dbo].[AspNetUserRoles] CHECK CONSTRAINT [FK_dbo.AspNetUserRoles_dbo.AspNetRoles_RoleId]
-GO
-
-ALTER TABLE [dbo].[AspNetUserRoles]  WITH CHECK ADD  CONSTRAINT [FK_dbo.AspNetUserRoles_dbo.AspNetUsers_UserId] FOREIGN KEY([UserId])
-REFERENCES [dbo].[AspNetUsers] ([Id])
-ON DELETE CASCADE
-GO
-
-ALTER TABLE [dbo].[AspNetUserRoles] CHECK CONSTRAINT [FK_dbo.AspNetUserRoles_dbo.AspNetUsers_UserId]
-GO
-
-
-
-ALTER TABLE [dbo].[AspNetUserLogins]  WITH CHECK ADD  CONSTRAINT [FK_dbo.AspNetUserLogins_dbo.AspNetUsers_UserId] FOREIGN KEY([UserId])
-REFERENCES [dbo].[AspNetUsers] ([Id])
-ON DELETE CASCADE
-GO
-
-ALTER TABLE [dbo].[AspNetUserLogins] CHECK CONSTRAINT [FK_dbo.AspNetUserLogins_dbo.AspNetUsers_UserId]
-GO
-
-ALTER TABLE [dbo].[AspNetUserClaims]  WITH CHECK ADD  CONSTRAINT [FK_dbo.AspNetUserClaims_dbo.AspNetUsers_UserId] FOREIGN KEY([UserId])
-REFERENCES [dbo].[AspNetUsers] ([Id])
-ON DELETE CASCADE
-GO
-
-ALTER TABLE [dbo].[AspNetUserClaims] CHECK CONSTRAINT [FK_dbo.AspNetUserClaims_dbo.AspNetUsers_UserId]
-GO
-
-

@@ -200,69 +200,72 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetRole.cs">
-      <DependentUpon>db32 Model.tt</DependentUpon>
+      <DependentUpon>DB32.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AspNetUser.cs">
-      <DependentUpon>db32 Model.tt</DependentUpon>
+      <DependentUpon>DB32.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AspNetUserClaim.cs">
-      <DependentUpon>db32 Model.tt</DependentUpon>
+      <DependentUpon>DB32.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AspNetUserLogin.cs">
-      <DependentUpon>db32 Model.tt</DependentUpon>
+      <DependentUpon>DB32.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Assignment.cs">
-      <DependentUpon>db32 Model.tt</DependentUpon>
+      <DependentUpon>DB32.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Attendence.cs">
-      <DependentUpon>db32 Model.tt</DependentUpon>
+      <DependentUpon>DB32.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Class.cs">
-      <DependentUpon>db32 Model.tt</DependentUpon>
+      <DependentUpon>DB32.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Course.cs">
-      <DependentUpon>db32 Model.tt</DependentUpon>
+      <DependentUpon>DB32.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Datesheet.cs">
-      <DependentUpon>db32 Model.tt</DependentUpon>
+      <DependentUpon>DB32.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\db32 Model.Context.cs">
+    <Compile Include="Models\DB32.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>db32 Model.Context.tt</DependentUpon>
+      <DependentUpon>DB32.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\db32 Model.cs">
+    <Compile Include="Models\DB32.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>db32 Model.tt</DependentUpon>
+      <DependentUpon>DB32.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\db32 Model.Designer.cs">
+    <Compile Include="Models\DB32.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>db32 Model.edmx</DependentUpon>
+      <DependentUpon>DB32.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Evaluation.cs">
-      <DependentUpon>db32 Model.tt</DependentUpon>
+      <DependentUpon>DB32.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Lookup.cs">
-      <DependentUpon>db32 Model.tt</DependentUpon>
+      <DependentUpon>DB32.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Person.cs">
-      <DependentUpon>db32 Model.tt</DependentUpon>
+      <DependentUpon>DB32.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Section.cs">
-      <DependentUpon>db32 Model.tt</DependentUpon>
+      <DependentUpon>DB32.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Student.cs">
-      <DependentUpon>db32 Model.tt</DependentUpon>
+      <DependentUpon>DB32.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>DB32.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Teacher.cs">
-      <DependentUpon>db32 Model.tt</DependentUpon>
+      <DependentUpon>DB32.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Timetable.cs">
-      <DependentUpon>db32 Model.tt</DependentUpon>
+      <DependentUpon>DB32.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -274,27 +277,27 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\db32 Model.Context.tt">
+    <Content Include="Models\DB32.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>db32 Model.edmx</DependentUpon>
-      <LastGenOutput>db32 Model.Context.cs</LastGenOutput>
+      <DependentUpon>DB32.edmx</DependentUpon>
+      <LastGenOutput>DB32.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\db32 Model.tt">
+    <Content Include="Models\DB32.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>db32 Model.edmx</DependentUpon>
-      <LastGenOutput>db32 Model.cs</LastGenOutput>
+      <DependentUpon>DB32.edmx</DependentUpon>
+      <LastGenOutput>DB32.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\db32 Model.edmx">
+    <EntityDeploy Include="Models\DB32.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>db32 Model.Designer.cs</LastGenOutput>
+      <LastGenOutput>DB32.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\db32 Model.edmx.diagram">
-      <DependentUpon>db32 Model.edmx</DependentUpon>
+    <Content Include="Models\DB32.edmx.diagram">
+      <DependentUpon>DB32.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -348,6 +351,7 @@
     <Content Include="Views\Admin\teachers.cshtml" />
     <Content Include="Views\Admin\students.cshtml" />
     <Content Include="Views\Admin\View.cshtml" />
+    <Content Include="Views\Admin\createclass.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
