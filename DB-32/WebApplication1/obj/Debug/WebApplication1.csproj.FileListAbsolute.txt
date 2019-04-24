@@ -213,3 +213,5 @@ C:\Users\AYESHA UMER\Documents\dbpro_059_066_075\DB-32\WebApplication1\obj\Debug
 C:\Users\AYESHA UMER\Documents\dbpro_059_066_075\DB-32\WebApplication1\obj\Debug\WebApplication1.csproj.CopyComplete
 C:\Users\AYESHA UMER\Documents\dbpro_059_066_075\DB-32\WebApplication1\obj\Debug\WebApplication1.dll
 C:\Users\AYESHA UMER\Documents\dbpro_059_066_075\DB-32\WebApplication1\obj\Debug\WebApplication1.pdb
+E:\5th semester\Software engineering\lab\lab 5\dbpro_059_066_075\DB-32\WebApplication1\obj\Debug\WebApplication1.dll
+E:\5th semester\Software engineering\lab\lab 5\dbpro_059_066_075\DB-32\WebApplication1\obj\Debug\WebApplication1.pdb
