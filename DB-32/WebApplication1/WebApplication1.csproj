@@ -200,69 +200,72 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetRole.cs">
-      <DependentUpon>db32 Model.tt</DependentUpon>
+      <DependentUpon>DBentity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AspNetUser.cs">
-      <DependentUpon>db32 Model.tt</DependentUpon>
+      <DependentUpon>DBentity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AspNetUserClaim.cs">
-      <DependentUpon>db32 Model.tt</DependentUpon>
+      <DependentUpon>DBentity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AspNetUserLogin.cs">
-      <DependentUpon>db32 Model.tt</DependentUpon>
+      <DependentUpon>DBentity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Assignment.cs">
-      <DependentUpon>db32 Model.tt</DependentUpon>
+      <DependentUpon>DBentity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Attendence.cs">
-      <DependentUpon>db32 Model.tt</DependentUpon>
+      <DependentUpon>DBentity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Class.cs">
-      <DependentUpon>db32 Model.tt</DependentUpon>
+      <DependentUpon>DBentity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Course.cs">
-      <DependentUpon>db32 Model.tt</DependentUpon>
+      <DependentUpon>DBentity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Datesheet.cs">
-      <DependentUpon>db32 Model.tt</DependentUpon>
+      <DependentUpon>DBentity.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\db32 Model.Context.cs">
+    <Compile Include="Models\DBentity.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>db32 Model.Context.tt</DependentUpon>
+      <DependentUpon>DBentity.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\db32 Model.cs">
+    <Compile Include="Models\DBentity.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>db32 Model.tt</DependentUpon>
+      <DependentUpon>DBentity.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\db32 Model.Designer.cs">
+    <Compile Include="Models\DBentity.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>db32 Model.edmx</DependentUpon>
+      <DependentUpon>DBentity.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Evaluation.cs">
-      <DependentUpon>db32 Model.tt</DependentUpon>
+      <DependentUpon>DBentity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Lookup.cs">
-      <DependentUpon>db32 Model.tt</DependentUpon>
+      <DependentUpon>DBentity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Person.cs">
-      <DependentUpon>db32 Model.tt</DependentUpon>
+      <DependentUpon>DBentity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Section.cs">
-      <DependentUpon>db32 Model.tt</DependentUpon>
+      <DependentUpon>DBentity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Student.cs">
-      <DependentUpon>db32 Model.tt</DependentUpon>
+      <DependentUpon>DBentity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>DBentity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Teacher.cs">
-      <DependentUpon>db32 Model.tt</DependentUpon>
+      <DependentUpon>DBentity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Timetable.cs">
-      <DependentUpon>db32 Model.tt</DependentUpon>
+      <DependentUpon>DBentity.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -274,27 +277,27 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\db32 Model.Context.tt">
+    <Content Include="Models\DBentity.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>db32 Model.edmx</DependentUpon>
-      <LastGenOutput>db32 Model.Context.cs</LastGenOutput>
+      <DependentUpon>DBentity.edmx</DependentUpon>
+      <LastGenOutput>DBentity.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\db32 Model.tt">
+    <Content Include="Models\DBentity.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>db32 Model.edmx</DependentUpon>
-      <LastGenOutput>db32 Model.cs</LastGenOutput>
+      <DependentUpon>DBentity.edmx</DependentUpon>
+      <LastGenOutput>DBentity.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\db32 Model.edmx">
+    <EntityDeploy Include="Models\DBentity.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>db32 Model.Designer.cs</LastGenOutput>
+      <LastGenOutput>DBentity.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\db32 Model.edmx.diagram">
-      <DependentUpon>db32 Model.edmx</DependentUpon>
+    <Content Include="Models\DBentity.edmx.diagram">
+      <DependentUpon>DBentity.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -345,6 +348,13 @@
     <Content Include="Views\Admin\class_section.cshtml" />
     <Content Include="Views\Admin\teachers.cshtml" />
     <Content Include="Views\Admin\students.cshtml" />
+    <Content Include="Views\Admin\createclass.cshtml" />
+    <Content Include="Views\Admin\View.cshtml" />
+    <Content Include="Views\Admin\deleteclass.cshtml" />
+    <Content Include="Views\Admin\listclass.cshtml" />
+    <Content Include="Views\Admin\creatsection.cshtml" />
+    <Content Include="Views\Admin\listsection.cshtml" />
+    <Content Include="Views\Admin\deletesection.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

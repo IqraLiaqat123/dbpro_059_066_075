@@ -51,12 +51,25 @@
 </div>
     <!--sidebar-menu-->
     <h2>Manage Class & Section</h2>
-    <div>
-        <input style="background-color:#808080;color:white" type="button" value="ADD CLASS" onclick="location.href='@Url.Action("Dashboard", "Admin")'" />
-    </div>
+    
     <div class="col-lg-9">
         
         <div class="row" style="background-color:#ff8c57;padding-top:20px;padding-bottom:20px;text-align:center">
             <b style="font-size: 19px;">Manage Section </b>
+        </div>
+        <div class="row">
+            <div class="col-lg-2">
+                <input style="background-color:#808080;color:white" type="button" value="ADD CLASS" onclick="location.href='@Url.Action("createclass", "Admin")'" />
+            </div>
+            <div class="col-lg-2">
+                <input style="background-color:#808080;color:white" type="button" value="DELETE CLASS" onclick="location.href='@Url.Action("listclass", "Admin")'" />
+            </div>
+            <div class="col-lg-2">
+                <input style="background-color:#808080;color:white" type="button" value="ADD SECTION TO CLASS" onclick="location.href='@Url.Action("creatsection", "Admin")'" />
+            </div>
+            <div class="col-lg-2">
+                <input style="background-color:#808080;color:white" type="button" value="DELETE SECTION FROM CLASS" onclick="location.href='@Url.Action("listsection", "Admin")'" />
+            </div>
+
         </div>
     </div>

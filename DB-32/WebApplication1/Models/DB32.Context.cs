@@ -13,10 +13,10 @@ namespace WebApplication1.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DB32Entities : DbContext
+    public partial class DB32Entities2 : DbContext
     {
-        public DB32Entities()
-            : base("name=DB32Entities")
+        public DB32Entities2()
+            : base("name=DB32Entities2")
         {
         }
     
@@ -39,6 +39,7 @@ namespace WebApplication1.Models
         public virtual DbSet<Person> People { get; set; }
         public virtual DbSet<Section> Sections { get; set; }
         public virtual DbSet<Student> Students { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Teacher> Teachers { get; set; }
         public virtual DbSet<Timetable> Timetables { get; set; }
     }

@@ -76,7 +76,6 @@
           </Key>
           <Property Name="classid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="classname" Type="nvarchar" MaxLength="50" />
-          <Property Name="sectionid" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6013: The table/view 'DB32.dbo.ClassCourse' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
@@ -142,6 +141,7 @@ warning 6013: The table/view 'DB32.dbo.ClassCourseTeacher' does not have a prima
           </Key>
           <Property Name="SectionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="ClassID" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6013: The table/view 'DB32.dbo.SectionStudent' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
@@ -175,6 +175,16 @@ warning 6013: The table/view 'DB32.dbo.StudentEvaluation' does not have a primar
           <Property Name="obtainmarks" Type="int" />
           <Property Name="grade" Type="int" />
         </EntityType>-->
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="Teacher">
           <Key>
             <PropertyRef Name="Id" />
@@ -211,18 +221,6 @@ warning 6013: The table/view 'DB32.dbo.Teacherattendence' does not have a primar
             </Principal>
             <Dependent Role="Assignments">
               <PropertyRef Name="T_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Class_Section">
-          <End Role="Section" Type="Self.Section" Multiplicity="0..1" />
-          <End Role="Class" Type="Self.Class" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Section">
-              <PropertyRef Name="SectionID" />
-            </Principal>
-            <Dependent Role="Class">
-              <PropertyRef Name="sectionid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -324,6 +322,18 @@ error 6004: The table 'DB32.dbo.SectionStudent' is referenced by a relationship,
             </Principal>
             <Dependent Role="AspNetUserRoles">
               <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Section_Class">
+          <End Role="Class" Type="Self.Class" Multiplicity="0..1" />
+          <End Role="Section" Type="Self.Section" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="classid" />
+            </Principal>
+            <Dependent Role="Section">
+              <PropertyRef Name="ClassID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -436,15 +446,12 @@ error 6004: The table 'DB32.dbo.Teacherattendence' is referenced by a relationsh
           <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Section" EntityType="Self.Section" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Timetable" EntityType="Self.Timetable" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Assignments_Teacher" Association="Self.FK_Assignments_Teacher">
             <End Role="Teacher" EntitySet="Teacher" />
             <End Role="Assignments" EntitySet="Assignments" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Class_Section" Association="Self.FK_Class_Section">
-            <End Role="Section" EntitySet="Section" />
-            <End Role="Class" EntitySet="Class" />
           </AssociationSet>
           <AssociationSet Name="FK_Datesheet_Class" Association="Self.FK_Datesheet_Class">
             <End Role="Class" EntitySet="Class" />
@@ -469,6 +476,10 @@ error 6004: The table 'DB32.dbo.Teacherattendence' is referenced by a relationsh
           <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Section_Class" Association="Self.FK_Section_Class">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="Section" EntitySet="Section" />
           </AssociationSet>
           <AssociationSet Name="FK_Student_Person" Association="Self.FK_Student_Person">
             <End Role="Person" EntitySet="Person" />
@@ -566,9 +577,8 @@ error 6004: The table 'DB32.dbo.Teacherattendence' is referenced by a relationsh
           </Key>
           <Property Name="classid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="classname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="sectionid" Type="Int32" />
-          <NavigationProperty Name="Section" Relationship="Self.FK_Class_Section" FromRole="Class" ToRole="Section" />
           <NavigationProperty Name="Datesheets" Relationship="Self.FK_Datesheet_Class" FromRole="Class" ToRole="Datesheet" />
+          <NavigationProperty Name="Sections" Relationship="Self.FK_Section_Class" FromRole="Class" ToRole="Section" />
           <NavigationProperty Name="Timetables" Relationship="Self.FK_Timetable_Class" FromRole="Class" ToRole="Timetable" />
         </EntityType>
         <EntityType Name="Course">
@@ -629,7 +639,8 @@ error 6004: The table 'DB32.dbo.Teacherattendence' is referenced by a relationsh
           </Key>
           <Property Name="SectionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Classes" Relationship="Self.FK_Class_Section" FromRole="Section" ToRole="Class" />
+          <Property Name="ClassID" Type="Int32" />
+          <NavigationProperty Name="Class" Relationship="Self.FK_Section_Class" FromRole="Section" ToRole="Class" />
         </EntityType>
         <EntityType Name="Student">
           <Key>
@@ -640,6 +651,16 @@ error 6004: The table 'DB32.dbo.Teacherattendence' is referenced by a relationsh
           <Property Name="Rollno" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Enrollmentdate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Person" Relationship="Self.FK_Student_Person" FromRole="Student" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Teacher">
           <Key>
@@ -706,18 +727,6 @@ error 6004: The table 'DB32.dbo.Teacherattendence' is referenced by a relationsh
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Class_Section">
-          <End Role="Section" Type="Self.Section" Multiplicity="0..1" />
-          <End Role="Class" Type="Self.Class" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Section">
-              <PropertyRef Name="SectionID" />
-            </Principal>
-            <Dependent Role="Class">
-              <PropertyRef Name="sectionid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Datesheet_Class">
           <End Role="Class" Type="Self.Class" Multiplicity="0..1" />
           <End Role="Datesheet" Type="Self.Datesheet" Multiplicity="*" />
@@ -727,6 +736,18 @@ error 6004: The table 'DB32.dbo.Teacherattendence' is referenced by a relationsh
             </Principal>
             <Dependent Role="Datesheet">
               <PropertyRef Name="ClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Section_Class">
+          <End Role="Class" Type="Self.Class" Multiplicity="0..1" />
+          <End Role="Section" Type="Self.Section" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="classid" />
+            </Principal>
+            <Dependent Role="Section">
+              <PropertyRef Name="ClassID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -806,7 +827,7 @@ error 6004: The table 'DB32.dbo.Teacherattendence' is referenced by a relationsh
           <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="DB32Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DB32Entities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
@@ -821,6 +842,7 @@ error 6004: The table 'DB32.dbo.Teacherattendence' is referenced by a relationsh
           <EntitySet Name="People" EntityType="Self.Person" />
           <EntitySet Name="Sections" EntityType="Self.Section" />
           <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Teachers" EntityType="Self.Teacher" />
           <EntitySet Name="Timetables" EntityType="Self.Timetable" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
@@ -835,13 +857,13 @@ error 6004: The table 'DB32.dbo.Teacherattendence' is referenced by a relationsh
             <End Role="Teacher" EntitySet="Teachers" />
             <End Role="Assignments" EntitySet="Assignments" />
           </AssociationSet>
-          <AssociationSet Name="FK_Class_Section" Association="Self.FK_Class_Section">
-            <End Role="Section" EntitySet="Sections" />
-            <End Role="Class" EntitySet="Classes" />
-          </AssociationSet>
           <AssociationSet Name="FK_Datesheet_Class" Association="Self.FK_Datesheet_Class">
             <End Role="Class" EntitySet="Classes" />
             <End Role="Datesheet" EntitySet="Datesheets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Section_Class" Association="Self.FK_Section_Class">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="Section" EntitySet="Sections" />
           </AssociationSet>
           <AssociationSet Name="FK_Timetable_Class" Association="Self.FK_Timetable_Class">
             <End Role="Class" EntitySet="Classes" />
@@ -877,7 +899,7 @@ error 6004: The table 'DB32.dbo.Teacherattendence' is referenced by a relationsh
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DB32ModelStoreContainer" CdmEntityContainer="DB32Entities">
+        <EntityContainerMapping StorageEntityContainer="DB32ModelStoreContainer" CdmEntityContainer="DB32Entities1">
           <EntitySetMapping Name="AspNetRoles">
             <EntityTypeMapping TypeName="DB32Model.AspNetRole">
               <MappingFragment StoreEntitySet="AspNetRoles">
@@ -946,7 +968,6 @@ error 6004: The table 'DB32.dbo.Teacherattendence' is referenced by a relationsh
               <MappingFragment StoreEntitySet="Class">
                 <ScalarProperty Name="classid" ColumnName="classid" />
                 <ScalarProperty Name="classname" ColumnName="classname" />
-                <ScalarProperty Name="sectionid" ColumnName="sectionid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1005,6 +1026,7 @@ error 6004: The table 'DB32.dbo.Teacherattendence' is referenced by a relationsh
               <MappingFragment StoreEntitySet="Section">
                 <ScalarProperty Name="SectionID" ColumnName="SectionID" />
                 <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1015,6 +1037,17 @@ error 6004: The table 'DB32.dbo.Teacherattendence' is referenced by a relationsh
                 <ScalarProperty Name="Fee" ColumnName="Fee" />
                 <ScalarProperty Name="Rollno" ColumnName="Rollno" />
                 <ScalarProperty Name="Enrollmentdate" ColumnName="Enrollmentdate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DB32Model.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
