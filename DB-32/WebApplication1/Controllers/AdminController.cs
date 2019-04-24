@@ -5,14 +5,18 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.SqlClient;
 using WebApplication1.Models;
+
 using System.Net;
 
 namespace WebApplication1.Controllers
 {
     public class AdminController : Controller
     {
+
         DB32Entities1 db = new DB32Entities1();
-        // GET: Admin
+
+       
+
         public ActionResult Dashboard()
         {
 
@@ -48,6 +52,7 @@ namespace WebApplication1.Controllers
             }
             return View("class_section");
         }
+
         public ActionResult createclass()
         {
             return View();
@@ -55,6 +60,7 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public ActionResult createclass(Class c)
         {
+            
             if (ModelState.IsValid)
             {
                 db.Classes.Add(c);
@@ -101,5 +107,8 @@ namespace WebApplication1.Controllers
         }
 
         
+
+           
+
      }
 }
