@@ -1,0 +1,330 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+}
+<!--sidebar-menu-->
+
+<div id="sidebar" style="background-color:#808080;    height: 1700px;" class="col-md-3 ">
+    <span style="color:white;font-size:50px">Dashboard</span><br /><br />
+    <img src="../images/db.png" style="width:60px" />
+    @Html.ActionLink("Dashboard", "Dashboard", "Admin", new { @style = "color:white;font-size:20px" }) <br />
+    <div class="col-lg-2">
+        <img src="../images/mng.png" style="width:55px;margin-left:-16px" />
+    </div>
+    <div class="col-lg-10">
+        @Html.ActionLink("Manage classes and Section", "class_section", "Admin", new { @style = "color:white;font-size:20px" })
+    </div><br />
+
+    <img src="../images/mgt.png" style="width:44px" />
+
+    @Html.ActionLink("Manage Teachers", "Dashboard", "Admin", new { @style = "color:white;font-size:20px" })<br />
+    <br />
+    <img src="../images/mgs.png" style="width:40px" />
+
+
+    @Html.ActionLink("Manage Students", "Dashboard", "Admin", new { @style = "color:white;font-size:20px" })
+    <br /><br />
+    <div class="col-lg-2">
+        <img src="../images/atr.png" style="width:30px" />
+    </div>
+    <div class="col-lg-10">
+        @Html.ActionLink("View Attendence Report", "Dashboard", "Admin", new { @style = "color:white;font-size:20px" })
+    </div><br />
+
+    <img src="../images/mgc.png" style="width:40px" />
+
+    @Html.ActionLink("Manage Courses", "Dashboard", "Admin", new { @style = "color:white;font-size:20px;" })
+
+    <br /><br />
+    <img src="../images/mtt.png" style="width:40px" />
+
+    @Html.ActionLink("Time Table", "Dashboard", "Admin", new { @style = "color:white;font-size:20px" })
+    <br /><br />
+    <img src="../images/acnt.png" style="width:40px" />
+
+    @Html.ActionLink("Acounts", "Dashboard", "Admin", new { @style = "color:white;font-size:20px" })
+    <br /><br />
+    <img src="../images/mtt.png" style="width:40px" />
+
+
+    @Html.ActionLink("DateSheets", "Dashboard", "Admin", new { @style = "color:white;font-size:20px" })
+    <br />
+
+</div>
+<!--main-container-part-->
+
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<h2>Dashboard</h2>
+
+<div class="col-lg-9" style="background-color:#ff8c57;    padding-top: 100px;    padding-bottom: 100px">
+
+    <div class="row">
+        <img src="../images/arr.png" style="width:40px;margin-left:-885px;margin-top:-113px" />
+        <div class="col-lg-3 col-sm-3 col-6">
+            <div class="single-counter">
+                <h2><span class="counter">@ViewBag.Courses</span></h2>
+                <p><b>courses</b></p>
+            </div><!--/.single-counter-->
+        </div><!--/.col-lg-3-->
+        <div class="col-lg-3 col-sm-3 col-6">
+            <div class="single-counter">
+                <h2><span class="counter">600</span></h2>
+                <p><b>students</b></p>
+            </div><!--/.single-counter-->
+        </div><!--/.col-lg-3-->
+        <div class="col-lg-3 col-sm-3 col-6">
+            <div class="single-counter">
+                <h2><span class="counter">472</span></h2>
+                <p><b>Teachers</b></p>
+            </div><!--/.single-counter-->
+        </div><!--/.col-lg-3-->
+        <div class="col-lg-3 col-sm-3 col-6">
+            <div class="single-counter">
+                <h2><span class="counter">243</span></h2>
+                <p><b>Classes</b></p>
+            </div><!--/.single-counter-->
+        </div><!--/.col-lg-3-->
+    </div><!--/.row-->
+</div><!--/.col-lg-10-->
+
+
+
+<div class=" col-lg-8">
+    <div class="section-heading-area text-center">
+        <h2 class="section-heading text-capitalize">Popular Courses</h2>
+    </div><!--/.section-heading-area-->
+</div><!--/.col-lg-8-->
+
+
+<div class="col-lg-8">
+    <div class="row">
+        <div class="col-lg-offset-1 col-lg-2">
+            <span class="badge" style="padding-right: 35px;
+    padding-left: 35px; color:white"><a class="filter" href="http://bdevs.net/edulab/edulab/index.html#" data-filter="*"><span style="color:white;    font-size: 15px">All</span> </a></span>
+        </div>
+        <div class="col-lg-2">
+            <span class="badge" style="padding-right: 26px;
+    padding-left: 26px;"><a class="filter" href="http://bdevs.net/edulab/edulab/index.html#" data-filter=".design"><span style="color:white;    font-size: 15px">Design</span></a></span>
+        </div>
+
+        <div class="col-lg-2">
+            <span class="badge" style="padding-right: 13px;
+    padding-left: 13px;"><a href="http://bdevs.net/edulab/edulab/index.html#" class="filter" data-filter=".development"><span style="color:white;    font-size: 15px">Development</span></a></span>
+        </div>
+
+        <div class="col-lg-2">
+            <span class="badge" style="padding-right: 23px;
+    padding-left: 23px;"><a href="http://bdevs.net/edulab/edulab/index.html#" class="filter" data-filter=".business"><span style="color:white;    font-size: 15px">Business</span></a></span>
+        </div>
+
+        <div class="col-lg-2">
+            <span class="badge" style="padding-right: 20px;
+    padding-left: 20px;"><a href="http://bdevs.net/edulab/edulab/index.html#" class="filter" data-filter=".photography"><span style="color:white;    font-size: 15px">Photography</span></a></span>
+        </div>
+        <!--/.popular-filter-nav-->
+    </div>
+</div><!--/.col-lg-12-->
+<div class="col-lg-8">
+    <div class="col-lg-3 col-sm-6 design photography" style="position: absolute; left: 0px; top: 10px;">
+        <!--Single Course Item Start-->
+        <div class="single-course-item border-radius">
+            <div class="course-thumb-area">
+                <img class="img-fluid" src="../images/course1.jpg" alt="img" style="width:250px">
+                <div class="course-meta">
+                    <a href="http://bdevs.net/edulab/edulab/index.html#"><i class="fa fa-heart-o"></i></a>
+                    <a href="http://bdevs.net/edulab/edulab/index.html#"><i class="fa fa-share-alt"></i></a>
+                </div>
+                <span class="course-duration">2.2 hours</span>
+            </div><!--/.course-thumb-area-->
+            <div class="course-content">
+                <h2><a href="http://bdevs.net/edulab/edulab/single-course.html">Object-Oriented Python</a></h2>
+                <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
+                <div class="course-reviews">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                    <span class="total-reviews">(105 reviews)</span>
+                </div><!--/.course-reviews-->
+                <div class="trainer-profile clearfix">
+                    <img class="rounded-circle" src="../images/author-1.jpg" alt="img">
+                    <div class="trainer-info">
+                        <h3>Kelium Smith</h3>
+                        <p>24 april 2017</p>
+                    </div>
+                    <div class="course-cat text-capitalize text-right"><a href="http://bdevs.net/edulab/edulab/index.html#">Development</a></div>
+                </div><!--/.trainer-profile-->
+            </div><!--/.course-content-->
+        </div><!--/.single-course-item-end-->
+    </div><!--/.col-lg-4-->
+
+    <div class="col-lg-3 col-sm-6 business" style="position: absolute; left: 288px; top: 10px;">
+        <!--Single Course Item Start-->
+        <div class="single-course-item border-radius">
+            <div class="course-thumb-area">
+                <img class="img-fluid" src="../images/course2.jpg" alt="img" style="width:250px">
+                <div class="course-meta">
+                    <a href="http://bdevs.net/edulab/edulab/index.html#"><i class="fa fa-heart-o"></i></a>
+                    <a href="http://bdevs.net/edulab/edulab/index.html#"><i class="fa fa-share-alt"></i></a>
+                </div>
+                <span class="course-duration">2.2 hours</span>
+            </div><!--/.course-thumb-area-->
+            <div class="course-content">
+                <h2><a href="http://bdevs.net/edulab/edulab/single-course.html">Isometric Mockup Design</a></h2>
+                <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
+                <div class="course-reviews">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                    <span class="total-reviews">(105 reviews)</span>
+                </div><!--/.course-reviews-->
+                <div class="trainer-profile clearfix">
+                    <img class="rounded-circle" src="../images/author-1.jpg" alt="img">
+                    <div class="trainer-info">
+                        <h3>Kelium Smith</h3>
+                        <p>24 april 2017</p>
+                    </div>
+                    <div class="course-cat text-capitalize text-right"><a href="http://bdevs.net/edulab/edulab/index.html#">Design</a></div>
+                </div><!--/.trainer-profile-->
+            </div><!--/.course-content-->
+        </div><!--/.single-course-item-end-->
+    </div><!--/.col-lg-4-->
+    <div class="col-lg-4 col-sm-6 design photography" style="position: absolute; left: 574px; top: 10px;">
+        <!--Single Course Item Start-->
+        <div class="single-course-item border-radius">
+            <div class="course-thumb-area">
+                <img class="img-fluid" src="../images/course3.jpg" alt="img" style="width:250px">
+                <div class="course-meta">
+                    <a href="http://bdevs.net/edulab/edulab/index.html#"><i class="fa fa-heart-o"></i></a>
+                    <a href="http://bdevs.net/edulab/edulab/index.html#"><i class="fa fa-share-alt"></i></a>
+                </div>
+                <span class="course-duration">2.2 hours</span>
+            </div><!--/.course-thumb-area-->
+            <div class="course-content">
+                <h2><a href="http://bdevs.net/edulab/edulab/single-course.html">HTML5 Essential Training</a></h2>
+                <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
+                <div class="course-reviews">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                    <span class="total-reviews">(105 reviews)</span>
+                </div><!--/.course-reviews-->
+                <div class="trainer-profile clearfix">
+                    <img class="rounded-circle" src="../images/author-1.jpg" alt="img">
+                    <div class="trainer-info">
+                        <h3>Kelium Smith</h3>
+                        <p>24 april 2017</p>
+                    </div>
+                    <div class="course-cat text-capitalize text-right"><a href="http://bdevs.net/edulab/edulab/index.html#">Development</a></div>
+                </div><!--/.trainer-profile-->
+            </div><!--/.course-content-->
+        </div><!--/.single-course-item-end-->
+    </div><!--/.col-lg-4-->
+    <div class="col-lg-3 col-sm-6 development business" style="position: absolute; left: 0px; top: 600px;">
+        <!--Single Course Item Start-->
+        <div class="single-course-item border-radius">
+            <div class="course-thumb-area">
+                <img class="img-fluid" src="../images/course4.jpg" alt="img" style="width:250px">
+                <div class="course-meta">
+                    <a href="http://bdevs.net/edulab/edulab/index.html#"><i class="fa fa-heart-o"></i></a>
+                    <a href="http://bdevs.net/edulab/edulab/index.html#"><i class="fa fa-share-alt"></i></a>
+                </div>
+                <span class="course-duration">2.2 hours</span>
+            </div><!--/.course-thumb-area-->
+            <div class="course-content">
+                <h2><a href="http://bdevs.net/edulab/edulab/single-course.html">Photo Manipulation</a></h2>
+                <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
+                <div class="course-reviews">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                    <span class="total-reviews">(105 reviews)</span>
+                </div><!--/.course-reviews-->
+                <div class="trainer-profile clearfix">
+                    <img class="rounded-circle" src="../images/author-1.jpg" alt="img">
+                    <div class="trainer-info">
+                        <h3>Kelium Smith</h3>
+                        <p>24 april 2017</p>
+                    </div>
+                    <div class="course-cat text-capitalize text-right"><a href="http://bdevs.net/edulab/edulab/index.html#">Design</a></div>
+                </div><!--/.trainer-profile-->
+            </div><!--/.course-content-->
+        </div><!--/.single-course-item-end-->
+    </div><!--/.col-lg-4-->
+
+    <div class="col-lg-3 col-sm-6 design" style="position: absolute; left: 288px; top: 600px;">
+        <!--Single Course Item Start-->
+        <div class="single-course-item border-radius">
+            <div class="course-thumb-area">
+                <img class="img-fluid" src="../images/course5.jpg" alt="img" style="width:250px">
+                <div class="course-meta">
+                    <a href="http://bdevs.net/edulab/edulab/index.html#"><i class="fa fa-heart-o"></i></a>
+                    <a href="http://bdevs.net/edulab/edulab/index.html#"><i class="fa fa-share-alt"></i></a>
+                </div>
+                <span class="course-duration">2.2 hours</span>
+            </div><!--/.course-thumb-area-->
+            <div class="course-content">
+                <h2><a href="http://bdevs.net/edulab/edulab/single-course.html">PHP Essential Training</a></h2>
+                <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
+                <div class="course-reviews">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                    <span class="total-reviews">(105 reviews)</span>
+                </div><!--/.course-reviews-->
+                <div class="trainer-profile clearfix">
+                    <img class="rounded-circle" src="../images/author-1.jpg" alt="img">
+                    <div class="trainer-info">
+                        <h3>Kelium Smith</h3>
+                        <p>24 april 2017</p>
+                    </div>
+                    <div class="course-cat text-capitalize text-right"><a href="http://bdevs.net/edulab/edulab/index.html#">Development</a></div>
+                </div><!--/.trainer-profile-->
+            </div><!--/.course-content-->
+        </div><!--/.single-course-item-end-->
+    </div><!--/.col-lg-4-->
+    <div class="col-lg-3 col-sm-6 development photography" style="position: absolute; left: 574px; top: 600px;">
+        <!--Single Course Item Start-->
+        <div class="single-course-item border-radius">
+            <div class="course-thumb-area">
+                <img class="img-fluid" src="../images/course6.jpg" alt="img" style="width:250px">
+                <div class="course-meta">
+                    <a href="http://bdevs.net/edulab/edulab/index.html#"><i class="fa fa-heart-o"></i></a>
+                    <a href="http://bdevs.net/edulab/edulab/index.html#"><i class="fa fa-share-alt"></i></a>
+                </div>
+                <span class="course-duration">2.2 hours</span>
+            </div><!--/.course-thumb-area-->
+            <div class="course-content">
+                <h2><a href="http://bdevs.net/edulab/edulab/single-course.html">Illustration For Beginner</a></h2>
+                <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
+                <div class="course-reviews">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                    <span class="total-reviews">(105 reviews)</span>
+                </div><!--/.course-reviews-->
+                <div class="trainer-profile clearfix">
+                    <img class="rounded-circle" src="../images/author-1.jpg" alt="img">
+                    <div class="trainer-info">
+                        <h3>Kelium Smith</h3>
+                        <p>24 april 2017</p>
+                    </div>
+                    <div class="course-cat text-capitalize text-right"><a href="http://bdevs.net/edulab/edulab/index.html#">Design</a></div>
+                </div><!--/.trainer-profile-->
+            </div><!--/.course-content-->
+        </div><!--/.single-course-item-end-->
+    </div><!--/.col-lg-4-->
+</div>
