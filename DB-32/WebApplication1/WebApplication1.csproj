@@ -195,6 +195,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ManageTeacherController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -355,6 +356,10 @@
     <Content Include="Views\Admin\creatsection.cshtml" />
     <Content Include="Views\Admin\listsection.cshtml" />
     <Content Include="Views\Admin\deletesection.cshtml" />
+    <Content Include="Views\ManageTeacher\Index.cshtml" />
+    <Content Include="Views\ManageTeacher\Attendance.cshtml" />
+    <Content Include="Views\ManageTeacher\DeleteAttendance.cshtml" />
+    <Content Include="Views\ManageTeacher\StudentEvaluation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
