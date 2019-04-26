@@ -182,5 +182,66 @@
         <ScalarProperty Name="Id" ColumnName="UserId" />
       </EndProperty>
     </AssociationSetMapping>
+    <EntitySetMapping Name="ClassCourses">
+      <EntityTypeMapping TypeName="DB32Model.ClassCourse">
+        <MappingFragment StoreEntitySet="ClassCourse">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClassCourseTeachers">
+      <EntityTypeMapping TypeName="DB32Model.ClassCourseTeacher">
+        <MappingFragment StoreEntitySet="ClassCourseTeacher">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SectionStudents">
+      <EntityTypeMapping TypeName="DB32Model.SectionStudent">
+        <MappingFragment StoreEntitySet="SectionStudent">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="SectionId" ColumnName="SectionId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Studentattendences">
+      <EntityTypeMapping TypeName="DB32Model.Studentattendence">
+        <MappingFragment StoreEntitySet="Studentattendence">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="AttendenceID" ColumnName="AttendenceID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentEvaluations">
+      <EntityTypeMapping TypeName="DB32Model.StudentEvaluation">
+        <MappingFragment StoreEntitySet="StudentEvaluation">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="grade" ColumnName="grade" />
+          <ScalarProperty Name="obtainmarks" ColumnName="obtainmarks" />
+          <ScalarProperty Name="studentid" ColumnName="studentid" />
+          <ScalarProperty Name="courseid" ColumnName="courseid" />
+          <ScalarProperty Name="evalid" ColumnName="evalid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Teacherattendences">
+      <EntityTypeMapping TypeName="DB32Model.Teacherattendence">
+        <MappingFragment StoreEntitySet="Teacherattendence">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+          <ScalarProperty Name="AttendenceID" ColumnName="AttendenceID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

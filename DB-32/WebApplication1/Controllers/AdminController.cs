@@ -23,6 +23,27 @@ namespace WebApplication1.Controllers
             ViewBag.Class = db.Classes.SqlQuery("SELECT * FROM dbo.Class").Count();
             return View();
         }
+        public ActionResult addteacher()
+        {
+            var Class1 = db.Lookups.SqlQuery("SELECT * FROM dbo.Lookup WHERE dbo.Lookup.category = 'GENDER'").ToList();
+            if (Class1 != null)
+            {
+                ViewBag.Class = Class1;
+            }
+            return View();
+        }
+        [HttpPost]
+        public ActionResult addteacher(Person c)
+        {
+            if (ModelState.IsValid)
+            {
+                
+                db.People.Add(c);
+                db.SaveChanges();
+                RedirectToAction("teacherinfo");
+            }
+            return View("teacherinfo");
+        }
         public ActionResult class_section()
         {
             return View();
@@ -43,6 +64,37 @@ namespace WebApplication1.Controllers
             if (ModelState.IsValid)
             {
                 db.Sections.Add(c);
+                db.SaveChanges();
+                RedirectToAction("class_section");
+            }
+            return View("class_section");
+        }
+        [HttpGet]
+        public ActionResult studentsection()
+        {
+            var Class1 = db.Students.ToList();
+            if (Class1 != null)
+            {
+
+                ViewBag.Student = Class1;
+            }
+
+            var s = db.Sections.ToList();
+            if (Class1 != null)
+            {
+                ViewBag.Section = s;
+            }
+            return View();
+        }
+        [HttpPost]
+        public ActionResult studentsection(SectionStudent c)
+        {
+            if (ModelState.IsValid)
+            {
+                
+                ViewBag.v    = db.SectionStudents.SqlQuery("Select id from lookup where value= ACTIVE");
+                c.status = ViewBag.v;
+                db.SectionStudents.Add(c);
                 db.SaveChanges();
                 RedirectToAction("class_section");
             }
@@ -73,6 +125,11 @@ namespace WebApplication1.Controllers
 
             return View(db.Sections.ToList());
         }
+        public ActionResult listsectionstudent()
+        {
+
+            return View(db.SectionStudents.ToList());
+        }
 
         [HttpGet]
         public ActionResult deletesection(int? id)
@@ -99,7 +156,10 @@ namespace WebApplication1.Controllers
             db.SaveChanges();
             return RedirectToAction("listsection");
         }
+        public ActionResult teachers()
+        {
+            return View();
+        }
 
-        
-     }
+    }
 }

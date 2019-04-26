@@ -1,0 +1,42 @@
+﻿@model WebApplication1.Models.SectionStudent
+
+@{
+    ViewBag.Title = "Deletes";
+}
+
+<h2>Deletes</h2>
+
+<div>
+    <h4>SectionStudent</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Lookup.value)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lookup.value)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Section.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Section.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.Rollno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student.Rollno)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Delete", "Deletes", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

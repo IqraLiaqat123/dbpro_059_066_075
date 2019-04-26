@@ -18,6 +18,10 @@ namespace WebApplication1.Models
         public Lookup()
         {
             this.Teachers = new HashSet<Teacher>();
+            this.SectionStudents = new HashSet<SectionStudent>();
+            this.Studentattendences = new HashSet<Studentattendence>();
+            this.StudentEvaluations = new HashSet<StudentEvaluation>();
+            this.Teacherattendences = new HashSet<Teacherattendence>();
         }
     
         public int id { get; set; }
@@ -26,5 +30,13 @@ namespace WebApplication1.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Teacher> Teachers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SectionStudent> SectionStudents { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Studentattendence> Studentattendences { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StudentEvaluation> StudentEvaluations { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Teacherattendence> Teacherattendences { get; set; }
     }
 }

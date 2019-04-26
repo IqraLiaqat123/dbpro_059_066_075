@@ -220,6 +220,12 @@
     <Compile Include="Models\Class.cs">
       <DependentUpon>DBentity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ClassCourse.cs">
+      <DependentUpon>DBentity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ClassCourseTeacher.cs">
+      <DependentUpon>DBentity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Course.cs">
       <DependentUpon>DBentity.tt</DependentUpon>
     </Compile>
@@ -255,13 +261,25 @@
     <Compile Include="Models\Section.cs">
       <DependentUpon>DBentity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SectionStudent.cs">
+      <DependentUpon>DBentity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Student.cs">
+      <DependentUpon>DBentity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Studentattendence.cs">
+      <DependentUpon>DBentity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StudentEvaluation.cs">
       <DependentUpon>DBentity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>DBentity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Teacher.cs">
+      <DependentUpon>DBentity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Teacherattendence.cs">
       <DependentUpon>DBentity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Timetable.cs">
@@ -355,6 +373,11 @@
     <Content Include="Views\Admin\creatsection.cshtml" />
     <Content Include="Views\Admin\listsection.cshtml" />
     <Content Include="Views\Admin\deletesection.cshtml" />
+    <Content Include="Views\Admin\studentsection.cshtml" />
+    <Content Include="Views\Admin\listsectionstudent.cshtml" />
+    <Content Include="Views\Admin\Deletes.cshtml" />
+    <Content Include="Views\Admin\addteacher.cshtml" />
+    <Content Include="Views\Admin\teacherinfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -14,7 +14,19 @@ namespace WebApplication1.Models
     
     public partial class Attendence
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Attendence()
+        {
+            this.Studentattendences = new HashSet<Studentattendence>();
+            this.Teacherattendences = new HashSet<Teacherattendence>();
+        }
+    
         public int Id { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Studentattendence> Studentattendences { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Teacherattendence> Teacherattendences { get; set; }
     }
 }

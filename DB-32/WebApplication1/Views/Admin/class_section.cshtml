@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Manage Classes and Section";
 }
-<div id="sidebar" style="background-color:#808080;    height: 1700px;" class="col-md-3 ">
+<div id="sidebar" style="background-color:#808080;    height: 637px;" class="col-md-3 ">
     <span style="color:white;font-size:50px">Dashboard</span><br /><br />
     <img src="../images/db.png" style="width:60px" />
     @Html.ActionLink("Dashboard", "Dashboard", "Admin", new { @style = "color:white;font-size:20px" }) <br />
@@ -15,12 +15,12 @@
 
     <img src="../images/mgt.png" style="width:44px" />
 
-    @Html.ActionLink("Manage Teachers", "Dashboard", "Admin", new { @style = "color:white;font-size:20px" })<br />
+    @Html.ActionLink("Manage Teachers", "teachers", "Admin", new { @style = "color:white;font-size:20px" })<br />
     <br />
     <img src="../images/mgs.png" style="width:40px" />
 
 
-    @Html.ActionLink("Manage Students", "Dashboard", "Admin", new { @style = "color:white;font-size:20px" })
+    @Html.ActionLink("Manage Students", "students", "Admin", new { @style = "color:white;font-size:20px" })
     <br /><br />
     <div class="col-lg-2">
         <img src="../images/atr.png" style="width:30px" />
@@ -50,26 +50,34 @@
 
 </div>
     <!--sidebar-menu-->
-    <h2>Manage Class & Section</h2>
+    <br />
     
     <div class="col-lg-9">
         
         <div class="row" style="background-color:#ff8c57;padding-top:20px;padding-bottom:20px;text-align:center">
-            <b style="font-size: 19px;">Manage Section </b>
-        </div>
-        <div class="row">
-            <div class="col-lg-2">
-                <input style="background-color:#808080;color:white" type="button" value="ADD CLASS" onclick="location.href='@Url.Action("createclass", "Admin")'" />
-            </div>
-            <div class="col-lg-2">
-                <input style="background-color:#808080;color:white" type="button" value="DELETE CLASS" onclick="location.href='@Url.Action("listclass", "Admin")'" />
-            </div>
-            <div class="col-lg-2">
-                <input style="background-color:#808080;color:white" type="button" value="ADD SECTION TO CLASS" onclick="location.href='@Url.Action("creatsection", "Admin")'" />
-            </div>
-            <div class="col-lg-2">
-                <input style="background-color:#808080;color:white" type="button" value="DELETE SECTION FROM CLASS" onclick="location.href='@Url.Action("listsection", "Admin")'" />
-            </div>
+            <b style="font-size: 19px;">Manage Section and Class</b>
+            
+        </div><br />
+              <div class="row">
+                  <img src="../images/arr.png" style="width:40px;margin-left:-457px;margin-top:43px" />
+                  <div class="col-lg-2 col-lg-offset-4">
+                      <input style="background-color:#808080;color:white;width:245px;margin-top:60px" type="button" value="ADD CLASS" onclick="location.href='@Url.Action("createclass", "Admin")'" />
+                  </div><br /><br />
+                  <div class="col-lg-2 col-lg-offset-4">
+                      <input style="background-color:#808080;color:white;width:245px" type="button" value="DELETE CLASS" onclick="location.href='@Url.Action("listclass", "Admin")'" />
+                  </div><br /><br />
+                  <div class="col-lg-2 col-lg-offset-4">
+                      <input style="background-color:#808080;color:white;width:245px" type="button" value="ADD SECTION TO CLASS" onclick="location.href='@Url.Action("creatsection", "Admin")'" />
+                  </div><br /><br />
+                  <div class="col-lg-2 col-lg-offset-4">
+                      <input style="background-color:#808080;color:white;width:245px" type="button" value="DELETE SECTION FROM CLASS" onclick="location.href='@Url.Action("listsection", "Admin")'" />
+                  </div><br /><br />
+                  <div class="col-lg-2 col-lg-offset-4">
+                      <input style="background-color:#808080;color:white;width:245px" type="button" value="ADD STUDENT TO SECTION" onclick="location.href='@Url.Action("studentsection", "Admin")'" />
+                  </div><br /><br />
+                  <div class="col-lg-2 col-lg-offset-4">
+                      <input style="background-color:#808080;color:white;width:245px" type="button" value="DELETE STUDENT FROM SECTION" onclick="location.href='@Url.Action("listsectionstudent", "Admin")'" />
+                  </div><br /><br />
 
-        </div>
+              </div>
     </div>
