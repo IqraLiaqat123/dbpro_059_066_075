@@ -26,5 +26,20 @@ namespace WebApplication1.Controllers
         {
             return View();
         }
+
+        public ActionResult DeleteEvaluation()
+        {
+            return View();
+        }
+
+        public ActionResult Assignment()
+        {
+            return View();
+        }
+
+        public ActionResult DeleteAssignment()
+        {
+            return View();
+        }
     }
 }
