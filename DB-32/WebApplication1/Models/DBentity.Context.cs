@@ -42,5 +42,11 @@ namespace WebApplication1.Models
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Teacher> Teachers { get; set; }
         public virtual DbSet<Timetable> Timetables { get; set; }
+        public virtual DbSet<ClassCourse> ClassCourses { get; set; }
+        public virtual DbSet<ClassCourseTeacher> ClassCourseTeachers { get; set; }
+        public virtual DbSet<SectionStudent> SectionStudents { get; set; }
+        public virtual DbSet<Studentattendence> Studentattendences { get; set; }
+        public virtual DbSet<StudentEvaluation> StudentEvaluations { get; set; }
+        public virtual DbSet<Teacherattendence> Teacherattendences { get; set; }
     }
 }

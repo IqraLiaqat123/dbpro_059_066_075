@@ -14,11 +14,25 @@ namespace WebApplication1.Models
     
     public partial class Student
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Student()
+        {
+            this.SectionStudents = new HashSet<SectionStudent>();
+            this.Studentattendences = new HashSet<Studentattendence>();
+            this.StudentEvaluations = new HashSet<StudentEvaluation>();
+        }
+    
         public int Id { get; set; }
         public Nullable<int> Fee { get; set; }
         public string Rollno { get; set; }
         public Nullable<System.DateTime> Enrollmentdate { get; set; }
     
         public virtual Person Person { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SectionStudent> SectionStudents { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Studentattendence> Studentattendences { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StudentEvaluation> StudentEvaluations { get; set; }
     }
 }

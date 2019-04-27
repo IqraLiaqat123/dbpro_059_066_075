@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="507cd8914b5f414babb22c8db701b613" Name="Diagram1">
+      <Diagram DiagramId="507cd8914b5f414babb22c8db701b613" Name="Diagram1" ZoomLevel="63">
         <EntityTypeShape EntityType="DB32Model.AspNetRole" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DB32Model.AspNetUserClaim" Width="1.5" PointX="12.25" PointY="2.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DB32Model.AspNetUserLogin" Width="1.5" PointX="12.25" PointY="5.125" IsExpanded="true" />
@@ -20,7 +20,7 @@
         <EntityTypeShape EntityType="DB32Model.Section" Width="1.5" PointX="5" PointY="14.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DB32Model.Student" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="DB32Model.sysdiagram" Width="1.5" PointX="7.75" PointY="11" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB32Model.Teacher" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB32Model.Teacher" Width="1.5" PointX="3.125" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DB32Model.Timetable" Width="1.5" PointX="5" PointY="8.25" IsExpanded="true" />
         <AssociationConnector Association="DB32Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="DB32Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
@@ -34,6 +34,30 @@
         <AssociationConnector Association="DB32Model.FK_Student_Person" ManuallyRouted="false" />
         <AssociationConnector Association="DB32Model.FK_Teacher_Person" ManuallyRouted="false" />
         <AssociationConnector Association="DB32Model.AspNetUserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DB32Model.ClassCourse" Width="1.5" PointX="5.375" PointY="18.125" />
+        <EntityTypeShape EntityType="DB32Model.ClassCourseTeacher" Width="1.5" PointX="10.375" PointY="11.625" />
+        <EntityTypeShape EntityType="DB32Model.SectionStudent" Width="1.5" PointX="7.625" PointY="14" />
+        <EntityTypeShape EntityType="DB32Model.Studentattendence" Width="1.5" PointX="15.375" PointY="5.875" />
+        <EntityTypeShape EntityType="DB32Model.StudentEvaluation" Width="1.5" PointX="13.375" PointY="12" />
+        <EntityTypeShape EntityType="DB32Model.Teacherattendence" Width="1.5" PointX="12.375" PointY="8.25" />
+        <AssociationConnector Association="DB32Model.FK_Studentattendence_Attendence" />
+        <AssociationConnector Association="DB32Model.FK_Teacherattendence_Attendence" />
+        <AssociationConnector Association="DB32Model.FK_ClassCourse_Class" />
+        <AssociationConnector Association="DB32Model.FK_ClassCourseTeacher_Class" />
+        <AssociationConnector Association="DB32Model.FK_ClassCourse_Course" />
+        <AssociationConnector Association="DB32Model.FK_ClassCourseTeacher_Course" />
+        <AssociationConnector Association="DB32Model.FK_ClassCourseTeacher_Teacher" />
+        <AssociationConnector Association="DB32Model.FK_StudentEvaluation_Course" />
+        <AssociationConnector Association="DB32Model.FK_StudentEvaluation_Evaluation" />
+        <AssociationConnector Association="DB32Model.FK_ClassStudent_Lookup" />
+        <AssociationConnector Association="DB32Model.FK_Studentattendence_Lookup1" />
+        <AssociationConnector Association="DB32Model.FK_StudentEvaluation_Lookup" />
+        <AssociationConnector Association="DB32Model.FK_Teacherattendence_Lookup" />
+        <AssociationConnector Association="DB32Model.FK_SectionStudent_Section" />
+        <AssociationConnector Association="DB32Model.FK_ClassStudent_Student" />
+        <AssociationConnector Association="DB32Model.FK_Studentattendence_Student" />
+        <AssociationConnector Association="DB32Model.FK_StudentEvaluation_Student" />
+        <AssociationConnector Association="DB32Model.FK_Teacherattendence_Teacher" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

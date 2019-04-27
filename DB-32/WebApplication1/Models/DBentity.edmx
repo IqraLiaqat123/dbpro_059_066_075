@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DB32Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DB32Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AspNetRoles">
           <Key>
             <PropertyRef Name="Id" />
@@ -77,19 +77,23 @@
           <Property Name="classid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="classname" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'DB32.dbo.ClassCourse' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="ClassCourse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
           <Property Name="CourseID" Type="int" />
           <Property Name="ClassID" Type="int" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'DB32.dbo.ClassCourseTeacher' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
         <EntityType Name="ClassCourseTeacher">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
           <Property Name="CourseID" Type="int" />
           <Property Name="TeacherID" Type="int" />
           <Property Name="ClassID" Type="int" />
-        </EntityType>-->
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
         <EntityType Name="Course">
           <Key>
             <PropertyRef Name="Id" />
@@ -143,13 +147,15 @@ warning 6013: The table/view 'DB32.dbo.ClassCourseTeacher' does not have a prima
           <Property Name="name" Type="nvarchar(max)" />
           <Property Name="ClassID" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'DB32.dbo.SectionStudent' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="SectionStudent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
           <Property Name="StudentId" Type="int" />
           <Property Name="SectionId" Type="int" />
           <Property Name="status" Type="int" />
-        </EntityType>-->
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
         <EntityType Name="Student">
           <Key>
             <PropertyRef Name="Id" />
@@ -159,22 +165,26 @@ warning 6013: The table/view 'DB32.dbo.SectionStudent' does not have a primary k
           <Property Name="Rollno" Type="nvarchar(max)" />
           <Property Name="Enrollmentdate" Type="datetime" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'DB32.dbo.Studentattendence' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="Studentattendence">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
           <Property Name="AttendenceID" Type="int" />
           <Property Name="StudentId" Type="int" />
           <Property Name="Status" Type="int" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'DB32.dbo.StudentEvaluation' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
         <EntityType Name="StudentEvaluation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
           <Property Name="evalid" Type="int" />
           <Property Name="courseid" Type="int" />
           <Property Name="studentid" Type="int" />
           <Property Name="obtainmarks" Type="int" />
           <Property Name="grade" Type="int" />
-        </EntityType>-->
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -195,13 +205,15 @@ warning 6013: The table/view 'DB32.dbo.StudentEvaluation' does not have a primar
           <Property Name="Qualification" Type="nvarchar(max)" />
           <Property Name="Designation" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'DB32.dbo.Teacherattendence' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="Teacherattendence">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
           <Property Name="AttendenceID" Type="int" />
           <Property Name="TeacherId" Type="int" />
           <Property Name="status" Type="int" />
-        </EntityType>-->
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
         <EntityType Name="Timetable">
           <Key>
             <PropertyRef Name="Id" />
@@ -224,27 +236,90 @@ warning 6013: The table/view 'DB32.dbo.Teacherattendence' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Errors Found During Generation:
-error 6004: The table 'DB32.dbo.ClassCourse' is referenced by a relationship, but cannot be found.
-        <Association Name="FK_ClassCourse_Class" />-->
-        <!--Errors Found During Generation:
-error 6004: The table 'DB32.dbo.ClassCourse' is referenced by a relationship, but cannot be found.
-        <Association Name="FK_ClassCourse_Course" />-->
-        <!--Errors Found During Generation:
-error 6004: The table 'DB32.dbo.ClassCourseTeacher' is referenced by a relationship, but cannot be found.
-        <Association Name="FK_ClassCourseTeacher_Class" />-->
-        <!--Errors Found During Generation:
-error 6004: The table 'DB32.dbo.ClassCourseTeacher' is referenced by a relationship, but cannot be found.
-        <Association Name="FK_ClassCourseTeacher_Course" />-->
-        <!--Errors Found During Generation:
-error 6004: The table 'DB32.dbo.ClassCourseTeacher' is referenced by a relationship, but cannot be found.
-        <Association Name="FK_ClassCourseTeacher_Teacher" />-->
-        <!--Errors Found During Generation:
-error 6004: The table 'DB32.dbo.SectionStudent' is referenced by a relationship, but cannot be found.
-        <Association Name="FK_ClassStudent_Lookup" />-->
-        <!--Errors Found During Generation:
-error 6004: The table 'DB32.dbo.SectionStudent' is referenced by a relationship, but cannot be found.
-        <Association Name="FK_ClassStudent_Student" />-->
+        <Association Name="FK_ClassCourse_Class">
+          <End Role="Class" Type="Self.Class" Multiplicity="0..1" />
+          <End Role="ClassCourse" Type="Self.ClassCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="classid" />
+            </Principal>
+            <Dependent Role="ClassCourse">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassCourse_Course">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="ClassCourse" Type="Self.ClassCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClassCourse">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassCourseTeacher_Class">
+          <End Role="Class" Type="Self.Class" Multiplicity="0..1" />
+          <End Role="ClassCourseTeacher" Type="Self.ClassCourseTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="classid" />
+            </Principal>
+            <Dependent Role="ClassCourseTeacher">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassCourseTeacher_Course">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="ClassCourseTeacher" Type="Self.ClassCourseTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClassCourseTeacher">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassCourseTeacher_Teacher">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
+          <End Role="ClassCourseTeacher" Type="Self.ClassCourseTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClassCourseTeacher">
+              <PropertyRef Name="TeacherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassStudent_Lookup">
+          <End Role="Lookup" Type="Self.Lookup" Multiplicity="0..1" />
+          <End Role="SectionStudent" Type="Self.SectionStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lookup">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SectionStudent">
+              <PropertyRef Name="status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassStudent_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="SectionStudent" Type="Self.SectionStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SectionStudent">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Datesheet_Class">
           <End Role="Class" Type="Self.Class" Multiplicity="0..1" />
           <End Role="Datesheet" Type="Self.Datesheet" Multiplicity="*" />
@@ -337,9 +412,18 @@ error 6004: The table 'DB32.dbo.SectionStudent' is referenced by a relationship,
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Errors Found During Generation:
-error 6004: The table 'DB32.dbo.SectionStudent' is referenced by a relationship, but cannot be found.
-        <Association Name="FK_SectionStudent_Section" />-->
+        <Association Name="FK_SectionStudent_Section">
+          <End Role="Section" Type="Self.Section" Multiplicity="0..1" />
+          <End Role="SectionStudent" Type="Self.SectionStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Section">
+              <PropertyRef Name="SectionID" />
+            </Principal>
+            <Dependent Role="SectionStudent">
+              <PropertyRef Name="SectionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Student_Person">
           <End Role="Person" Type="Self.Person" Multiplicity="1" />
           <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
@@ -352,27 +436,90 @@ error 6004: The table 'DB32.dbo.SectionStudent' is referenced by a relationship,
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Errors Found During Generation:
-error 6004: The table 'DB32.dbo.Studentattendence' is referenced by a relationship, but cannot be found.
-        <Association Name="FK_Studentattendence_Attendence" />-->
-        <!--Errors Found During Generation:
-error 6004: The table 'DB32.dbo.Studentattendence' is referenced by a relationship, but cannot be found.
-        <Association Name="FK_Studentattendence_Lookup1" />-->
-        <!--Errors Found During Generation:
-error 6004: The table 'DB32.dbo.Studentattendence' is referenced by a relationship, but cannot be found.
-        <Association Name="FK_Studentattendence_Student" />-->
-        <!--Errors Found During Generation:
-error 6004: The table 'DB32.dbo.StudentEvaluation' is referenced by a relationship, but cannot be found.
-        <Association Name="FK_StudentEvaluation_Course" />-->
-        <!--Errors Found During Generation:
-error 6004: The table 'DB32.dbo.StudentEvaluation' is referenced by a relationship, but cannot be found.
-        <Association Name="FK_StudentEvaluation_Evaluation" />-->
-        <!--Errors Found During Generation:
-error 6004: The table 'DB32.dbo.StudentEvaluation' is referenced by a relationship, but cannot be found.
-        <Association Name="FK_StudentEvaluation_Lookup" />-->
-        <!--Errors Found During Generation:
-error 6004: The table 'DB32.dbo.StudentEvaluation' is referenced by a relationship, but cannot be found.
-        <Association Name="FK_StudentEvaluation_Student" />-->
+        <Association Name="FK_Studentattendence_Attendence">
+          <End Role="Attendence" Type="Self.Attendence" Multiplicity="0..1" />
+          <End Role="Studentattendence" Type="Self.Studentattendence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Attendence">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Studentattendence">
+              <PropertyRef Name="AttendenceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Studentattendence_Lookup1">
+          <End Role="Lookup" Type="Self.Lookup" Multiplicity="0..1" />
+          <End Role="Studentattendence" Type="Self.Studentattendence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lookup">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Studentattendence">
+              <PropertyRef Name="Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Studentattendence_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="Studentattendence" Type="Self.Studentattendence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Studentattendence">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentEvaluation_Course">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="StudentEvaluation" Type="Self.StudentEvaluation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentEvaluation">
+              <PropertyRef Name="courseid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentEvaluation_Evaluation">
+          <End Role="Evaluation" Type="Self.Evaluation" Multiplicity="0..1" />
+          <End Role="StudentEvaluation" Type="Self.StudentEvaluation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Evaluation">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="StudentEvaluation">
+              <PropertyRef Name="evalid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentEvaluation_Lookup">
+          <End Role="Lookup" Type="Self.Lookup" Multiplicity="0..1" />
+          <End Role="StudentEvaluation" Type="Self.StudentEvaluation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lookup">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="StudentEvaluation">
+              <PropertyRef Name="grade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentEvaluation_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="StudentEvaluation" Type="Self.StudentEvaluation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentEvaluation">
+              <PropertyRef Name="courseid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Teacher_Lookup">
           <End Role="Lookup" Type="Self.Lookup" Multiplicity="0..1" />
           <End Role="Teacher" Type="Self.Teacher" Multiplicity="*" />
@@ -397,15 +544,42 @@ error 6004: The table 'DB32.dbo.StudentEvaluation' is referenced by a relationsh
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Errors Found During Generation:
-error 6004: The table 'DB32.dbo.Teacherattendence' is referenced by a relationship, but cannot be found.
-        <Association Name="FK_Teacherattendence_Attendence" />-->
-        <!--Errors Found During Generation:
-error 6004: The table 'DB32.dbo.Teacherattendence' is referenced by a relationship, but cannot be found.
-        <Association Name="FK_Teacherattendence_Lookup" />-->
-        <!--Errors Found During Generation:
-error 6004: The table 'DB32.dbo.Teacherattendence' is referenced by a relationship, but cannot be found.
-        <Association Name="FK_Teacherattendence_Teacher" />-->
+        <Association Name="FK_Teacherattendence_Attendence">
+          <End Role="Attendence" Type="Self.Attendence" Multiplicity="0..1" />
+          <End Role="Teacherattendence" Type="Self.Teacherattendence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Attendence">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Teacherattendence">
+              <PropertyRef Name="AttendenceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teacherattendence_Lookup">
+          <End Role="Lookup" Type="Self.Lookup" Multiplicity="0..1" />
+          <End Role="Teacherattendence" Type="Self.Teacherattendence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lookup">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Teacherattendence">
+              <PropertyRef Name="status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teacherattendence_Teacher">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
+          <End Role="Teacherattendence" Type="Self.Teacherattendence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Teacherattendence">
+              <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Timetable_Class">
           <End Role="Class" Type="Self.Class" Multiplicity="0..1" />
           <End Role="Timetable" Type="Self.Timetable" Multiplicity="*" />
@@ -439,19 +613,53 @@ error 6004: The table 'DB32.dbo.Teacherattendence' is referenced by a relationsh
           <EntitySet Name="Assignments" EntityType="Self.Assignments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Attendence" EntityType="Self.Attendence" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Class" EntityType="Self.Class" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClassCourse" EntityType="Self.ClassCourse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClassCourseTeacher" EntityType="Self.ClassCourseTeacher" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Datesheet" EntityType="Self.Datesheet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Evaluation" EntityType="Self.Evaluation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Lookup" EntityType="Self.Lookup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Section" EntityType="Self.Section" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SectionStudent" EntityType="Self.SectionStudent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Studentattendence" EntityType="Self.Studentattendence" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentEvaluation" EntityType="Self.StudentEvaluation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teacherattendence" EntityType="Self.Teacherattendence" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Timetable" EntityType="Self.Timetable" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Assignments_Teacher" Association="Self.FK_Assignments_Teacher">
             <End Role="Teacher" EntitySet="Teacher" />
             <End Role="Assignments" EntitySet="Assignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassCourse_Class" Association="Self.FK_ClassCourse_Class">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="ClassCourse" EntitySet="ClassCourse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassCourse_Course" Association="Self.FK_ClassCourse_Course">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="ClassCourse" EntitySet="ClassCourse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassCourseTeacher_Class" Association="Self.FK_ClassCourseTeacher_Class">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="ClassCourseTeacher" EntitySet="ClassCourseTeacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassCourseTeacher_Course" Association="Self.FK_ClassCourseTeacher_Course">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="ClassCourseTeacher" EntitySet="ClassCourseTeacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassCourseTeacher_Teacher" Association="Self.FK_ClassCourseTeacher_Teacher">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="ClassCourseTeacher" EntitySet="ClassCourseTeacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassStudent_Lookup" Association="Self.FK_ClassStudent_Lookup">
+            <End Role="Lookup" EntitySet="Lookup" />
+            <End Role="SectionStudent" EntitySet="SectionStudent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassStudent_Student" Association="Self.FK_ClassStudent_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="SectionStudent" EntitySet="SectionStudent" />
           </AssociationSet>
           <AssociationSet Name="FK_Datesheet_Class" Association="Self.FK_Datesheet_Class">
             <End Role="Class" EntitySet="Class" />
@@ -481,9 +689,41 @@ error 6004: The table 'DB32.dbo.Teacherattendence' is referenced by a relationsh
             <End Role="Class" EntitySet="Class" />
             <End Role="Section" EntitySet="Section" />
           </AssociationSet>
+          <AssociationSet Name="FK_SectionStudent_Section" Association="Self.FK_SectionStudent_Section">
+            <End Role="Section" EntitySet="Section" />
+            <End Role="SectionStudent" EntitySet="SectionStudent" />
+          </AssociationSet>
           <AssociationSet Name="FK_Student_Person" Association="Self.FK_Student_Person">
             <End Role="Person" EntitySet="Person" />
             <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Studentattendence_Attendence" Association="Self.FK_Studentattendence_Attendence">
+            <End Role="Attendence" EntitySet="Attendence" />
+            <End Role="Studentattendence" EntitySet="Studentattendence" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Studentattendence_Lookup1" Association="Self.FK_Studentattendence_Lookup1">
+            <End Role="Lookup" EntitySet="Lookup" />
+            <End Role="Studentattendence" EntitySet="Studentattendence" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Studentattendence_Student" Association="Self.FK_Studentattendence_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Studentattendence" EntitySet="Studentattendence" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentEvaluation_Course" Association="Self.FK_StudentEvaluation_Course">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="StudentEvaluation" EntitySet="StudentEvaluation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentEvaluation_Evaluation" Association="Self.FK_StudentEvaluation_Evaluation">
+            <End Role="Evaluation" EntitySet="Evaluation" />
+            <End Role="StudentEvaluation" EntitySet="StudentEvaluation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentEvaluation_Lookup" Association="Self.FK_StudentEvaluation_Lookup">
+            <End Role="Lookup" EntitySet="Lookup" />
+            <End Role="StudentEvaluation" EntitySet="StudentEvaluation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentEvaluation_Student" Association="Self.FK_StudentEvaluation_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="StudentEvaluation" EntitySet="StudentEvaluation" />
           </AssociationSet>
           <AssociationSet Name="FK_Teacher_Lookup" Association="Self.FK_Teacher_Lookup">
             <End Role="Lookup" EntitySet="Lookup" />
@@ -492,6 +732,18 @@ error 6004: The table 'DB32.dbo.Teacherattendence' is referenced by a relationsh
           <AssociationSet Name="FK_Teacher_Person" Association="Self.FK_Teacher_Person">
             <End Role="Person" EntitySet="Person" />
             <End Role="Teacher" EntitySet="Teacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teacherattendence_Attendence" Association="Self.FK_Teacherattendence_Attendence">
+            <End Role="Attendence" EntitySet="Attendence" />
+            <End Role="Teacherattendence" EntitySet="Teacherattendence" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teacherattendence_Lookup" Association="Self.FK_Teacherattendence_Lookup">
+            <End Role="Lookup" EntitySet="Lookup" />
+            <End Role="Teacherattendence" EntitySet="Teacherattendence" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teacherattendence_Teacher" Association="Self.FK_Teacherattendence_Teacher">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="Teacherattendence" EntitySet="Teacherattendence" />
           </AssociationSet>
           <AssociationSet Name="FK_Timetable_Class" Association="Self.FK_Timetable_Class">
             <End Role="Class" EntitySet="Class" />
@@ -502,8 +754,7 @@ error 6004: The table 'DB32.dbo.Teacherattendence' is referenced by a relationsh
             <End Role="Timetable" EntitySet="Timetable" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DB32Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -570,6 +821,8 @@ error 6004: The table 'DB32.dbo.Teacherattendence' is referenced by a relationsh
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Studentattendences" Relationship="DB32Model.FK_Studentattendence_Attendence" FromRole="Attendence" ToRole="Studentattendence" />
+          <NavigationProperty Name="Teacherattendences" Relationship="DB32Model.FK_Teacherattendence_Attendence" FromRole="Attendence" ToRole="Teacherattendence" />
         </EntityType>
         <EntityType Name="Class">
           <Key>
@@ -580,6 +833,8 @@ error 6004: The table 'DB32.dbo.Teacherattendence' is referenced by a relationsh
           <NavigationProperty Name="Datesheets" Relationship="Self.FK_Datesheet_Class" FromRole="Class" ToRole="Datesheet" />
           <NavigationProperty Name="Sections" Relationship="Self.FK_Section_Class" FromRole="Class" ToRole="Section" />
           <NavigationProperty Name="Timetables" Relationship="Self.FK_Timetable_Class" FromRole="Class" ToRole="Timetable" />
+          <NavigationProperty Name="ClassCourses" Relationship="DB32Model.FK_ClassCourse_Class" FromRole="Class" ToRole="ClassCourse" />
+          <NavigationProperty Name="ClassCourseTeachers" Relationship="DB32Model.FK_ClassCourseTeacher_Class" FromRole="Class" ToRole="ClassCourseTeacher" />
         </EntityType>
         <EntityType Name="Course">
           <Key>
@@ -589,6 +844,9 @@ error 6004: The table 'DB32.dbo.Teacherattendence' is referenced by a relationsh
           <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Datesheets" Relationship="Self.FK_Datesheet_Course" FromRole="Course" ToRole="Datesheet" />
           <NavigationProperty Name="Timetables" Relationship="Self.FK_Timetable_Course1" FromRole="Course" ToRole="Timetable" />
+          <NavigationProperty Name="ClassCourses" Relationship="DB32Model.FK_ClassCourse_Course" FromRole="Course" ToRole="ClassCourse" />
+          <NavigationProperty Name="ClassCourseTeachers" Relationship="DB32Model.FK_ClassCourseTeacher_Course" FromRole="Course" ToRole="ClassCourseTeacher" />
+          <NavigationProperty Name="StudentEvaluations" Relationship="DB32Model.FK_StudentEvaluation_Course" FromRole="Course" ToRole="StudentEvaluation" />
         </EntityType>
         <EntityType Name="Datesheet">
           <Key>
@@ -608,6 +866,7 @@ error 6004: The table 'DB32.dbo.Teacherattendence' is referenced by a relationsh
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Totalmarks" Type="Int32" />
+          <NavigationProperty Name="StudentEvaluations" Relationship="DB32Model.FK_StudentEvaluation_Evaluation" FromRole="Evaluation" ToRole="StudentEvaluation" />
         </EntityType>
         <EntityType Name="Lookup">
           <Key>
@@ -617,6 +876,10 @@ error 6004: The table 'DB32.dbo.Teacherattendence' is referenced by a relationsh
           <Property Name="value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Teachers" Relationship="Self.FK_Teacher_Lookup" FromRole="Lookup" ToRole="Teacher" />
+          <NavigationProperty Name="SectionStudents" Relationship="DB32Model.FK_ClassStudent_Lookup" FromRole="Lookup" ToRole="SectionStudent" />
+          <NavigationProperty Name="Studentattendences" Relationship="DB32Model.FK_Studentattendence_Lookup1" FromRole="Lookup" ToRole="Studentattendence" />
+          <NavigationProperty Name="StudentEvaluations" Relationship="DB32Model.FK_StudentEvaluation_Lookup" FromRole="Lookup" ToRole="StudentEvaluation" />
+          <NavigationProperty Name="Teacherattendences" Relationship="DB32Model.FK_Teacherattendence_Lookup" FromRole="Lookup" ToRole="Teacherattendence" />
         </EntityType>
         <EntityType Name="Person">
           <Key>
@@ -641,6 +904,7 @@ error 6004: The table 'DB32.dbo.Teacherattendence' is referenced by a relationsh
           <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ClassID" Type="Int32" />
           <NavigationProperty Name="Class" Relationship="Self.FK_Section_Class" FromRole="Section" ToRole="Class" />
+          <NavigationProperty Name="SectionStudents" Relationship="DB32Model.FK_SectionStudent_Section" FromRole="Section" ToRole="SectionStudent" />
         </EntityType>
         <EntityType Name="Student">
           <Key>
@@ -651,6 +915,9 @@ error 6004: The table 'DB32.dbo.Teacherattendence' is referenced by a relationsh
           <Property Name="Rollno" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Enrollmentdate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Person" Relationship="Self.FK_Student_Person" FromRole="Student" ToRole="Person" />
+          <NavigationProperty Name="SectionStudents" Relationship="DB32Model.FK_ClassStudent_Student" FromRole="Student" ToRole="SectionStudent" />
+          <NavigationProperty Name="Studentattendences" Relationship="DB32Model.FK_Studentattendence_Student" FromRole="Student" ToRole="Studentattendence" />
+          <NavigationProperty Name="StudentEvaluations" Relationship="DB32Model.FK_StudentEvaluation_Student" FromRole="Student" ToRole="StudentEvaluation" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -674,6 +941,8 @@ error 6004: The table 'DB32.dbo.Teacherattendence' is referenced by a relationsh
           <NavigationProperty Name="Assignments" Relationship="Self.FK_Assignments_Teacher" FromRole="Teacher" ToRole="Assignments" />
           <NavigationProperty Name="Lookup" Relationship="Self.FK_Teacher_Lookup" FromRole="Teacher" ToRole="Lookup" />
           <NavigationProperty Name="Person" Relationship="Self.FK_Teacher_Person" FromRole="Teacher" ToRole="Person" />
+          <NavigationProperty Name="ClassCourseTeachers" Relationship="DB32Model.FK_ClassCourseTeacher_Teacher" FromRole="Teacher" ToRole="ClassCourseTeacher" />
+          <NavigationProperty Name="Teacherattendences" Relationship="DB32Model.FK_Teacherattendence_Teacher" FromRole="Teacher" ToRole="Teacherattendence" />
         </EntityType>
         <EntityType Name="Timetable">
           <Key>
@@ -893,7 +1162,374 @@ error 6004: The table 'DB32.dbo.Teacherattendence' is referenced by a relationsh
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <EntitySet Name="ClassCourses" EntityType="DB32Model.ClassCourse" />
+          <EntitySet Name="ClassCourseTeachers" EntityType="DB32Model.ClassCourseTeacher" />
+          <EntitySet Name="SectionStudents" EntityType="DB32Model.SectionStudent" />
+          <EntitySet Name="Studentattendences" EntityType="DB32Model.Studentattendence" />
+          <EntitySet Name="StudentEvaluations" EntityType="DB32Model.StudentEvaluation" />
+          <EntitySet Name="Teacherattendences" EntityType="DB32Model.Teacherattendence" />
+          <AssociationSet Name="FK_Studentattendence_Attendence" Association="DB32Model.FK_Studentattendence_Attendence">
+            <End Role="Attendence" EntitySet="Attendences" />
+            <End Role="Studentattendence" EntitySet="Studentattendences" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teacherattendence_Attendence" Association="DB32Model.FK_Teacherattendence_Attendence">
+            <End Role="Attendence" EntitySet="Attendences" />
+            <End Role="Teacherattendence" EntitySet="Teacherattendences" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassCourse_Class" Association="DB32Model.FK_ClassCourse_Class">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="ClassCourse" EntitySet="ClassCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassCourseTeacher_Class" Association="DB32Model.FK_ClassCourseTeacher_Class">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="ClassCourseTeacher" EntitySet="ClassCourseTeachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassCourse_Course" Association="DB32Model.FK_ClassCourse_Course">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="ClassCourse" EntitySet="ClassCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassCourseTeacher_Course" Association="DB32Model.FK_ClassCourseTeacher_Course">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="ClassCourseTeacher" EntitySet="ClassCourseTeachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassCourseTeacher_Teacher" Association="DB32Model.FK_ClassCourseTeacher_Teacher">
+            <End Role="Teacher" EntitySet="Teachers" />
+            <End Role="ClassCourseTeacher" EntitySet="ClassCourseTeachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentEvaluation_Course" Association="DB32Model.FK_StudentEvaluation_Course">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="StudentEvaluation" EntitySet="StudentEvaluations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentEvaluation_Evaluation" Association="DB32Model.FK_StudentEvaluation_Evaluation">
+            <End Role="Evaluation" EntitySet="Evaluations" />
+            <End Role="StudentEvaluation" EntitySet="StudentEvaluations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassStudent_Lookup" Association="DB32Model.FK_ClassStudent_Lookup">
+            <End Role="Lookup" EntitySet="Lookups" />
+            <End Role="SectionStudent" EntitySet="SectionStudents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Studentattendence_Lookup1" Association="DB32Model.FK_Studentattendence_Lookup1">
+            <End Role="Lookup" EntitySet="Lookups" />
+            <End Role="Studentattendence" EntitySet="Studentattendences" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentEvaluation_Lookup" Association="DB32Model.FK_StudentEvaluation_Lookup">
+            <End Role="Lookup" EntitySet="Lookups" />
+            <End Role="StudentEvaluation" EntitySet="StudentEvaluations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teacherattendence_Lookup" Association="DB32Model.FK_Teacherattendence_Lookup">
+            <End Role="Lookup" EntitySet="Lookups" />
+            <End Role="Teacherattendence" EntitySet="Teacherattendences" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SectionStudent_Section" Association="DB32Model.FK_SectionStudent_Section">
+            <End Role="Section" EntitySet="Sections" />
+            <End Role="SectionStudent" EntitySet="SectionStudents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassStudent_Student" Association="DB32Model.FK_ClassStudent_Student">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="SectionStudent" EntitySet="SectionStudents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Studentattendence_Student" Association="DB32Model.FK_Studentattendence_Student">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Studentattendence" EntitySet="Studentattendences" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentEvaluation_Student" Association="DB32Model.FK_StudentEvaluation_Student">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="StudentEvaluation" EntitySet="StudentEvaluations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teacherattendence_Teacher" Association="DB32Model.FK_Teacherattendence_Teacher">
+            <End Role="Teacher" EntitySet="Teachers" />
+            <End Role="Teacherattendence" EntitySet="Teacherattendences" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="ClassCourse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="CourseID" Type="Int32" />
+          <Property Name="ClassID" Type="Int32" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Class" Relationship="DB32Model.FK_ClassCourse_Class" FromRole="ClassCourse" ToRole="Class" />
+          <NavigationProperty Name="Course" Relationship="DB32Model.FK_ClassCourse_Course" FromRole="ClassCourse" ToRole="Course" />
+        </EntityType>
+        <EntityType Name="ClassCourseTeacher">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="CourseID" Type="Int32" />
+          <Property Name="TeacherID" Type="Int32" />
+          <Property Name="ClassID" Type="Int32" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Class" Relationship="DB32Model.FK_ClassCourseTeacher_Class" FromRole="ClassCourseTeacher" ToRole="Class" />
+          <NavigationProperty Name="Course" Relationship="DB32Model.FK_ClassCourseTeacher_Course" FromRole="ClassCourseTeacher" ToRole="Course" />
+          <NavigationProperty Name="Teacher" Relationship="DB32Model.FK_ClassCourseTeacher_Teacher" FromRole="ClassCourseTeacher" ToRole="Teacher" />
+        </EntityType>
+        <EntityType Name="SectionStudent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="StudentId" Type="Int32" />
+          <Property Name="SectionId" Type="Int32" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Lookup" Relationship="DB32Model.FK_ClassStudent_Lookup" FromRole="SectionStudent" ToRole="Lookup" />
+          <NavigationProperty Name="Section" Relationship="DB32Model.FK_SectionStudent_Section" FromRole="SectionStudent" ToRole="Section" />
+          <NavigationProperty Name="Student" Relationship="DB32Model.FK_ClassStudent_Student" FromRole="SectionStudent" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Studentattendence">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="AttendenceID" Type="Int32" />
+          <Property Name="StudentId" Type="Int32" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Attendence" Relationship="DB32Model.FK_Studentattendence_Attendence" FromRole="Studentattendence" ToRole="Attendence" />
+          <NavigationProperty Name="Lookup" Relationship="DB32Model.FK_Studentattendence_Lookup1" FromRole="Studentattendence" ToRole="Lookup" />
+          <NavigationProperty Name="Student" Relationship="DB32Model.FK_Studentattendence_Student" FromRole="Studentattendence" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="StudentEvaluation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="evalid" Type="Int32" />
+          <Property Name="courseid" Type="Int32" />
+          <Property Name="studentid" Type="Int32" />
+          <Property Name="obtainmarks" Type="Int32" />
+          <Property Name="grade" Type="Int32" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Course" Relationship="DB32Model.FK_StudentEvaluation_Course" FromRole="StudentEvaluation" ToRole="Course" />
+          <NavigationProperty Name="Evaluation" Relationship="DB32Model.FK_StudentEvaluation_Evaluation" FromRole="StudentEvaluation" ToRole="Evaluation" />
+          <NavigationProperty Name="Lookup" Relationship="DB32Model.FK_StudentEvaluation_Lookup" FromRole="StudentEvaluation" ToRole="Lookup" />
+          <NavigationProperty Name="Student" Relationship="DB32Model.FK_StudentEvaluation_Student" FromRole="StudentEvaluation" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Teacherattendence">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="AttendenceID" Type="Int32" />
+          <Property Name="TeacherId" Type="Int32" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Attendence" Relationship="DB32Model.FK_Teacherattendence_Attendence" FromRole="Teacherattendence" ToRole="Attendence" />
+          <NavigationProperty Name="Lookup" Relationship="DB32Model.FK_Teacherattendence_Lookup" FromRole="Teacherattendence" ToRole="Lookup" />
+          <NavigationProperty Name="Teacher" Relationship="DB32Model.FK_Teacherattendence_Teacher" FromRole="Teacherattendence" ToRole="Teacher" />
+        </EntityType>
+        <Association Name="FK_Studentattendence_Attendence">
+          <End Type="DB32Model.Attendence" Role="Attendence" Multiplicity="0..1" />
+          <End Type="DB32Model.Studentattendence" Role="Studentattendence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Attendence">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Studentattendence">
+              <PropertyRef Name="AttendenceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teacherattendence_Attendence">
+          <End Type="DB32Model.Attendence" Role="Attendence" Multiplicity="0..1" />
+          <End Type="DB32Model.Teacherattendence" Role="Teacherattendence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Attendence">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Teacherattendence">
+              <PropertyRef Name="AttendenceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassCourse_Class">
+          <End Type="DB32Model.Class" Role="Class" Multiplicity="0..1" />
+          <End Type="DB32Model.ClassCourse" Role="ClassCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="classid" />
+            </Principal>
+            <Dependent Role="ClassCourse">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassCourseTeacher_Class">
+          <End Type="DB32Model.Class" Role="Class" Multiplicity="0..1" />
+          <End Type="DB32Model.ClassCourseTeacher" Role="ClassCourseTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="classid" />
+            </Principal>
+            <Dependent Role="ClassCourseTeacher">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassCourse_Course">
+          <End Type="DB32Model.Course" Role="Course" Multiplicity="0..1" />
+          <End Type="DB32Model.ClassCourse" Role="ClassCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClassCourse">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassCourseTeacher_Course">
+          <End Type="DB32Model.Course" Role="Course" Multiplicity="0..1" />
+          <End Type="DB32Model.ClassCourseTeacher" Role="ClassCourseTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClassCourseTeacher">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassCourseTeacher_Teacher">
+          <End Type="DB32Model.Teacher" Role="Teacher" Multiplicity="0..1" />
+          <End Type="DB32Model.ClassCourseTeacher" Role="ClassCourseTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClassCourseTeacher">
+              <PropertyRef Name="TeacherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentEvaluation_Course">
+          <End Type="DB32Model.Course" Role="Course" Multiplicity="0..1" />
+          <End Type="DB32Model.StudentEvaluation" Role="StudentEvaluation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentEvaluation">
+              <PropertyRef Name="courseid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentEvaluation_Evaluation">
+          <End Type="DB32Model.Evaluation" Role="Evaluation" Multiplicity="0..1" />
+          <End Type="DB32Model.StudentEvaluation" Role="StudentEvaluation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Evaluation">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="StudentEvaluation">
+              <PropertyRef Name="evalid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassStudent_Lookup">
+          <End Type="DB32Model.Lookup" Role="Lookup" Multiplicity="0..1" />
+          <End Type="DB32Model.SectionStudent" Role="SectionStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lookup">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SectionStudent">
+              <PropertyRef Name="status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Studentattendence_Lookup1">
+          <End Type="DB32Model.Lookup" Role="Lookup" Multiplicity="0..1" />
+          <End Type="DB32Model.Studentattendence" Role="Studentattendence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lookup">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Studentattendence">
+              <PropertyRef Name="Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentEvaluation_Lookup">
+          <End Type="DB32Model.Lookup" Role="Lookup" Multiplicity="0..1" />
+          <End Type="DB32Model.StudentEvaluation" Role="StudentEvaluation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lookup">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="StudentEvaluation">
+              <PropertyRef Name="grade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teacherattendence_Lookup">
+          <End Type="DB32Model.Lookup" Role="Lookup" Multiplicity="0..1" />
+          <End Type="DB32Model.Teacherattendence" Role="Teacherattendence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lookup">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Teacherattendence">
+              <PropertyRef Name="status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SectionStudent_Section">
+          <End Type="DB32Model.Section" Role="Section" Multiplicity="0..1" />
+          <End Type="DB32Model.SectionStudent" Role="SectionStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Section">
+              <PropertyRef Name="SectionID" />
+            </Principal>
+            <Dependent Role="SectionStudent">
+              <PropertyRef Name="SectionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassStudent_Student">
+          <End Type="DB32Model.Student" Role="Student" Multiplicity="0..1" />
+          <End Type="DB32Model.SectionStudent" Role="SectionStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SectionStudent">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Studentattendence_Student">
+          <End Type="DB32Model.Student" Role="Student" Multiplicity="0..1" />
+          <End Type="DB32Model.Studentattendence" Role="Studentattendence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Studentattendence">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentEvaluation_Student">
+          <End Type="DB32Model.Student" Role="Student" Multiplicity="0..1" />
+          <End Type="DB32Model.StudentEvaluation" Role="StudentEvaluation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentEvaluation">
+              <PropertyRef Name="courseid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teacherattendence_Teacher">
+          <End Type="DB32Model.Teacher" Role="Teacher" Multiplicity="0..1" />
+          <End Type="DB32Model.Teacherattendence" Role="Teacherattendence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Teacherattendence">
+              <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1081,6 +1717,67 @@ error 6004: The table 'DB32.dbo.Teacherattendence' is referenced by a relationsh
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="ClassCourses">
+            <EntityTypeMapping TypeName="DB32Model.ClassCourse">
+              <MappingFragment StoreEntitySet="ClassCourse">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClassCourseTeachers">
+            <EntityTypeMapping TypeName="DB32Model.ClassCourseTeacher">
+              <MappingFragment StoreEntitySet="ClassCourseTeacher">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SectionStudents">
+            <EntityTypeMapping TypeName="DB32Model.SectionStudent">
+              <MappingFragment StoreEntitySet="SectionStudent">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="SectionId" ColumnName="SectionId" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Studentattendences">
+            <EntityTypeMapping TypeName="DB32Model.Studentattendence">
+              <MappingFragment StoreEntitySet="Studentattendence">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="AttendenceID" ColumnName="AttendenceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentEvaluations">
+            <EntityTypeMapping TypeName="DB32Model.StudentEvaluation">
+              <MappingFragment StoreEntitySet="StudentEvaluation">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="grade" ColumnName="grade" />
+                <ScalarProperty Name="obtainmarks" ColumnName="obtainmarks" />
+                <ScalarProperty Name="studentid" ColumnName="studentid" />
+                <ScalarProperty Name="courseid" ColumnName="courseid" />
+                <ScalarProperty Name="evalid" ColumnName="evalid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teacherattendences">
+            <EntityTypeMapping TypeName="DB32Model.Teacherattendence">
+              <MappingFragment StoreEntitySet="Teacherattendence">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+                <ScalarProperty Name="AttendenceID" ColumnName="AttendenceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

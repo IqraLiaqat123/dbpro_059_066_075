@@ -14,8 +14,17 @@ namespace WebApplication1.Models
     
     public partial class Evaluation
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Evaluation()
+        {
+            this.StudentEvaluations = new HashSet<StudentEvaluation>();
+        }
+    
         public int id { get; set; }
         public string name { get; set; }
         public Nullable<int> Totalmarks { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StudentEvaluation> StudentEvaluations { get; set; }
     }
 }

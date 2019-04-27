@@ -18,6 +18,8 @@ namespace WebApplication1.Models
         public Teacher()
         {
             this.Assignments = new HashSet<Assignment>();
+            this.ClassCourseTeachers = new HashSet<ClassCourseTeacher>();
+            this.Teacherattendences = new HashSet<Teacherattendence>();
         }
     
         public int Id { get; set; }
@@ -30,5 +32,9 @@ namespace WebApplication1.Models
         public virtual ICollection<Assignment> Assignments { get; set; }
         public virtual Lookup Lookup { get; set; }
         public virtual Person Person { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ClassCourseTeacher> ClassCourseTeachers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Teacherattendence> Teacherattendences { get; set; }
     }
 }
