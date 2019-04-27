@@ -390,6 +390,9 @@
     <Content Include="Views\teacherView\Datesheet.cshtml" />
     <Content Include="Views\teacherView\DeleteDatesheet.cshtml" />
     <Content Include="Views\studentView\Index.cshtml" />
+    <Content Include="Views\studentView\Timetable.cshtml" />
+    <Content Include="Views\studentView\Datesheet.cshtml" />
+    <Content Include="Views\studentView\Assignment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

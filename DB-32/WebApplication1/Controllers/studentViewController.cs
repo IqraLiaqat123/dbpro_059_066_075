@@ -13,5 +13,20 @@ namespace WebApplication1.Controllers
         {
             return View();
         }
+
+        public ActionResult Timetable()
+        {
+            return View();
+        }
+
+        public ActionResult Datesheet()
+        {
+            return View();
+        }
+
+        public ActionResult Assignment()
+        {
+            return View();
+        }
     }
 }
