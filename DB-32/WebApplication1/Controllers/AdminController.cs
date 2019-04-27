@@ -35,10 +35,39 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public ActionResult addteacher(Person c)
         {
+            var Class1 = db.Lookups.SqlQuery("SELECT * FROM dbo.Lookup WHERE dbo.Lookup.category = 'DESIGNATION'").ToList();
+            if (Class1 != null)
+            {
+                ViewBag.Designation = Class1;
+            }
             if (ModelState.IsValid)
             {
                 
                 db.People.Add(c);
+                db.SaveChanges();
+                int id = c.PersonId;
+                RedirectToAction("teacherinfo(id)");
+            }
+            
+            return View("teacherinfo");
+        }
+        [HttpGet]
+        public ActionResult teacherinfo(int? id)
+        {
+            var Class1 = db.Lookups.SqlQuery("SELECT * FROM dbo.Lookup WHERE dbo.Lookup.category = 'DESIGNATION'").ToList();
+            if (Class1 != null)
+            {
+                ViewBag.Designation = Class1;
+            }
+            return View();
+        }
+        [HttpPost]
+        public ActionResult teacherinfo(Teacher c, int id)
+        {
+            if (ModelState.IsValid)
+            {
+                c.Id = id;
+                db.Teachers.Add(c);
                 db.SaveChanges();
                 RedirectToAction("teacherinfo");
             }
