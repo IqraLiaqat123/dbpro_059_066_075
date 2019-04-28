@@ -3,47 +3,53 @@
 @{
     ViewBag.Title = "listsectionstudent";
 }
+<div class="jumbotron col-lg-offset-2 col-lg-8 text-center">
 
-<h2>listsectionstudent</h2>
+    <h2>List section students</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-
-
-        <th>
-            @Html.DisplayNameFor(model => model.Student.Rollno)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Section.name)
-        </th>
-        <th>
-            <b>status</b>
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
+    <p>
+        @Html.ActionLink("Create New", "studentsection")
+    </p>
+    <table class="table">
+        <tr>
 
 
-        <td>
-            @Html.DisplayFor(modelItem => item.Student.Rollno)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Section.name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Lookup.value)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "Deletes", new { id = item.Id })
-        </td>
-    </tr>
-}
+            <th>
+                @Html.DisplayNameFor(model => model.Student.Rollno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Section.name)
+            </th>
+            <th>
+                <b>status</b>
+            </th>
+            <th></th>
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student.Rollno)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Section.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lookup.value)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Deletes", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <div>
+        @Html.ActionLink("Back", "class_section")
+    </div>
+</div>

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<WebApplication1.Models.Teacher>
+
+@{
+    ViewBag.Title = "tchrs";
+}
+<div class="jumbotron col-lg-offset-2 col-lg-8 text-center">
+
+    <h2>Teachers</h2>
+
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Person.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.salary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Enrollmentdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Qualification)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lookup.value)
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Person.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.salary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Enrollmentdate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Qualification)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lookup.value)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Attendence", "Atndnce", new { id = item.Id })
+
+                </td>
+            </tr>
+        }
+
+    </table>
+    <div>
+        @Html.ActionLink("Back", "attendence")
+    </div>
+</div>

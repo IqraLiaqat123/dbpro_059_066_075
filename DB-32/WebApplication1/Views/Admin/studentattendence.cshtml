@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WebApplication1.Models.Student>
+
+@{
+    ViewBag.Title = "studentattendence";
+}
+<div class="jumbotron col-lg-offset-2 col-lg-8 text-center">
+
+    <h2>Student Attendence</h2>
+
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Person.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rollno)
+            </th>
+
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Person.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rollno)
+                </td>
+
+
+                <td>
+                    @Html.ActionLink("Attendence", "studentattendence", new { id = item.Id }) |
+
+                </td>
+            </tr>
+        }
+
+    </table>
+    <div>
+        @Html.ActionLink("Back", "attendence")
+    </div>
+</div>
