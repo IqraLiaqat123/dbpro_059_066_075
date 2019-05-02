@@ -382,7 +382,6 @@
     <Content Include="Views\Admin\teacherinfo.cshtml" />
     <Content Include="Views\teacherView\Index.cshtml" />
     <Content Include="Views\teacherView\Attendance.cshtml" />
-    <Content Include="Views\teacherView\DeleteAttendance.cshtml" />
     <Content Include="Views\teacherView\Evaluation.cshtml" />
     <Content Include="Views\teacherView\DeleteEvaluation.cshtml" />
     <Content Include="Views\teacherView\Assignment.cshtml" />
@@ -390,6 +389,9 @@
     <Content Include="Views\teacherView\Datesheet.cshtml" />
     <Content Include="Views\teacherView\DeleteDatesheet.cshtml" />
     <Content Include="Views\studentView\Index.cshtml" />
+    <Content Include="Views\studentView\Timetable.cshtml" />
+    <Content Include="Views\studentView\Datesheet.cshtml" />
+    <Content Include="Views\studentView\Assignment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
