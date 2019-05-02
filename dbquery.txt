@@ -631,4 +631,9 @@ GO
 ALTER TABLE [dbo].[AspNetUserClaims] CHECK CONSTRAINT [FK_dbo.AspNetUserClaims_dbo.AspNetUsers_UserId]
 GO
 
-
+CREATE PROCEDURE teacherattn @add int
+AS SELECT * FROM dbo.Teacherattendence WHERE dbo.Teacherattendence.TeacherId = @add
+go
+CREATE PROCEDURE studentattn @add int
+AS SELECT * FROM dbo.Studentattendence WHERE dbo.Studentattendence.StudentId = @add
+go
