@@ -6,45 +6,88 @@
 
 <h2>Timetable</h2>
 
-<div>
-    <h4>Timetable</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
+<div id="sidebar" style="background-color:#808080;    height: 700px;" class="col-md-3 ">
+    <span style="color:white;font-size:50px">Dashboard</span><br /><br />
+    <img src="../images/db.png" style="width:60px" />
+    @Html.ActionLink("Dashboard", "Index", "studentView", new { @style = "color:white;font-size:20px" }) <br />
+    <div class="col-lg-2">
+        <img src="../images/mgt.png" style="width:44px" />
+    </div>
+    <div class="col-lg-10">
+        @Html.ActionLink("Personal Information", "Info", "studentView", new { @style = "color:white;font-size:20px" })
+    </div><br />
+    <div class="col-lg-2">
+        <img src="../images/atr.png" style="width:30px" />
+    </div>
+    <div class="col-lg-10">
+        @Html.ActionLink("View Timetable", "Timetable", "studentView", new { @style = "color:white;font-size:20px" })
+    </div><br /><br />
 
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
+    <img src="../images/mgt.png" style="width:44px" />
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Time)
-        </dt>
+    @Html.ActionLink("Dues Summary", "Fee", "studentView", new { @style = "color:white;font-size:20px" })<br />
+    <br />
+    <img src="../images/atr.png" style="width:30px" />
 
-        <dd>
-            @Html.DisplayFor(model => model.Time)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Class.classname)
-        </dt>
+    @Html.ActionLink("View Datesheet", "Datesheet", "studentView", new { @style = "color:white;font-size:20px" })
+    <br /><br />
+    <div class="col-lg-2">
+        <img src="../images/atr.png" style="width:30px" />
+    </div>
+    <div class="col-lg-10">
+        @Html.ActionLink("View Assignment", "Assignment", "studentView", new { @style = "color:white;font-size:20px" })
+    </div><br />
 
-        <dd>
-            @Html.DisplayFor(model => model.Class.classname)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Course.title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Course.title)
-        </dd>
-
-    </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) <br><br>
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<!--main-container-part-->
+
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<h2>Dashboard</h2>
+
+<div class="col-lg-9" style="background-color:#ff8c57;    padding-top: 100px;    padding-bottom: 100px">
+
+    <div class="row">
+        <div>
+            <h4>Timetable</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Date)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Date)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Time)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Time)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Class.classname)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Class.classname)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Course.title)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Course.title)
+                </dd>
+
+            </dl>
+        </div>
+    </div><!--/.row-->
+</div><!--/.col-lg-10-->

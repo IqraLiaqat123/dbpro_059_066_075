@@ -4,40 +4,117 @@
     ViewBag.Title = "Evaluation";
 }
 
-<h2>Evaluation</h2>
-
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Evaluation</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Totalmarks, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Totalmarks, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Totalmarks, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
+<div id="sidebar" style="background-color:#808080;    height: 750px;" class="col-md-3 ">
+    <span style="color:white;font-size:50px">Dashboard</span><br /><br />
+    <img src="../images/db.png" style="width:60px" />
+    @Html.ActionLink("Dashboard", "Index", "teacherView", new { @style = "color:white;font-size:20px" }) <br />
+    <div class="col-lg-2">
+        <img src="../images/mng.png" style="width:55px;margin-left:-16px" />
     </div>
+    <div class="col-lg-10">
+        @Html.ActionLink("Personal Information", "", "teacherView", new { @style = "color:white;font-size:20px" })
+    </div><br />
+
+    <img src="../images/mgt.png" style="width:44px" />
+
+    @Html.ActionLink("Manage Attendance", "Attendance", "teacherView", new { @style = "color:white;font-size:20px" })<br />
+    <br />
+    <img src="../images/mgs.png" style="width:40px" />
+
+
+    @Html.ActionLink("Manage Result", "Evaluation", "teaacherView", new { @style = "color:white;font-size:20px" })
+    <br /><br />
+    <div class="col-lg-2">
+        <img src="../images/atr.png" style="width:30px" />
+    </div>
+    <div class="col-lg-10">
+        @Html.ActionLink("View Timetable", "", "teacher", new { @style = "color:white;font-size:20px" })
+    </div><br /><br />
+
+    <img src="../images/mgc.png" style="width:30px" />
+
+    @Html.ActionLink("Manage Datesheet", "Datesheet", "teacherView", new { @style = "color:white;font-size:20px;" })
+
+    <br /><br />
+    <img src="../images/mtt.png" style="width:40px" />
+
+    @Html.ActionLink("Manage Assignments", "Assignment", "teacherView", new { @style = "color:white;font-size:20px" })
+</div>
+<!--main-container-part-->
+
+@{
+    ViewBag.Title = "Attendance";
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+<h2>Manage Evaluation</h2>
+
+<div class="col-lg-9" style="background-color:#ffac57bf;    padding-top: 40px;    padding-bottom: 10px">
+
+    <div class="row">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>Create Evaluation</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Totalmarks, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Totalmarks, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Totalmarks, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div><!--/.row-->
+    <hr /><hr />
+          <div class="row">
+              <h4>Delete Evaluation</h4>
+              <hr />
+              <dl class="dl-horizontal">
+                  <dt>
+                      @Html.DisplayNameFor(model => model.name)
+                  </dt>
+
+                  <dd>
+                      @Html.DisplayFor(model => model.name)
+                  </dd>
+
+                  <dt>
+                      @Html.DisplayNameFor(model => model.Totalmarks)
+                  </dt>
+
+                  <dd>
+                      @Html.DisplayFor(model => model.Totalmarks)
+                  </dd>
+
+              </dl>
+
+              @using (Html.BeginForm())
+              {
+                  @Html.AntiForgeryToken()
+
+              <div class="form-group">
+                  <div class="col-md-offset-2 col-md-10">
+                      <input type="submit" value="Delete" class="btn btn-default" />
+                  </div>
+              </div>
+              }
+              </div><!--/.row-->
+</div><!--/.col-lg-9-->

@@ -28,5 +28,10 @@ namespace WebApplication1.Controllers
         {
             return View();
         }
+         
+        public ActionResult Person()
+        {
+            return View(db.PersonalInformation.Sqlquery("Exec studentInfo @add={0}, id").ToList());
+        }
     }
 }
