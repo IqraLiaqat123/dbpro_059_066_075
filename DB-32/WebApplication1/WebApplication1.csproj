@@ -382,7 +382,6 @@
     <Content Include="Views\Admin\teacherinfo.cshtml" />
     <Content Include="Views\teacherView\Index.cshtml" />
     <Content Include="Views\teacherView\Attendance.cshtml" />
-    <Content Include="Views\teacherView\DeleteAttendance.cshtml" />
     <Content Include="Views\teacherView\Evaluation.cshtml" />
     <Content Include="Views\teacherView\DeleteEvaluation.cshtml" />
     <Content Include="Views\teacherView\Assignment.cshtml" />
