@@ -23,15 +23,6 @@ namespace WebApplication1.Controllers
             ViewBag.Class = db.Classes.SqlQuery("SELECT * FROM dbo.Class").Count();
             return View();
         }
-        public ActionResult atndce(int id)
-        {
-
-            return View(db.Teacherattendences.SqlQuery("Exec teacherattn @add= {0}",id).ToList());
-        }
-        public ActionResult attendence()
-        {
-            return View();
-        }
         public ActionResult addteacher()
         {
             var Class1 = db.Lookups.SqlQuery("SELECT * FROM dbo.Lookup WHERE dbo.Lookup.category = 'GENDER'").ToList();
@@ -61,7 +52,7 @@ namespace WebApplication1.Controllers
             return View("teacherinfo");
         }
         [HttpGet]
-        public ActionResult teacherinfo(int id)
+        public ActionResult teacherinfo(int? id)
         {
             var Class1 = db.Lookups.SqlQuery("SELECT * FROM dbo.Lookup WHERE dbo.Lookup.category = 'DESIGNATION'").ToList();
             if (Class1 != null)
@@ -138,12 +129,10 @@ namespace WebApplication1.Controllers
             }
             return View("class_section");
         }
-
         public ActionResult createclass()
         {
             return View();
         }
-
         [HttpPost]
         public ActionResult createclass(Class c)
         {
@@ -170,32 +159,7 @@ namespace WebApplication1.Controllers
 
             return View(db.SectionStudents.ToList());
         }
-        [HttpGet]
-        public ActionResult deleteclass(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Class personalDetail = db.Classes.Find(id);
-            if (personalDetail == null)
-            {
-                return HttpNotFound();
-            }
-            return View(personalDetail);
-        }
 
-
-        [HttpPost, ActionName("deleteclass")]
-        [ValidateAntiForgeryToken]
-        public ActionResult deleteConfirmed(int id)
-        {
-            Class personalDetail = db.Classes.Find(id);
-            db.Classes.Remove(personalDetail);
-            db.SaveChanges();
-            return RedirectToAction("listsection");
-        }
-       
         [HttpGet]
         public ActionResult deletesection(int? id)
         {
@@ -225,160 +189,6 @@ namespace WebApplication1.Controllers
         {
             return View();
         }
-        public ActionResult tchrs()
-        {
-            return View(db.Teachers.ToList());
-        }
-        public ActionResult studentattendence()
-        {
-            return View(db.Students.ToList());
-        }
-        public ActionResult stdatn(int id)
-        {
 
-            return View(db.Studentattendences.SqlQuery("Exec studentattn @add= {0}", id).ToList());
-        }
-        public ActionResult courses()
-        {
-
-            return View();
-        }
-        [HttpGet]
-        public ActionResult addcourse()
-        {
-
-            return View();
-        }
-        [HttpPost]
-        public ActionResult addcourse(Course c)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Courses.Add(c);
-                db.SaveChanges();
-                RedirectToAction("courses");
-            }
-            return View("courses");
-            
-        }
-        public ActionResult courselist()
-        {
-
-            return View(db.Courses.ToList());
-        }
-        [HttpGet]
-        public ActionResult Deletecourse(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Course personalDetail = db.Courses.Find(id);
-            if (personalDetail == null)
-            {
-                return HttpNotFound();
-            }
-            return View(personalDetail);
-        }
-
-
-        [HttpPost, ActionName("Deletecourse")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirm(int id) 
-        {
-            Course personalDetail = db.Courses.Find(id);
-            db.Courses.Remove(personalDetail);
-            db.SaveChanges();
-            return RedirectToAction("courselist");
-        }
-        [HttpGet]
-        public ActionResult addcoursetoclass()
-        {
-            var Class1 = db.Courses.SqlQuery("SELECT * FROM dbo.Course").ToList();
-            if (Class1 != null)
-            {
-                ViewBag.courses = Class1;
-            }
-            var Class = db.Classes.SqlQuery("SELECT * FROM dbo.Class").ToList();
-            if (Class != null)
-            {
-                ViewBag.classes = Class;
-            }
-            return View();
-        }
-        [HttpPost]
-        public ActionResult addcoursetoclass(ClassCourse c)
-        {
-            if (ModelState.IsValid)
-            {
-                db.ClassCourses.Add(c);
-                db.SaveChanges();
-                RedirectToAction("courses");
-            }
-            return View("courses");
-
-        }
-        public ActionResult deletecoursetoclass()
-        {
-
-            return View(db.ClassCourses.ToList());
-        }
-        [HttpGet]
-        public ActionResult delclasscourse(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ClassCourse personalDetail = db.ClassCourses.Find(id);
-            if (personalDetail == null)
-            {
-                return HttpNotFound();
-            }
-            return View(personalDetail);
-        }
-
-
-        [HttpPost, ActionName("delclasscourse")]
-        [ValidateAntiForgeryToken]
-        public ActionResult deleteConfirm(int id)
-        {
-            ClassCourse personalDetail = db.ClassCourses.Find(id);
-            db.ClassCourses.Remove(personalDetail);
-            db.SaveChanges();
-            return RedirectToAction("deletecoursetoclass");
-        }
-        [HttpGet]
-        public ActionResult assign()
-        {
-            var Class1 = db.Courses.SqlQuery("SELECT * FROM dbo.Course").ToList();
-            if (Class1 != null)
-            {
-                ViewBag.courses = Class1;
-            }
-            var Class = db.Classes.SqlQuery("SELECT * FROM dbo.Class").ToList();
-            if (Class != null)
-            {
-                ViewBag.classes = Class;
-            }
-            var Class2 = db.Teachers.SqlQuery("SELECT * FROM dbo.Teacher").ToList();
-            if (Class != null)
-            {
-                ViewBag.teachers = Class2;
-            }
-            return View();
-        }
-        [HttpPost]
-        public ActionResult assign(ClassCourseTeacher c)
-        {
-            if (ModelState.IsValid)
-            {
-                db.ClassCourseTeachers.Add(c);
-                db.SaveChanges();
-                RedirectToAction("courses");
-            }
-            return View("courses");
-
-        }
     }
 }

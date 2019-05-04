@@ -19,6 +19,11 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+        public ActionResult DeleteAttendance()
+        {
+            return View();
+        }
+
         public ActionResult Evaluation()
         {
             return View();
