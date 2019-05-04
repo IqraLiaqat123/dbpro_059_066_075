@@ -1,0 +1,56 @@
+﻿@model IEnumerable<WebApplication1.Models.Timetable>
+
+@{
+    ViewBag.Title = "timetablelist";
+}
+<div class="jumbotron col-lg-offset-2 col-lg-8 text-center">
+
+
+    <h2>timetablelist</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Time)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Class.classname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Course.title)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Time)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Class.classname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Course.title)
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "deletetimeslot", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <div>
+        @Html.ActionLink("Back", "timetable")
+    </div>
+</div>

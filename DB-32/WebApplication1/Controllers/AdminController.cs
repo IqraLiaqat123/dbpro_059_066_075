@@ -32,7 +32,7 @@ namespace WebApplication1.Controllers
         {
             return View();
         }
-        public ActionResult addteacher()
+        public ActionResult addperson()
         {
             var Class1 = db.Lookups.SqlQuery("SELECT * FROM dbo.Lookup WHERE dbo.Lookup.category = 'GENDER'").ToList();
             if (Class1 != null)
@@ -42,23 +42,19 @@ namespace WebApplication1.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult addteacher(Person c)
+        public ActionResult addperson(Person c)
         {
-            var Class1 = db.Lookups.SqlQuery("SELECT * FROM dbo.Lookup WHERE dbo.Lookup.category = 'DESIGNATION'").ToList();
-            if (Class1 != null)
-            {
-                ViewBag.Designation = Class1;
-            }
+            
             if (ModelState.IsValid)
             {
                 
                 db.People.Add(c);
                 db.SaveChanges();
                 int id = c.PersonId;
-                RedirectToAction("teacherinfo(id)");
+                RedirectToAction("dashboard");
             }
             
-            return View("teacherinfo");
+            return View("dashboard");
         }
         [HttpGet]
         public ActionResult teacherinfo(int id)
@@ -379,6 +375,131 @@ namespace WebApplication1.Controllers
             }
             return View("courses");
 
+        }
+        [HttpGet]
+        public ActionResult addtimetable()
+        {
+            var Class1 = db.Courses.SqlQuery("SELECT * FROM dbo.Course").ToList();
+            if (Class1 != null)
+            {
+                ViewBag.courses = Class1;
+            }
+            var Class = db.Classes.SqlQuery("SELECT * FROM dbo.Class").ToList();
+            if (Class != null)
+            {
+                ViewBag.classes = Class;
+            }
+            return View();
+        }
+        [HttpPost]
+        public ActionResult addtimetable(Timetable c)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Timetables.Add(c);
+                db.SaveChanges();
+                RedirectToAction("courses");
+            }
+            return View("courses");
+
+        }
+        public ActionResult timetable()
+        {
+            return View();
+        }
+        public ActionResult timetablelist()
+        {
+            return View(db.Timetables.ToList());
+        }
+        [HttpGet]
+        public ActionResult deletetimeslot(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Timetable personalDetail = db.Timetables.Find(id);
+            if (personalDetail == null)
+            {
+                return HttpNotFound();
+            }
+            return View(personalDetail);
+        }
+
+
+        [HttpPost, ActionName("deletetimeslot")]
+        [ValidateAntiForgeryToken]
+        public ActionResult deleteconfirm(int id)
+        {
+            Timetable personalDetail = db.Timetables.Find(id);
+            db.Timetables.Remove(personalDetail);
+            db.SaveChanges();
+            return RedirectToAction("timetable");
+        }
+        public ActionResult datesheet()
+        {
+            return View();
+        }
+        [HttpGet]
+        public ActionResult adddatesheet()
+        {
+            var Class1 = db.Courses.SqlQuery("SELECT * FROM dbo.Course").ToList();
+            if (Class1 != null)
+            {
+                ViewBag.courses = Class1;
+            }
+            var Class = db.Classes.SqlQuery("SELECT * FROM dbo.Class").ToList();
+            if (Class != null)
+            {
+                ViewBag.classes = Class;
+            }
+            return View();
+        }
+        [HttpPost]
+        public ActionResult adddatesheet(Timetable c)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Timetables.Add(c);
+                db.SaveChanges();
+                RedirectToAction("courses");
+            }
+            return View("courses");
+
+        }
+        public ActionResult datesheetlist()
+        {
+            return View(db.Datesheets.ToList());
+        }
+        [HttpGet]
+        public ActionResult Deletedatesheet(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Datesheet personalDetail = db.Datesheets.Find(id);
+            if (personalDetail == null)
+            {
+                return HttpNotFound();
+            }
+            return View(personalDetail);
+        }
+
+
+        [HttpPost, ActionName("Deletedatesheet")]
+        [ValidateAntiForgeryToken]
+        public ActionResult deleteconfrm(int id)
+        {
+            Datesheet personalDetail = db.Datesheets.Find(id);
+            db.Datesheets.Remove(personalDetail);
+            db.SaveChanges();
+            return RedirectToAction("datesheet");
+        }
+        public ActionResult students()
+        {
+
+            return View();
         }
     }
 }
