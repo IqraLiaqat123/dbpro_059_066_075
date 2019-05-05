@@ -8,18 +8,19 @@ namespace WebApplication1.Controllers
 {
     public class HomeController : Controller
     {
+        //index page
         public ActionResult Index()
         {
             return View();
         }
-
+        //about page
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
-
+        //contact page
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
