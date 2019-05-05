@@ -23,7 +23,6 @@ namespace WebApplication1.Controllers
             ViewBag.Class = db.Classes.SqlQuery("SELECT * FROM dbo.Class").Count();
             return View();
         }
-        public ActionResult addteacher();
         public ActionResult atndce(int id)
         {
 
@@ -45,20 +44,44 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public ActionResult addperson(Person c)
         {
-            
+            int id;
             if (ModelState.IsValid)
             {
                 
                 db.People.Add(c);
                 db.SaveChanges();
-                int id = c.PersonId;
-                RedirectToAction("dashboard");
+                id = c.PersonId;
+                RedirectToAction("addperson");
             }
             
-            return View("dashboard");
+            return View("studentinfo(id)");
+        }
+        public ActionResult addperson1()
+        {
+            var Class1 = db.Lookups.SqlQuery("SELECT * FROM dbo.Lookup WHERE dbo.Lookup.category = 'GENDER'").ToList();
+            if (Class1 != null)
+            {
+                ViewBag.Class = Class1;
+            }
+            return View();
+        }
+        [HttpPost]
+        public ActionResult addperson1(Person c)
+        {
+
+            if (ModelState.IsValid)
+            {
+
+                db.People.Add(c);
+                db.SaveChanges();
+                int id = c.PersonId;
+                RedirectToAction("teacherinfo(id)");
+            }
+
+            return View("teachers");
         }
         [HttpGet]
-        public ActionResult teacherinfo(int? id)
+        public ActionResult teacherinfo(int id)
         {
             var Class1 = db.Lookups.SqlQuery("SELECT * FROM dbo.Lookup WHERE dbo.Lookup.category = 'DESIGNATION'").ToList();
             if (Class1 != null)
@@ -78,6 +101,24 @@ namespace WebApplication1.Controllers
                 RedirectToAction("teacherinfo");
             }
             return View("teacherinfo");
+        }
+        [HttpGet]
+        public ActionResult studentinfo(int id)
+        {
+            
+            return View();
+        }
+        [HttpPost]
+        public ActionResult studentinfo(Student c, int id)
+        {
+            if (ModelState.IsValid)
+            {
+                c.Id = id;
+                db.Students.Add(c);
+                db.SaveChanges();
+                RedirectToAction("studentinfo");
+            }
+            return View("studentinfo");
         }
         public ActionResult class_section()
         {
@@ -135,10 +176,12 @@ namespace WebApplication1.Controllers
             }
             return View("class_section");
         }
+
         public ActionResult createclass()
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult createclass(Class c)
         {
@@ -165,7 +208,32 @@ namespace WebApplication1.Controllers
 
             return View(db.SectionStudents.ToList());
         }
+        [HttpGet]
+        public ActionResult deleteclass(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Class personalDetail = db.Classes.Find(id);
+            if (personalDetail == null)
+            {
+                return HttpNotFound();
+            }
+            return View(personalDetail);
+        }
 
+
+        [HttpPost, ActionName("deleteclass")]
+        [ValidateAntiForgeryToken]
+        public ActionResult deleteConfirmed(int id)
+        {
+            Class personalDetail = db.Classes.Find(id);
+            db.Classes.Remove(personalDetail);
+            db.SaveChanges();
+            return RedirectToAction("listsection");
+        }
+       
         [HttpGet]
         public ActionResult deletesection(int? id)
         {
@@ -195,6 +263,45 @@ namespace WebApplication1.Controllers
         {
             return View();
         }
+        public ActionResult tchrs()
+        {
+            return View(db.Teachers.ToList());
+        }
+        public ActionResult studentattendence()
+        {
+            return View(db.Students.ToList());
+        }
+        public ActionResult stdatn(int id)
+        {
+
+            return View(db.Studentattendences.SqlQuery("Exec studentattn @add= {0}", id).ToList());
+        }
+        public ActionResult courses()
+        {
+
+            return View();
+        }
+        [HttpGet]
+        public ActionResult addcourse()
+        {
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult addcourse(Course c)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Courses.Add(c);
+                db.SaveChanges();
+                RedirectToAction("courses");
+            }
+            return View("courses");
+            
+        }
+        public ActionResult courselist()
+        {
+
             return View(db.Courses.ToList());
         }
         [HttpGet]
@@ -435,6 +542,10 @@ namespace WebApplication1.Controllers
         {
 
             return View();
+        }
+        public ActionResult studentlist()
+        {
+            return View(db.Students.ToList());
         }
     }
 }
