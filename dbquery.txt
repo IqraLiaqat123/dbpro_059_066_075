@@ -637,3 +637,21 @@ go
 CREATE PROCEDURE studentattn @add int
 AS SELECT * FROM dbo.Studentattendence WHERE dbo.Studentattendence.StudentId = @add
 go
+
+Create PROCEDURE PersonalInformation @add int  
+AS
+ SELECT dbo.Student.Rollno, 
+dbo.Person.FirstName, dbo.Person.LastName, 
+dbo.Person.Address, 
+dbo.Person.Contact,  dbo.Person.Email, 
+dbo.Person.Gender, 
+dbo.Person.DateOfBirth, 
+dbo.Student.Fee
+
+FROM  dbo.Student 
+
+INNER JOIN dbo.Person 
+ON dbo.Student.Id = dbo.Person.PersonId
+
+Where Person.PersonId =@add
+go
