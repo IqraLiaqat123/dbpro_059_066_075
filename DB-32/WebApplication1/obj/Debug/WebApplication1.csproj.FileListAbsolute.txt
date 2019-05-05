@@ -217,3 +217,7 @@ E:\6th semester\dbpro_059_066_075\DB-32\WebApplication1\obj\Debug\WebApplication
 E:\6th semester\dbpro_059_066_075\DB-32\WebApplication1\obj\Debug\WebApplication1.csproj.CoreCompileInputs.cache
 E:\6th semester\dbpro_059_066_075\DB-32\WebApplication1\obj\Debug\WebApplication1.dll
 E:\6th semester\dbpro_059_066_075\DB-32\WebApplication1\obj\Debug\WebApplication1.pdb
+C:\Users\HIBA\Desktop\dbpro_059_066_075\DB-32\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
+C:\Users\HIBA\Desktop\dbpro_059_066_075\DB-32\WebApplication1\obj\Debug\WebApplication1.csproj.CoreCompileInputs.cache
+C:\Users\HIBA\Desktop\dbpro_059_066_075\DB-32\WebApplication1\obj\Debug\WebApplication1.dll
+C:\Users\HIBA\Desktop\dbpro_059_066_075\DB-32\WebApplication1\obj\Debug\WebApplication1.pdb
