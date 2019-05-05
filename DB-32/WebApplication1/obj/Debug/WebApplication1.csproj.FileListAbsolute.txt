@@ -213,3 +213,7 @@ C:\Users\AYESHA UMER\Desktop\Project-DB\WebApplication1\obj\Debug\WebApplication
 C:\Users\AYESHA UMER\Desktop\Project-DB\WebApplication1\obj\Debug\WebApplication1.csproj.CopyComplete
 C:\Users\AYESHA UMER\Desktop\Project-DB\WebApplication1\obj\Debug\WebApplication1.dll
 C:\Users\AYESHA UMER\Desktop\Project-DB\WebApplication1\obj\Debug\WebApplication1.pdb
+E:\6th semester\dbpro_059_066_075\DB-32\WebApplication1\obj\Debug\WebApplication1.csprojAssemblyReference.cache
+E:\6th semester\dbpro_059_066_075\DB-32\WebApplication1\obj\Debug\WebApplication1.csproj.CoreCompileInputs.cache
+E:\6th semester\dbpro_059_066_075\DB-32\WebApplication1\obj\Debug\WebApplication1.dll
+E:\6th semester\dbpro_059_066_075\DB-32\WebApplication1\obj\Debug\WebApplication1.pdb
