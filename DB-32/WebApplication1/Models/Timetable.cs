@@ -14,13 +14,13 @@ namespace WebApplication1.Models
     
     public partial class Timetable
     {
-        public int Id { get; set; }
+        public int id { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
         public Nullable<int> ClassId { get; set; }
         public Nullable<int> CourseId { get; set; }
         public Nullable<System.TimeSpan> Time { get; set; }
     
-        public virtual Class Class { get; set; }
         public virtual Course Course { get; set; }
+        public virtual Class Class { get; set; }
     }
 }

@@ -46,6 +46,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -202,93 +205,105 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetRole.cs">
-      <DependentUpon>DBentity.tt</DependentUpon>
+      <DependentUpon>entitymodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AspNetUser.cs">
-      <DependentUpon>DBentity.tt</DependentUpon>
+      <DependentUpon>entitymodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AspNetUserClaim.cs">
-      <DependentUpon>DBentity.tt</DependentUpon>
+      <DependentUpon>entitymodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AspNetUserLogin.cs">
-      <DependentUpon>DBentity.tt</DependentUpon>
+      <DependentUpon>entitymodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Assignment.cs">
-      <DependentUpon>DBentity.tt</DependentUpon>
+      <DependentUpon>entitymodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Attendence.cs">
-      <DependentUpon>DBentity.tt</DependentUpon>
+      <DependentUpon>entitymodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Class.cs">
-      <DependentUpon>DBentity.tt</DependentUpon>
+      <DependentUpon>entitymodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ClassCourse.cs">
-      <DependentUpon>DBentity.tt</DependentUpon>
+      <DependentUpon>entitymodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ClassCourseTeacher.cs">
-      <DependentUpon>DBentity.tt</DependentUpon>
+      <DependentUpon>entitymodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Course.cs">
-      <DependentUpon>DBentity.tt</DependentUpon>
+      <DependentUpon>entitymodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Datesheet.cs">
-      <DependentUpon>DBentity.tt</DependentUpon>
+      <DependentUpon>entitymodel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DBentity.Context.cs">
+    <Compile Include="Models\entitymodel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DBentity.Context.tt</DependentUpon>
+      <DependentUpon>entitymodel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DBentity.cs">
+    <Compile Include="Models\entitymodel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DBentity.tt</DependentUpon>
+      <DependentUpon>entitymodel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DBentity.Designer.cs">
+    <Compile Include="Models\entitymodel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DBentity.edmx</DependentUpon>
+      <DependentUpon>entitymodel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Evaluation.cs">
-      <DependentUpon>DBentity.tt</DependentUpon>
+      <DependentUpon>entitymodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Lookup.cs">
-      <DependentUpon>DBentity.tt</DependentUpon>
+      <DependentUpon>entitymodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Person.cs">
-      <DependentUpon>DBentity.tt</DependentUpon>
+      <DependentUpon>entitymodel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PersonalInformation_Result.cs">
+      <DependentUpon>entitymodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Section.cs">
-      <DependentUpon>DBentity.tt</DependentUpon>
+      <DependentUpon>entitymodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SectionStudent.cs">
-      <DependentUpon>DBentity.tt</DependentUpon>
+      <DependentUpon>entitymodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Student.cs">
-      <DependentUpon>DBentity.tt</DependentUpon>
+      <DependentUpon>entitymodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Studentattendence.cs">
-      <DependentUpon>DBentity.tt</DependentUpon>
+      <DependentUpon>entitymodel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\studentattn_Result.cs">
+      <DependentUpon>entitymodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StudentEvaluation.cs">
-      <DependentUpon>DBentity.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>DBentity.tt</DependentUpon>
+      <DependentUpon>entitymodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Teacher.cs">
-      <DependentUpon>DBentity.tt</DependentUpon>
+      <DependentUpon>entitymodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Teacherattendence.cs">
-      <DependentUpon>DBentity.tt</DependentUpon>
+      <DependentUpon>entitymodel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\teacherattn_Result.cs">
+      <DependentUpon>entitymodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Timetable.cs">
-      <DependentUpon>DBentity.tt</DependentUpon>
+      <DependentUpon>entitymodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="StudentList.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudentList.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -297,27 +312,27 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\DBentity.Context.tt">
+    <Content Include="Models\entitymodel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DBentity.edmx</DependentUpon>
-      <LastGenOutput>DBentity.Context.cs</LastGenOutput>
+      <DependentUpon>entitymodel.edmx</DependentUpon>
+      <LastGenOutput>entitymodel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\DBentity.tt">
+    <Content Include="Models\entitymodel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DBentity.edmx</DependentUpon>
-      <LastGenOutput>DBentity.cs</LastGenOutput>
+      <DependentUpon>entitymodel.edmx</DependentUpon>
+      <LastGenOutput>entitymodel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\DBentity.edmx">
+    <EntityDeploy Include="Models\entitymodel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DBentity.Designer.cs</LastGenOutput>
+      <LastGenOutput>entitymodel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\DBentity.edmx.diagram">
-      <DependentUpon>DBentity.edmx</DependentUpon>
+    <Content Include="Models\entitymodel.edmx.diagram">
+      <DependentUpon>entitymodel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -413,6 +428,13 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="StudentList.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>StudentList.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -19,8 +19,8 @@ namespace WebApplication1.Models
         public Nullable<int> ClassID { get; set; }
         public int Id { get; set; }
     
-        public virtual Class Class { get; set; }
         public virtual Course Course { get; set; }
         public virtual Teacher Teacher { get; set; }
+        public virtual Class Class { get; set; }
     }
 }

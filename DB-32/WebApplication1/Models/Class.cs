@@ -17,25 +17,26 @@ namespace WebApplication1.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Class()
         {
+            this.ClassCourses = new HashSet<ClassCourse>();
+            this.ClassCourseTeachers = new HashSet<ClassCourseTeacher>();
             this.Datesheets = new HashSet<Datesheet>();
             this.Sections = new HashSet<Section>();
             this.Timetables = new HashSet<Timetable>();
-            this.ClassCourses = new HashSet<ClassCourse>();
-            this.ClassCourseTeachers = new HashSet<ClassCourseTeacher>();
         }
     
         public int classid { get; set; }
         public string classname { get; set; }
+        public Nullable<int> Sectionid { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ClassCourse> ClassCourses { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ClassCourseTeacher> ClassCourseTeachers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Datesheet> Datesheets { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Section> Sections { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Timetable> Timetables { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ClassCourse> ClassCourses { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ClassCourseTeacher> ClassCourseTeachers { get; set; }
     }
 }

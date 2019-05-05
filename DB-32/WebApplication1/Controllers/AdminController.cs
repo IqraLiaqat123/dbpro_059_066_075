@@ -11,7 +11,7 @@ namespace WebApplication1.Controllers
 {
     public class AdminController : Controller
     {
-        DB32Entities1 db = new DB32Entities1();
+        DB32Entities2 db = new DB32Entities2();
         // GET: Admin
         public ActionResult Dashboard()
         {
@@ -71,7 +71,6 @@ namespace WebApplication1.Controllers
 
             if (ModelState.IsValid)
             {
-
                 db.People.Add(c);
                 db.SaveChanges();
                 int id = c.PersonId;

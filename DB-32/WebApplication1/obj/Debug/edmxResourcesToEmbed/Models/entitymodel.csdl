@@ -1,0 +1,795 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB32Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+    <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+  </EntityType>
+  <EntityType Name="Assignment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Ttile" Type="String" MaxLength="128" FixedLength="true" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="128" FixedLength="true" Unicode="true" />
+    <Property Name="T_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Teacher" Relationship="Self.FK_Assignments_Teacher" FromRole="Assignments" ToRole="Teacher" />
+  </EntityType>
+  <EntityType Name="Attendence">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Studentattendences" Relationship="DB32Model.FK_Studentattendence_Attendence" FromRole="Attendence" ToRole="Studentattendence" />
+    <NavigationProperty Name="Teacherattendences" Relationship="DB32Model.FK_Teacherattendence_Attendence" FromRole="Attendence" ToRole="Teacherattendence" />
+  </EntityType>
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Datesheets" Relationship="Self.FK_Datesheet_Course" FromRole="Course" ToRole="Datesheet" />
+    <NavigationProperty Name="ClassCourses" Relationship="DB32Model.FK_ClassCourse_Course" FromRole="Course" ToRole="ClassCourse" />
+    <NavigationProperty Name="ClassCourseTeachers" Relationship="DB32Model.FK_ClassCourseTeacher_Course" FromRole="Course" ToRole="ClassCourseTeacher" />
+    <NavigationProperty Name="StudentEvaluations" Relationship="DB32Model.FK_StudentEvaluation_Course" FromRole="Course" ToRole="StudentEvaluation" />
+    <NavigationProperty Name="Timetables" Relationship="DB32Model.FK_Timetable_Course" FromRole="Course" ToRole="Timetable" />
+  </EntityType>
+  <EntityType Name="Datesheet">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="CouseId" Type="Int32" />
+    <Property Name="ClassId" Type="Int32" />
+    <NavigationProperty Name="Course" Relationship="Self.FK_Datesheet_Course" FromRole="Datesheet" ToRole="Course" />
+    <NavigationProperty Name="Class" Relationship="DB32Model.FK_Datesheet_Class" FromRole="Datesheet" ToRole="Class" />
+  </EntityType>
+  <EntityType Name="Evaluation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Totalmarks" Type="Int32" />
+    <NavigationProperty Name="StudentEvaluations" Relationship="DB32Model.FK_StudentEvaluation_Evaluation" FromRole="Evaluation" ToRole="StudentEvaluation" />
+  </EntityType>
+  <EntityType Name="Lookup">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Teachers" Relationship="Self.FK_Teacher_Lookup" FromRole="Lookup" ToRole="Teacher" />
+    <NavigationProperty Name="SectionStudents" Relationship="DB32Model.FK_ClassStudent_Lookup" FromRole="Lookup" ToRole="SectionStudent" />
+    <NavigationProperty Name="Studentattendences" Relationship="DB32Model.FK_Studentattendence_Lookup1" FromRole="Lookup" ToRole="Studentattendence" />
+    <NavigationProperty Name="StudentEvaluations" Relationship="DB32Model.FK_StudentEvaluation_Lookup" FromRole="Lookup" ToRole="StudentEvaluation" />
+    <NavigationProperty Name="Teacherattendences" Relationship="DB32Model.FK_Teacherattendence_Lookup" FromRole="Lookup" ToRole="Teacherattendence" />
+  </EntityType>
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="PersonId" />
+    </Key>
+    <Property Name="PersonId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Contact" Type="Int32" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Gender" Type="Int32" />
+    <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Student" Relationship="Self.FK_Student_Person" FromRole="Person" ToRole="Student" />
+    <NavigationProperty Name="Teacher" Relationship="Self.FK_Teacher_Person" FromRole="Person" ToRole="Teacher" />
+  </EntityType>
+  <EntityType Name="Section">
+    <Key>
+      <PropertyRef Name="SectionID" />
+    </Key>
+    <Property Name="SectionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClassID" Type="Int32" />
+    <NavigationProperty Name="SectionStudents" Relationship="DB32Model.FK_SectionStudent_Section" FromRole="Section" ToRole="SectionStudent" />
+    <NavigationProperty Name="Class" Relationship="DB32Model.FK_Section_Class" FromRole="Section" ToRole="Class" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Fee" Type="Int32" />
+    <Property Name="Rollno" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Enrollmentdate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Person" Relationship="Self.FK_Student_Person" FromRole="Student" ToRole="Person" />
+    <NavigationProperty Name="SectionStudents" Relationship="DB32Model.FK_ClassStudent_Student" FromRole="Student" ToRole="SectionStudent" />
+    <NavigationProperty Name="Studentattendences" Relationship="DB32Model.FK_Studentattendence_Student" FromRole="Student" ToRole="Studentattendence" />
+    <NavigationProperty Name="StudentEvaluations" Relationship="DB32Model.FK_StudentEvaluation_Student" FromRole="Student" ToRole="StudentEvaluation" />
+  </EntityType>
+  <EntityType Name="Teacher">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="salary" Type="Int32" />
+    <Property Name="Enrollmentdate" Type="DateTime" Precision="3" />
+    <Property Name="Qualification" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Designation" Type="Int32" />
+    <NavigationProperty Name="Assignments" Relationship="Self.FK_Assignments_Teacher" FromRole="Teacher" ToRole="Assignments" />
+    <NavigationProperty Name="Lookup" Relationship="Self.FK_Teacher_Lookup" FromRole="Teacher" ToRole="Lookup" />
+    <NavigationProperty Name="Person" Relationship="Self.FK_Teacher_Person" FromRole="Teacher" ToRole="Person" />
+    <NavigationProperty Name="ClassCourseTeachers" Relationship="DB32Model.FK_ClassCourseTeacher_Teacher" FromRole="Teacher" ToRole="ClassCourseTeacher" />
+    <NavigationProperty Name="Teacherattendences" Relationship="DB32Model.FK_Teacherattendence_Teacher" FromRole="Teacher" ToRole="Teacherattendence" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Assignments_Teacher">
+    <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
+    <End Role="Assignments" Type="Self.Assignment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teacher">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Assignments">
+        <PropertyRef Name="T_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Datesheet_Course">
+    <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+    <End Role="Datesheet" Type="Self.Datesheet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Datesheet">
+        <PropertyRef Name="CouseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Teacher_Lookup">
+    <End Role="Lookup" Type="Self.Lookup" Multiplicity="0..1" />
+    <End Role="Teacher" Type="Self.Teacher" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lookup">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Teacher">
+        <PropertyRef Name="Designation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Person">
+    <End Role="Person" Type="Self.Person" Multiplicity="1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="PersonId" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Teacher_Person">
+    <End Role="Person" Type="Self.Person" Multiplicity="1" />
+    <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="PersonId" />
+      </Principal>
+      <Dependent Role="Teacher">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="DB32Entities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+    <EntitySet Name="Assignments" EntityType="Self.Assignment" />
+    <EntitySet Name="Attendences" EntityType="Self.Attendence" />
+    <EntitySet Name="Courses" EntityType="Self.Course" />
+    <EntitySet Name="Datesheets" EntityType="Self.Datesheet" />
+    <EntitySet Name="Evaluations" EntityType="Self.Evaluation" />
+    <EntitySet Name="Lookups" EntityType="Self.Lookup" />
+    <EntitySet Name="People" EntityType="Self.Person" />
+    <EntitySet Name="Sections" EntityType="Self.Section" />
+    <EntitySet Name="Students" EntityType="Self.Student" />
+    <EntitySet Name="Teachers" EntityType="Self.Teacher" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Assignments_Teacher" Association="Self.FK_Assignments_Teacher">
+      <End Role="Teacher" EntitySet="Teachers" />
+      <End Role="Assignments" EntitySet="Assignments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Datesheet_Course" Association="Self.FK_Datesheet_Course">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="Datesheet" EntitySet="Datesheets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Teacher_Lookup" Association="Self.FK_Teacher_Lookup">
+      <End Role="Lookup" EntitySet="Lookups" />
+      <End Role="Teacher" EntitySet="Teachers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Person" Association="Self.FK_Student_Person">
+      <End Role="Person" EntitySet="People" />
+      <End Role="Student" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Teacher_Person" Association="Self.FK_Teacher_Person">
+      <End Role="Person" EntitySet="People" />
+      <End Role="Teacher" EntitySet="Teachers" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <FunctionImport Name="PersonalInformation" ReturnType="Collection(DB32Model.PersonalInformation_Result)">
+      <Parameter Name="add" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="studentattn" ReturnType="Collection(DB32Model.studentattn_Result)">
+      <Parameter Name="add" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="teacherattn" ReturnType="Collection(DB32Model.teacherattn_Result)">
+      <Parameter Name="add" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="ClassCourses" EntityType="DB32Model.ClassCourse" />
+    <EntitySet Name="ClassCourseTeachers" EntityType="DB32Model.ClassCourseTeacher" />
+    <EntitySet Name="SectionStudents" EntityType="DB32Model.SectionStudent" />
+    <EntitySet Name="Studentattendences" EntityType="DB32Model.Studentattendence" />
+    <EntitySet Name="StudentEvaluations" EntityType="DB32Model.StudentEvaluation" />
+    <EntitySet Name="Teacherattendences" EntityType="DB32Model.Teacherattendence" />
+    <AssociationSet Name="FK_Studentattendence_Attendence" Association="DB32Model.FK_Studentattendence_Attendence">
+      <End Role="Attendence" EntitySet="Attendences" />
+      <End Role="Studentattendence" EntitySet="Studentattendences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Teacherattendence_Attendence" Association="DB32Model.FK_Teacherattendence_Attendence">
+      <End Role="Attendence" EntitySet="Attendences" />
+      <End Role="Teacherattendence" EntitySet="Teacherattendences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClassCourse_Course" Association="DB32Model.FK_ClassCourse_Course">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="ClassCourse" EntitySet="ClassCourses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClassCourseTeacher_Course" Association="DB32Model.FK_ClassCourseTeacher_Course">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="ClassCourseTeacher" EntitySet="ClassCourseTeachers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClassCourseTeacher_Teacher" Association="DB32Model.FK_ClassCourseTeacher_Teacher">
+      <End Role="Teacher" EntitySet="Teachers" />
+      <End Role="ClassCourseTeacher" EntitySet="ClassCourseTeachers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentEvaluation_Course" Association="DB32Model.FK_StudentEvaluation_Course">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="StudentEvaluation" EntitySet="StudentEvaluations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentEvaluation_Evaluation" Association="DB32Model.FK_StudentEvaluation_Evaluation">
+      <End Role="Evaluation" EntitySet="Evaluations" />
+      <End Role="StudentEvaluation" EntitySet="StudentEvaluations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClassStudent_Lookup" Association="DB32Model.FK_ClassStudent_Lookup">
+      <End Role="Lookup" EntitySet="Lookups" />
+      <End Role="SectionStudent" EntitySet="SectionStudents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Studentattendence_Lookup1" Association="DB32Model.FK_Studentattendence_Lookup1">
+      <End Role="Lookup" EntitySet="Lookups" />
+      <End Role="Studentattendence" EntitySet="Studentattendences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentEvaluation_Lookup" Association="DB32Model.FK_StudentEvaluation_Lookup">
+      <End Role="Lookup" EntitySet="Lookups" />
+      <End Role="StudentEvaluation" EntitySet="StudentEvaluations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Teacherattendence_Lookup" Association="DB32Model.FK_Teacherattendence_Lookup">
+      <End Role="Lookup" EntitySet="Lookups" />
+      <End Role="Teacherattendence" EntitySet="Teacherattendences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SectionStudent_Section" Association="DB32Model.FK_SectionStudent_Section">
+      <End Role="Section" EntitySet="Sections" />
+      <End Role="SectionStudent" EntitySet="SectionStudents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClassStudent_Student" Association="DB32Model.FK_ClassStudent_Student">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="SectionStudent" EntitySet="SectionStudents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Studentattendence_Student" Association="DB32Model.FK_Studentattendence_Student">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="Studentattendence" EntitySet="Studentattendences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentEvaluation_Student" Association="DB32Model.FK_StudentEvaluation_Student">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="StudentEvaluation" EntitySet="StudentEvaluations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Teacherattendence_Teacher" Association="DB32Model.FK_Teacherattendence_Teacher">
+      <End Role="Teacher" EntitySet="Teachers" />
+      <End Role="Teacherattendence" EntitySet="Teacherattendences" />
+    </AssociationSet>
+    <EntitySet Name="Timetables" EntityType="DB32Model.Timetable" />
+    <AssociationSet Name="FK_Timetable_Course" Association="DB32Model.FK_Timetable_Course">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="Timetable" EntitySet="Timetables" />
+    </AssociationSet>
+    <EntitySet Name="Classes" EntityType="DB32Model.Class" />
+    <AssociationSet Name="FK_ClassCourse_Class" Association="DB32Model.FK_ClassCourse_Class">
+      <End Role="Class" EntitySet="Classes" />
+      <End Role="ClassCourse" EntitySet="ClassCourses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClassCourseTeacher_Class" Association="DB32Model.FK_ClassCourseTeacher_Class">
+      <End Role="Class" EntitySet="Classes" />
+      <End Role="ClassCourseTeacher" EntitySet="ClassCourseTeachers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Datesheet_Class" Association="DB32Model.FK_Datesheet_Class">
+      <End Role="Class" EntitySet="Classes" />
+      <End Role="Datesheet" EntitySet="Datesheets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Section_Class" Association="DB32Model.FK_Section_Class">
+      <End Role="Class" EntitySet="Classes" />
+      <End Role="Section" EntitySet="Sections" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Timetable_Class" Association="DB32Model.FK_Timetable_Class">
+      <End Role="Class" EntitySet="Classes" />
+      <End Role="Timetable" EntitySet="Timetables" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="PersonalInformation_Result">
+    <Property Type="String" Name="Rollno" Nullable="true" />
+    <Property Type="String" Name="FirstName" Nullable="true" />
+    <Property Type="String" Name="LastName" Nullable="true" />
+    <Property Type="String" Name="Address" Nullable="true" />
+    <Property Type="Int32" Name="Contact" Nullable="true" />
+    <Property Type="String" Name="Email" Nullable="false" />
+    <Property Type="Int32" Name="Gender" Nullable="true" />
+    <Property Type="DateTime" Name="DateOfBirth" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="Fee" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="studentattn_Result">
+    <Property Type="Int32" Name="AttendenceID" Nullable="true" />
+    <Property Type="Int32" Name="StudentId" Nullable="true" />
+    <Property Type="Int32" Name="Status" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="teacherattn_Result">
+    <Property Type="Int32" Name="AttendenceID" Nullable="true" />
+    <Property Type="Int32" Name="TeacherId" Nullable="true" />
+    <Property Type="Int32" Name="status" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="ClassCourse">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="CourseID" Type="Int32" />
+    <Property Name="ClassID" Type="Int32" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Course" Relationship="DB32Model.FK_ClassCourse_Course" FromRole="ClassCourse" ToRole="Course" />
+    <NavigationProperty Name="Class" Relationship="DB32Model.FK_ClassCourse_Class" FromRole="ClassCourse" ToRole="Class" />
+  </EntityType>
+  <EntityType Name="ClassCourseTeacher">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="CourseID" Type="Int32" />
+    <Property Name="TeacherID" Type="Int32" />
+    <Property Name="ClassID" Type="Int32" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Course" Relationship="DB32Model.FK_ClassCourseTeacher_Course" FromRole="ClassCourseTeacher" ToRole="Course" />
+    <NavigationProperty Name="Teacher" Relationship="DB32Model.FK_ClassCourseTeacher_Teacher" FromRole="ClassCourseTeacher" ToRole="Teacher" />
+    <NavigationProperty Name="Class" Relationship="DB32Model.FK_ClassCourseTeacher_Class" FromRole="ClassCourseTeacher" ToRole="Class" />
+  </EntityType>
+  <EntityType Name="SectionStudent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="StudentId" Type="Int32" />
+    <Property Name="SectionId" Type="Int32" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Lookup" Relationship="DB32Model.FK_ClassStudent_Lookup" FromRole="SectionStudent" ToRole="Lookup" />
+    <NavigationProperty Name="Section" Relationship="DB32Model.FK_SectionStudent_Section" FromRole="SectionStudent" ToRole="Section" />
+    <NavigationProperty Name="Student" Relationship="DB32Model.FK_ClassStudent_Student" FromRole="SectionStudent" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="Studentattendence">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="AttendenceID" Type="Int32" />
+    <Property Name="StudentId" Type="Int32" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Attendence" Relationship="DB32Model.FK_Studentattendence_Attendence" FromRole="Studentattendence" ToRole="Attendence" />
+    <NavigationProperty Name="Lookup" Relationship="DB32Model.FK_Studentattendence_Lookup1" FromRole="Studentattendence" ToRole="Lookup" />
+    <NavigationProperty Name="Student" Relationship="DB32Model.FK_Studentattendence_Student" FromRole="Studentattendence" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="StudentEvaluation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="evalid" Type="Int32" />
+    <Property Name="courseid" Type="Int32" />
+    <Property Name="studentid" Type="Int32" />
+    <Property Name="obtainmarks" Type="Int32" />
+    <Property Name="grade" Type="Int32" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Course" Relationship="DB32Model.FK_StudentEvaluation_Course" FromRole="StudentEvaluation" ToRole="Course" />
+    <NavigationProperty Name="Evaluation" Relationship="DB32Model.FK_StudentEvaluation_Evaluation" FromRole="StudentEvaluation" ToRole="Evaluation" />
+    <NavigationProperty Name="Lookup" Relationship="DB32Model.FK_StudentEvaluation_Lookup" FromRole="StudentEvaluation" ToRole="Lookup" />
+    <NavigationProperty Name="Student" Relationship="DB32Model.FK_StudentEvaluation_Student" FromRole="StudentEvaluation" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="Teacherattendence">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="AttendenceID" Type="Int32" />
+    <Property Name="TeacherId" Type="Int32" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Attendence" Relationship="DB32Model.FK_Teacherattendence_Attendence" FromRole="Teacherattendence" ToRole="Attendence" />
+    <NavigationProperty Name="Lookup" Relationship="DB32Model.FK_Teacherattendence_Lookup" FromRole="Teacherattendence" ToRole="Lookup" />
+    <NavigationProperty Name="Teacher" Relationship="DB32Model.FK_Teacherattendence_Teacher" FromRole="Teacherattendence" ToRole="Teacher" />
+  </EntityType>
+  <Association Name="FK_Studentattendence_Attendence">
+    <End Type="DB32Model.Attendence" Role="Attendence" Multiplicity="0..1" />
+    <End Type="DB32Model.Studentattendence" Role="Studentattendence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Attendence">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Studentattendence">
+        <PropertyRef Name="AttendenceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Teacherattendence_Attendence">
+    <End Type="DB32Model.Attendence" Role="Attendence" Multiplicity="0..1" />
+    <End Type="DB32Model.Teacherattendence" Role="Teacherattendence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Attendence">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Teacherattendence">
+        <PropertyRef Name="AttendenceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClassCourse_Course">
+    <End Type="DB32Model.Course" Role="Course" Multiplicity="0..1" />
+    <End Type="DB32Model.ClassCourse" Role="ClassCourse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ClassCourse">
+        <PropertyRef Name="CourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClassCourseTeacher_Course">
+    <End Type="DB32Model.Course" Role="Course" Multiplicity="0..1" />
+    <End Type="DB32Model.ClassCourseTeacher" Role="ClassCourseTeacher" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ClassCourseTeacher">
+        <PropertyRef Name="CourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClassCourseTeacher_Teacher">
+    <End Type="DB32Model.Teacher" Role="Teacher" Multiplicity="0..1" />
+    <End Type="DB32Model.ClassCourseTeacher" Role="ClassCourseTeacher" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teacher">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ClassCourseTeacher">
+        <PropertyRef Name="TeacherID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentEvaluation_Course">
+    <End Type="DB32Model.Course" Role="Course" Multiplicity="0..1" />
+    <End Type="DB32Model.StudentEvaluation" Role="StudentEvaluation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentEvaluation">
+        <PropertyRef Name="courseid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentEvaluation_Evaluation">
+    <End Type="DB32Model.Evaluation" Role="Evaluation" Multiplicity="0..1" />
+    <End Type="DB32Model.StudentEvaluation" Role="StudentEvaluation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Evaluation">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="StudentEvaluation">
+        <PropertyRef Name="evalid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClassStudent_Lookup">
+    <End Type="DB32Model.Lookup" Role="Lookup" Multiplicity="0..1" />
+    <End Type="DB32Model.SectionStudent" Role="SectionStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lookup">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="SectionStudent">
+        <PropertyRef Name="status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Studentattendence_Lookup1">
+    <End Type="DB32Model.Lookup" Role="Lookup" Multiplicity="0..1" />
+    <End Type="DB32Model.Studentattendence" Role="Studentattendence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lookup">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Studentattendence">
+        <PropertyRef Name="Status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentEvaluation_Lookup">
+    <End Type="DB32Model.Lookup" Role="Lookup" Multiplicity="0..1" />
+    <End Type="DB32Model.StudentEvaluation" Role="StudentEvaluation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lookup">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="StudentEvaluation">
+        <PropertyRef Name="grade" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Teacherattendence_Lookup">
+    <End Type="DB32Model.Lookup" Role="Lookup" Multiplicity="0..1" />
+    <End Type="DB32Model.Teacherattendence" Role="Teacherattendence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lookup">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Teacherattendence">
+        <PropertyRef Name="status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SectionStudent_Section">
+    <End Type="DB32Model.Section" Role="Section" Multiplicity="0..1" />
+    <End Type="DB32Model.SectionStudent" Role="SectionStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Section">
+        <PropertyRef Name="SectionID" />
+      </Principal>
+      <Dependent Role="SectionStudent">
+        <PropertyRef Name="SectionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClassStudent_Student">
+    <End Type="DB32Model.Student" Role="Student" Multiplicity="0..1" />
+    <End Type="DB32Model.SectionStudent" Role="SectionStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SectionStudent">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Studentattendence_Student">
+    <End Type="DB32Model.Student" Role="Student" Multiplicity="0..1" />
+    <End Type="DB32Model.Studentattendence" Role="Studentattendence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Studentattendence">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentEvaluation_Student">
+    <End Type="DB32Model.Student" Role="Student" Multiplicity="0..1" />
+    <End Type="DB32Model.StudentEvaluation" Role="StudentEvaluation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentEvaluation">
+        <PropertyRef Name="courseid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Teacherattendence_Teacher">
+    <End Type="DB32Model.Teacher" Role="Teacher" Multiplicity="0..1" />
+    <End Type="DB32Model.Teacherattendence" Role="Teacherattendence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teacher">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Teacherattendence">
+        <PropertyRef Name="TeacherId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Timetable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="ClassId" Type="Int32" />
+    <Property Name="CourseId" Type="Int32" />
+    <Property Name="Time" Type="Time" Precision="7" />
+    <NavigationProperty Name="Course" Relationship="DB32Model.FK_Timetable_Course" FromRole="Timetable" ToRole="Course" />
+    <NavigationProperty Name="Class" Relationship="DB32Model.FK_Timetable_Class" FromRole="Timetable" ToRole="Class" />
+  </EntityType>
+  <Association Name="FK_Timetable_Course">
+    <End Type="DB32Model.Course" Role="Course" Multiplicity="0..1" />
+    <End Type="DB32Model.Timetable" Role="Timetable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Timetable">
+        <PropertyRef Name="CourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Class">
+    <Key>
+      <PropertyRef Name="classid" />
+    </Key>
+    <Property Name="classid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="classname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Sectionid" Type="Int32" />
+    <NavigationProperty Name="ClassCourses" Relationship="DB32Model.FK_ClassCourse_Class" FromRole="Class" ToRole="ClassCourse" />
+    <NavigationProperty Name="ClassCourseTeachers" Relationship="DB32Model.FK_ClassCourseTeacher_Class" FromRole="Class" ToRole="ClassCourseTeacher" />
+    <NavigationProperty Name="Datesheets" Relationship="DB32Model.FK_Datesheet_Class" FromRole="Class" ToRole="Datesheet" />
+    <NavigationProperty Name="Sections" Relationship="DB32Model.FK_Section_Class" FromRole="Class" ToRole="Section" />
+    <NavigationProperty Name="Timetables" Relationship="DB32Model.FK_Timetable_Class" FromRole="Class" ToRole="Timetable" />
+  </EntityType>
+  <Association Name="FK_ClassCourse_Class">
+    <End Type="DB32Model.Class" Role="Class" Multiplicity="0..1" />
+    <End Type="DB32Model.ClassCourse" Role="ClassCourse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="classid" />
+      </Principal>
+      <Dependent Role="ClassCourse">
+        <PropertyRef Name="ClassID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClassCourseTeacher_Class">
+    <End Type="DB32Model.Class" Role="Class" Multiplicity="0..1" />
+    <End Type="DB32Model.ClassCourseTeacher" Role="ClassCourseTeacher" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="classid" />
+      </Principal>
+      <Dependent Role="ClassCourseTeacher">
+        <PropertyRef Name="ClassID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Datesheet_Class">
+    <End Type="DB32Model.Class" Role="Class" Multiplicity="0..1" />
+    <End Type="DB32Model.Datesheet" Role="Datesheet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="classid" />
+      </Principal>
+      <Dependent Role="Datesheet">
+        <PropertyRef Name="ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Section_Class">
+    <End Type="DB32Model.Class" Role="Class" Multiplicity="0..1" />
+    <End Type="DB32Model.Section" Role="Section" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="classid" />
+      </Principal>
+      <Dependent Role="Section">
+        <PropertyRef Name="ClassID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Timetable_Class">
+    <End Type="DB32Model.Class" Role="Class" Multiplicity="0..1" />
+    <End Type="DB32Model.Timetable" Role="Timetable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="classid" />
+      </Principal>
+      <Dependent Role="Timetable">
+        <PropertyRef Name="ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

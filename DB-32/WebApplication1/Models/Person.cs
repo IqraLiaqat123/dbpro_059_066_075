@@ -11,11 +11,9 @@ namespace WebApplication1.Models
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class Person
     {
-        public Person(){}
-
         public int PersonId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

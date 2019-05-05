@@ -18,10 +18,10 @@ namespace WebApplication1.Models
         public Course()
         {
             this.Datesheets = new HashSet<Datesheet>();
-            this.Timetables = new HashSet<Timetable>();
             this.ClassCourses = new HashSet<ClassCourse>();
             this.ClassCourseTeachers = new HashSet<ClassCourseTeacher>();
             this.StudentEvaluations = new HashSet<StudentEvaluation>();
+            this.Timetables = new HashSet<Timetable>();
         }
     
         public int Id { get; set; }
@@ -30,12 +30,12 @@ namespace WebApplication1.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Datesheet> Datesheets { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Timetable> Timetables { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClassCourse> ClassCourses { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClassCourseTeacher> ClassCourseTeachers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentEvaluation> StudentEvaluations { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Timetable> Timetables { get; set; }
     }
 }

@@ -10,16 +10,17 @@
 namespace WebApplication1.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Datesheet
+    public partial class PersonalInformation_Result
     {
-        public int id { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
-        public Nullable<int> CouseId { get; set; }
-        public Nullable<int> ClassId { get; set; }
-    
-        public virtual Course Course { get; set; }
-        public virtual Class Class { get; set; }
+        public string Rollno { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Address { get; set; }
+        public Nullable<int> Contact { get; set; }
+        public string Email { get; set; }
+        public Nullable<int> Gender { get; set; }
+        public Nullable<System.DateTime> DateOfBirth { get; set; }
+        public Nullable<int> Fee { get; set; }
     }
 }

@@ -12,11 +12,13 @@ namespace WebApplication1.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
-    public partial class DB32Entities1 : DbContext
+    public partial class DB32Entities2 : DbContext
     {
-        public DB32Entities1()
-            : base("name=DB32Entities1")
+        public DB32Entities2()
+            : base("name=DB32Entities2")
         {
         }
     
@@ -31,7 +33,6 @@ namespace WebApplication1.Models
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<Assignment> Assignments { get; set; }
         public virtual DbSet<Attendence> Attendences { get; set; }
-        public virtual DbSet<Class> Classes { get; set; }
         public virtual DbSet<Course> Courses { get; set; }
         public virtual DbSet<Datesheet> Datesheets { get; set; }
         public virtual DbSet<Evaluation> Evaluations { get; set; }
@@ -39,14 +40,41 @@ namespace WebApplication1.Models
         public virtual DbSet<Person> People { get; set; }
         public virtual DbSet<Section> Sections { get; set; }
         public virtual DbSet<Student> Students { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Teacher> Teachers { get; set; }
-        public virtual DbSet<Timetable> Timetables { get; set; }
         public virtual DbSet<ClassCourse> ClassCourses { get; set; }
         public virtual DbSet<ClassCourseTeacher> ClassCourseTeachers { get; set; }
         public virtual DbSet<SectionStudent> SectionStudents { get; set; }
         public virtual DbSet<Studentattendence> Studentattendences { get; set; }
         public virtual DbSet<StudentEvaluation> StudentEvaluations { get; set; }
         public virtual DbSet<Teacherattendence> Teacherattendences { get; set; }
+        public virtual DbSet<Timetable> Timetables { get; set; }
+        public virtual DbSet<Class> Classes { get; set; }
+    
+        public virtual ObjectResult<PersonalInformation_Result> PersonalInformation(Nullable<int> add)
+        {
+            var addParameter = add.HasValue ?
+                new ObjectParameter("add", add) :
+                new ObjectParameter("add", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PersonalInformation_Result>("PersonalInformation", addParameter);
+        }
+    
+        public virtual ObjectResult<studentattn_Result> studentattn(Nullable<int> add)
+        {
+            var addParameter = add.HasValue ?
+                new ObjectParameter("add", add) :
+                new ObjectParameter("add", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<studentattn_Result>("studentattn", addParameter);
+        }
+    
+        public virtual ObjectResult<teacherattn_Result> teacherattn(Nullable<int> add)
+        {
+            var addParameter = add.HasValue ?
+                new ObjectParameter("add", add) :
+                new ObjectParameter("add", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<teacherattn_Result>("teacherattn", addParameter);
+        }
     }
 }

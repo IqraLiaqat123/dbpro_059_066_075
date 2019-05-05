@@ -76,6 +76,7 @@
           </Key>
           <Property Name="classid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="classname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sectionid" Type="int" />
         </EntityType>
         <EntityType Name="ClassCourse">
           <Key>
@@ -105,7 +106,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Date" Type="datetime" />
           <Property Name="CouseId" Type="int" />
           <Property Name="ClassId" Type="int" />
@@ -185,16 +186,6 @@
           <Property Name="grade" Type="int" />
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="Teacher">
           <Key>
             <PropertyRef Name="Id" />
@@ -216,9 +207,9 @@
         </EntityType>
         <EntityType Name="Timetable">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
           <Property Name="Date" Type="datetime" />
           <Property Name="ClassId" Type="int" />
           <Property Name="CourseId" Type="int" />
@@ -592,7 +583,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Timetable_Course1">
+        <Association Name="FK_Timetable_Course">
           <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
           <End Role="Timetable" Type="Self.Timetable" Multiplicity="*" />
           <ReferentialConstraint>
@@ -604,6 +595,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="PersonalInformation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="add" Type="int" Mode="In" />
+        </Function>
+        <Function Name="studentattn" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="add" Type="int" Mode="In" />
+        </Function>
+        <Function Name="teacherattn" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="add" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="DB32ModelStoreContainer">
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
@@ -625,7 +625,6 @@
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Studentattendence" EntityType="Self.Studentattendence" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudentEvaluation" EntityType="Self.StudentEvaluation" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Teacherattendence" EntityType="Self.Teacherattendence" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Timetable" EntityType="Self.Timetable" Schema="dbo" store:Type="Tables" />
@@ -749,7 +748,7 @@
             <End Role="Class" EntitySet="Class" />
             <End Role="Timetable" EntitySet="Timetable" />
           </AssociationSet>
-          <AssociationSet Name="FK_Timetable_Course1" Association="Self.FK_Timetable_Course1">
+          <AssociationSet Name="FK_Timetable_Course" Association="Self.FK_Timetable_Course">
             <End Role="Course" EntitySet="Course" />
             <End Role="Timetable" EntitySet="Timetable" />
           </AssociationSet>
@@ -824,18 +823,6 @@
           <NavigationProperty Name="Studentattendences" Relationship="DB32Model.FK_Studentattendence_Attendence" FromRole="Attendence" ToRole="Studentattendence" />
           <NavigationProperty Name="Teacherattendences" Relationship="DB32Model.FK_Teacherattendence_Attendence" FromRole="Attendence" ToRole="Teacherattendence" />
         </EntityType>
-        <EntityType Name="Class">
-          <Key>
-            <PropertyRef Name="classid" />
-          </Key>
-          <Property Name="classid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="classname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Datesheets" Relationship="Self.FK_Datesheet_Class" FromRole="Class" ToRole="Datesheet" />
-          <NavigationProperty Name="Sections" Relationship="Self.FK_Section_Class" FromRole="Class" ToRole="Section" />
-          <NavigationProperty Name="Timetables" Relationship="Self.FK_Timetable_Class" FromRole="Class" ToRole="Timetable" />
-          <NavigationProperty Name="ClassCourses" Relationship="DB32Model.FK_ClassCourse_Class" FromRole="Class" ToRole="ClassCourse" />
-          <NavigationProperty Name="ClassCourseTeachers" Relationship="DB32Model.FK_ClassCourseTeacher_Class" FromRole="Class" ToRole="ClassCourseTeacher" />
-        </EntityType>
         <EntityType Name="Course">
           <Key>
             <PropertyRef Name="Id" />
@@ -843,10 +830,10 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Datesheets" Relationship="Self.FK_Datesheet_Course" FromRole="Course" ToRole="Datesheet" />
-          <NavigationProperty Name="Timetables" Relationship="Self.FK_Timetable_Course1" FromRole="Course" ToRole="Timetable" />
           <NavigationProperty Name="ClassCourses" Relationship="DB32Model.FK_ClassCourse_Course" FromRole="Course" ToRole="ClassCourse" />
           <NavigationProperty Name="ClassCourseTeachers" Relationship="DB32Model.FK_ClassCourseTeacher_Course" FromRole="Course" ToRole="ClassCourseTeacher" />
           <NavigationProperty Name="StudentEvaluations" Relationship="DB32Model.FK_StudentEvaluation_Course" FromRole="Course" ToRole="StudentEvaluation" />
+          <NavigationProperty Name="Timetables" Relationship="DB32Model.FK_Timetable_Course" FromRole="Course" ToRole="Timetable" />
         </EntityType>
         <EntityType Name="Datesheet">
           <Key>
@@ -856,8 +843,8 @@
           <Property Name="Date" Type="DateTime" Precision="3" />
           <Property Name="CouseId" Type="Int32" />
           <Property Name="ClassId" Type="Int32" />
-          <NavigationProperty Name="Class" Relationship="Self.FK_Datesheet_Class" FromRole="Datesheet" ToRole="Class" />
           <NavigationProperty Name="Course" Relationship="Self.FK_Datesheet_Course" FromRole="Datesheet" ToRole="Course" />
+          <NavigationProperty Name="Class" Relationship="DB32Model.FK_Datesheet_Class" FromRole="Datesheet" ToRole="Class" />
         </EntityType>
         <EntityType Name="Evaluation">
           <Key>
@@ -903,8 +890,8 @@
           <Property Name="SectionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ClassID" Type="Int32" />
-          <NavigationProperty Name="Class" Relationship="Self.FK_Section_Class" FromRole="Section" ToRole="Class" />
           <NavigationProperty Name="SectionStudents" Relationship="DB32Model.FK_SectionStudent_Section" FromRole="Section" ToRole="SectionStudent" />
+          <NavigationProperty Name="Class" Relationship="DB32Model.FK_Section_Class" FromRole="Section" ToRole="Class" />
         </EntityType>
         <EntityType Name="Student">
           <Key>
@@ -918,16 +905,6 @@
           <NavigationProperty Name="SectionStudents" Relationship="DB32Model.FK_ClassStudent_Student" FromRole="Student" ToRole="SectionStudent" />
           <NavigationProperty Name="Studentattendences" Relationship="DB32Model.FK_Studentattendence_Student" FromRole="Student" ToRole="Studentattendence" />
           <NavigationProperty Name="StudentEvaluations" Relationship="DB32Model.FK_StudentEvaluation_Student" FromRole="Student" ToRole="StudentEvaluation" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Teacher">
           <Key>
@@ -943,18 +920,6 @@
           <NavigationProperty Name="Person" Relationship="Self.FK_Teacher_Person" FromRole="Teacher" ToRole="Person" />
           <NavigationProperty Name="ClassCourseTeachers" Relationship="DB32Model.FK_ClassCourseTeacher_Teacher" FromRole="Teacher" ToRole="ClassCourseTeacher" />
           <NavigationProperty Name="Teacherattendences" Relationship="DB32Model.FK_Teacherattendence_Teacher" FromRole="Teacher" ToRole="Teacherattendence" />
-        </EntityType>
-        <EntityType Name="Timetable">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Date" Type="DateTime" Precision="3" />
-          <Property Name="ClassId" Type="Int32" />
-          <Property Name="CourseId" Type="Int32" />
-          <Property Name="Time" Type="Time" Precision="7" />
-          <NavigationProperty Name="Class" Relationship="Self.FK_Timetable_Class" FromRole="Timetable" ToRole="Class" />
-          <NavigationProperty Name="Course" Relationship="Self.FK_Timetable_Course1" FromRole="Timetable" ToRole="Course" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
@@ -996,42 +961,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Datesheet_Class">
-          <End Role="Class" Type="Self.Class" Multiplicity="0..1" />
-          <End Role="Datesheet" Type="Self.Datesheet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Class">
-              <PropertyRef Name="classid" />
-            </Principal>
-            <Dependent Role="Datesheet">
-              <PropertyRef Name="ClassId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Section_Class">
-          <End Role="Class" Type="Self.Class" Multiplicity="0..1" />
-          <End Role="Section" Type="Self.Section" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Class">
-              <PropertyRef Name="classid" />
-            </Principal>
-            <Dependent Role="Section">
-              <PropertyRef Name="ClassID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Timetable_Class">
-          <End Role="Class" Type="Self.Class" Multiplicity="0..1" />
-          <End Role="Timetable" Type="Self.Timetable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Class">
-              <PropertyRef Name="classid" />
-            </Principal>
-            <Dependent Role="Timetable">
-              <PropertyRef Name="ClassId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Datesheet_Course">
           <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
           <End Role="Datesheet" Type="Self.Datesheet" Multiplicity="*" />
@@ -1041,18 +970,6 @@
             </Principal>
             <Dependent Role="Datesheet">
               <PropertyRef Name="CouseId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Timetable_Course1">
-          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
-          <End Role="Timetable" Type="Self.Timetable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Course">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Timetable">
-              <PropertyRef Name="CourseId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1096,14 +1013,13 @@
           <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="DB32Entities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DB32Entities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
           <EntitySet Name="Assignments" EntityType="Self.Assignment" />
           <EntitySet Name="Attendences" EntityType="Self.Attendence" />
-          <EntitySet Name="Classes" EntityType="Self.Class" />
           <EntitySet Name="Courses" EntityType="Self.Course" />
           <EntitySet Name="Datesheets" EntityType="Self.Datesheet" />
           <EntitySet Name="Evaluations" EntityType="Self.Evaluation" />
@@ -1111,9 +1027,7 @@
           <EntitySet Name="People" EntityType="Self.Person" />
           <EntitySet Name="Sections" EntityType="Self.Section" />
           <EntitySet Name="Students" EntityType="Self.Student" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Teachers" EntityType="Self.Teacher" />
-          <EntitySet Name="Timetables" EntityType="Self.Timetable" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -1126,25 +1040,9 @@
             <End Role="Teacher" EntitySet="Teachers" />
             <End Role="Assignments" EntitySet="Assignments" />
           </AssociationSet>
-          <AssociationSet Name="FK_Datesheet_Class" Association="Self.FK_Datesheet_Class">
-            <End Role="Class" EntitySet="Classes" />
-            <End Role="Datesheet" EntitySet="Datesheets" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Section_Class" Association="Self.FK_Section_Class">
-            <End Role="Class" EntitySet="Classes" />
-            <End Role="Section" EntitySet="Sections" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Timetable_Class" Association="Self.FK_Timetable_Class">
-            <End Role="Class" EntitySet="Classes" />
-            <End Role="Timetable" EntitySet="Timetables" />
-          </AssociationSet>
           <AssociationSet Name="FK_Datesheet_Course" Association="Self.FK_Datesheet_Course">
             <End Role="Course" EntitySet="Courses" />
             <End Role="Datesheet" EntitySet="Datesheets" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Timetable_Course1" Association="Self.FK_Timetable_Course1">
-            <End Role="Course" EntitySet="Courses" />
-            <End Role="Timetable" EntitySet="Timetables" />
           </AssociationSet>
           <AssociationSet Name="FK_Teacher_Lookup" Association="Self.FK_Teacher_Lookup">
             <End Role="Lookup" EntitySet="Lookups" />
@@ -1162,6 +1060,15 @@
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <FunctionImport Name="PersonalInformation" ReturnType="Collection(DB32Model.PersonalInformation_Result)">
+          <Parameter Name="add" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="studentattn" ReturnType="Collection(DB32Model.studentattn_Result)">
+          <Parameter Name="add" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="teacherattn" ReturnType="Collection(DB32Model.teacherattn_Result)">
+          <Parameter Name="add" Mode="In" Type="Int32" />
+          </FunctionImport>
           <EntitySet Name="ClassCourses" EntityType="DB32Model.ClassCourse" />
           <EntitySet Name="ClassCourseTeachers" EntityType="DB32Model.ClassCourseTeacher" />
           <EntitySet Name="SectionStudents" EntityType="DB32Model.SectionStudent" />
@@ -1175,14 +1082,6 @@
           <AssociationSet Name="FK_Teacherattendence_Attendence" Association="DB32Model.FK_Teacherattendence_Attendence">
             <End Role="Attendence" EntitySet="Attendences" />
             <End Role="Teacherattendence" EntitySet="Teacherattendences" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ClassCourse_Class" Association="DB32Model.FK_ClassCourse_Class">
-            <End Role="Class" EntitySet="Classes" />
-            <End Role="ClassCourse" EntitySet="ClassCourses" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ClassCourseTeacher_Class" Association="DB32Model.FK_ClassCourseTeacher_Class">
-            <End Role="Class" EntitySet="Classes" />
-            <End Role="ClassCourseTeacher" EntitySet="ClassCourseTeachers" />
           </AssociationSet>
           <AssociationSet Name="FK_ClassCourse_Course" Association="DB32Model.FK_ClassCourse_Course">
             <End Role="Course" EntitySet="Courses" />
@@ -1240,7 +1139,54 @@
             <End Role="Teacher" EntitySet="Teachers" />
             <End Role="Teacherattendence" EntitySet="Teacherattendences" />
           </AssociationSet>
-        </EntityContainer>
+          <EntitySet Name="Timetables" EntityType="DB32Model.Timetable" />
+          <AssociationSet Name="FK_Timetable_Course" Association="DB32Model.FK_Timetable_Course">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="Timetable" EntitySet="Timetables" />
+          </AssociationSet>
+          <EntitySet Name="Classes" EntityType="DB32Model.Class" />
+          <AssociationSet Name="FK_ClassCourse_Class" Association="DB32Model.FK_ClassCourse_Class">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="ClassCourse" EntitySet="ClassCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassCourseTeacher_Class" Association="DB32Model.FK_ClassCourseTeacher_Class">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="ClassCourseTeacher" EntitySet="ClassCourseTeachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Datesheet_Class" Association="DB32Model.FK_Datesheet_Class">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="Datesheet" EntitySet="Datesheets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Section_Class" Association="DB32Model.FK_Section_Class">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="Section" EntitySet="Sections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Timetable_Class" Association="DB32Model.FK_Timetable_Class">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="Timetable" EntitySet="Timetables" />
+          </AssociationSet>
+          </EntityContainer>
+        <ComplexType Name="PersonalInformation_Result">
+          <Property Type="String" Name="Rollno" Nullable="true" />
+          <Property Type="String" Name="FirstName" Nullable="true" />
+          <Property Type="String" Name="LastName" Nullable="true" />
+          <Property Type="String" Name="Address" Nullable="true" />
+          <Property Type="Int32" Name="Contact" Nullable="true" />
+          <Property Type="String" Name="Email" Nullable="false" />
+          <Property Type="Int32" Name="Gender" Nullable="true" />
+          <Property Type="DateTime" Name="DateOfBirth" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Fee" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="studentattn_Result">
+          <Property Type="Int32" Name="AttendenceID" Nullable="true" />
+          <Property Type="Int32" Name="StudentId" Nullable="true" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="teacherattn_Result">
+          <Property Type="Int32" Name="AttendenceID" Nullable="true" />
+          <Property Type="Int32" Name="TeacherId" Nullable="true" />
+          <Property Type="Int32" Name="status" Nullable="true" />
+        </ComplexType>
         <EntityType Name="ClassCourse">
           <Key>
             <PropertyRef Name="Id" />
@@ -1248,8 +1194,8 @@
           <Property Name="CourseID" Type="Int32" />
           <Property Name="ClassID" Type="Int32" />
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Class" Relationship="DB32Model.FK_ClassCourse_Class" FromRole="ClassCourse" ToRole="Class" />
           <NavigationProperty Name="Course" Relationship="DB32Model.FK_ClassCourse_Course" FromRole="ClassCourse" ToRole="Course" />
+          <NavigationProperty Name="Class" Relationship="DB32Model.FK_ClassCourse_Class" FromRole="ClassCourse" ToRole="Class" />
         </EntityType>
         <EntityType Name="ClassCourseTeacher">
           <Key>
@@ -1259,9 +1205,9 @@
           <Property Name="TeacherID" Type="Int32" />
           <Property Name="ClassID" Type="Int32" />
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Class" Relationship="DB32Model.FK_ClassCourseTeacher_Class" FromRole="ClassCourseTeacher" ToRole="Class" />
           <NavigationProperty Name="Course" Relationship="DB32Model.FK_ClassCourseTeacher_Course" FromRole="ClassCourseTeacher" ToRole="Course" />
           <NavigationProperty Name="Teacher" Relationship="DB32Model.FK_ClassCourseTeacher_Teacher" FromRole="ClassCourseTeacher" ToRole="Teacher" />
+          <NavigationProperty Name="Class" Relationship="DB32Model.FK_ClassCourseTeacher_Class" FromRole="ClassCourseTeacher" ToRole="Class" />
         </EntityType>
         <EntityType Name="SectionStudent">
           <Key>
@@ -1335,30 +1281,6 @@
             </Principal>
             <Dependent Role="Teacherattendence">
               <PropertyRef Name="AttendenceID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ClassCourse_Class">
-          <End Type="DB32Model.Class" Role="Class" Multiplicity="0..1" />
-          <End Type="DB32Model.ClassCourse" Role="ClassCourse" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Class">
-              <PropertyRef Name="classid" />
-            </Principal>
-            <Dependent Role="ClassCourse">
-              <PropertyRef Name="ClassID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ClassCourseTeacher_Class">
-          <End Type="DB32Model.Class" Role="Class" Multiplicity="0..1" />
-          <End Type="DB32Model.ClassCourseTeacher" Role="ClassCourseTeacher" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Class">
-              <PropertyRef Name="classid" />
-            </Principal>
-            <Dependent Role="ClassCourseTeacher">
-              <PropertyRef Name="ClassID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1530,12 +1452,109 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <EntityType Name="Timetable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="ClassId" Type="Int32" />
+          <Property Name="CourseId" Type="Int32" />
+          <Property Name="Time" Type="Time" Precision="7" />
+          <NavigationProperty Name="Course" Relationship="DB32Model.FK_Timetable_Course" FromRole="Timetable" ToRole="Course" />
+          <NavigationProperty Name="Class" Relationship="DB32Model.FK_Timetable_Class" FromRole="Timetable" ToRole="Class" />
+        </EntityType>
+        <Association Name="FK_Timetable_Course">
+          <End Type="DB32Model.Course" Role="Course" Multiplicity="0..1" />
+          <End Type="DB32Model.Timetable" Role="Timetable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Timetable">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="classid" />
+          </Key>
+          <Property Name="classid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="classname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sectionid" Type="Int32" />
+          <NavigationProperty Name="ClassCourses" Relationship="DB32Model.FK_ClassCourse_Class" FromRole="Class" ToRole="ClassCourse" />
+          <NavigationProperty Name="ClassCourseTeachers" Relationship="DB32Model.FK_ClassCourseTeacher_Class" FromRole="Class" ToRole="ClassCourseTeacher" />
+          <NavigationProperty Name="Datesheets" Relationship="DB32Model.FK_Datesheet_Class" FromRole="Class" ToRole="Datesheet" />
+          <NavigationProperty Name="Sections" Relationship="DB32Model.FK_Section_Class" FromRole="Class" ToRole="Section" />
+          <NavigationProperty Name="Timetables" Relationship="DB32Model.FK_Timetable_Class" FromRole="Class" ToRole="Timetable" />
+        </EntityType>
+        <Association Name="FK_ClassCourse_Class">
+          <End Type="DB32Model.Class" Role="Class" Multiplicity="0..1" />
+          <End Type="DB32Model.ClassCourse" Role="ClassCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="classid" />
+            </Principal>
+            <Dependent Role="ClassCourse">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassCourseTeacher_Class">
+          <End Type="DB32Model.Class" Role="Class" Multiplicity="0..1" />
+          <End Type="DB32Model.ClassCourseTeacher" Role="ClassCourseTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="classid" />
+            </Principal>
+            <Dependent Role="ClassCourseTeacher">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Datesheet_Class">
+          <End Type="DB32Model.Class" Role="Class" Multiplicity="0..1" />
+          <End Type="DB32Model.Datesheet" Role="Datesheet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="classid" />
+            </Principal>
+            <Dependent Role="Datesheet">
+              <PropertyRef Name="ClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Section_Class">
+          <End Type="DB32Model.Class" Role="Class" Multiplicity="0..1" />
+          <End Type="DB32Model.Section" Role="Section" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="classid" />
+            </Principal>
+            <Dependent Role="Section">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Timetable_Class">
+          <End Type="DB32Model.Class" Role="Class" Multiplicity="0..1" />
+          <End Type="DB32Model.Timetable" Role="Timetable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="classid" />
+            </Principal>
+            <Dependent Role="Timetable">
+              <PropertyRef Name="ClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DB32ModelStoreContainer" CdmEntityContainer="DB32Entities1">
+        <EntityContainerMapping StorageEntityContainer="DB32ModelStoreContainer" CdmEntityContainer="DB32Entities2">
           <EntitySetMapping Name="AspNetRoles">
             <EntityTypeMapping TypeName="DB32Model.AspNetRole">
               <MappingFragment StoreEntitySet="AspNetRoles">
@@ -1599,14 +1618,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Classes">
-            <EntityTypeMapping TypeName="DB32Model.Class">
-              <MappingFragment StoreEntitySet="Class">
-                <ScalarProperty Name="classid" ColumnName="classid" />
-                <ScalarProperty Name="classname" ColumnName="classname" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Courses">
             <EntityTypeMapping TypeName="DB32Model.Course">
               <MappingFragment StoreEntitySet="Course">
@@ -1660,9 +1671,9 @@
           <EntitySetMapping Name="Sections">
             <EntityTypeMapping TypeName="DB32Model.Section">
               <MappingFragment StoreEntitySet="Section">
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
                 <ScalarProperty Name="SectionID" ColumnName="SectionID" />
                 <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1673,17 +1684,6 @@
                 <ScalarProperty Name="Fee" ColumnName="Fee" />
                 <ScalarProperty Name="Rollno" ColumnName="Rollno" />
                 <ScalarProperty Name="Enrollmentdate" ColumnName="Enrollmentdate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="DB32Model.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1698,17 +1698,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Timetables">
-            <EntityTypeMapping TypeName="DB32Model.Timetable">
-              <MappingFragment StoreEntitySet="Timetable">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="ClassId" ColumnName="ClassId" />
-                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
-                <ScalarProperty Name="Time" ColumnName="Time" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <AssociationSetMapping Name="AspNetUserRoles" TypeName="DB32Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
             <EndProperty Name="AspNetRoles">
               <ScalarProperty Name="Id" ColumnName="RoleId" />
@@ -1717,6 +1706,39 @@
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="PersonalInformation" FunctionName="DB32Model.Store.PersonalInformation">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB32Model.PersonalInformation_Result">
+                <ScalarProperty Name="Rollno" ColumnName="Rollno" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Fee" ColumnName="Fee" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="studentattn" FunctionName="DB32Model.Store.studentattn">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB32Model.studentattn_Result">
+                <ScalarProperty Name="AttendenceID" ColumnName="AttendenceID" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="teacherattn" FunctionName="DB32Model.Store.teacherattn">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB32Model.teacherattn_Result">
+                <ScalarProperty Name="AttendenceID" ColumnName="AttendenceID" />
+                <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <EntitySetMapping Name="ClassCourses">
             <EntityTypeMapping TypeName="DB32Model.ClassCourse">
               <MappingFragment StoreEntitySet="ClassCourse">
@@ -1775,6 +1797,26 @@
                 <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
                 <ScalarProperty Name="AttendenceID" ColumnName="AttendenceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Timetables">
+            <EntityTypeMapping TypeName="DB32Model.Timetable">
+              <MappingFragment StoreEntitySet="Timetable">
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Classes">
+            <EntityTypeMapping TypeName="DB32Model.Class">
+              <MappingFragment StoreEntitySet="Class">
+                <ScalarProperty Name="Sectionid" ColumnName="Sectionid" />
+                <ScalarProperty Name="classname" ColumnName="classname" />
+                <ScalarProperty Name="classid" ColumnName="classid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
